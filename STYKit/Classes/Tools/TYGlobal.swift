@@ -55,7 +55,7 @@ public func AdaptSize_ty(_ size: CGFloat) -> CGFloat {
 }
 
 /// 当前VC
-public var currentVC: UIViewController? {
+public var currentVC_ty: UIViewController? {
     var rootViewController: UIViewController?
     let textEffectsWindowClass: AnyClass? = NSClassFromString("UITextEffectsWindow")
     for window in UIApplication.shared.windows where !window.isHidden {

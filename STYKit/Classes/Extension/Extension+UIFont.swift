@@ -9,7 +9,7 @@ import Foundation
 
 public extension UIFont {
     
-    enum FontType: String {
+    enum FontType_ty: String {
         case PingFangTCRegular  = "PingFangSC-Regular"
         case PingFangTCMedium   = "PingFangSC-Medium"
         case PingFangTCSemibold = "PingFangSC-Semibold"
@@ -17,7 +17,7 @@ public extension UIFont {
         case DINAlternateBold   = "DINAlternate-Bold"
     }
     
-    class func custom(_ type: FontType, size: CGFloat) -> UIFont {
+    class func custom_ty(_ type: FontType_ty, size: CGFloat) -> UIFont {
         if let font = UIFont(name: type.rawValue, size: size) {
             return font
         } else {

@@ -9,7 +9,7 @@ import Foundation
 
 public extension UIColor {
     
-    class func RGBA(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
+    class func RGBA_ty(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
         if #available(iOS 10.0, *) {
             return UIColor(displayP3Red: red/255, green: green/255, blue: blue/255, alpha: alpha)
         } else {
@@ -17,5 +17,11 @@ public extension UIColor {
         }
     }
     
-    static let theme = RGBA(red: 255, green: 196, blue: 47)
+    
+    /// 小红点 (red: 255, green: 71, blue: 71)
+    static let red0  = RGBA_ty(red: 255, green: 15, blue: 75)
+    /// 文字 (red: 166, green: 166, blue: 166)
+    static let gray0 = RGBA_ty(red: 166, green: 166, blue: 166)
+    
+    static let theme = RGBA_ty(red: 255, green: 196, blue: 47)
 }

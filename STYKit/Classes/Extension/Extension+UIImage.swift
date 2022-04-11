@@ -9,12 +9,12 @@ import Foundation
 
 public extension UIImage {
     
-    enum UIImageType: String {
+    enum UIImageType_ty: String {
         case png = "png"
         case pdf = "pdf"
     }
     
-    class func name(_ name: String, type: UIImageType) -> UIImage? {
+    class func name_ty(_ name: String, type: UIImageType_ty) -> UIImage? {
         guard let imagePath = Bundle.main.path(forResource: name, ofType: type.rawValue) else {
             return nil
         }

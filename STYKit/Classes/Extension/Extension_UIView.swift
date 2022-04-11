@@ -148,27 +148,27 @@ public extension UIView {
     
     private struct AssociatedKeys {
         /// 加载视图
-        static var loadingView = "kLoadingView"
+        static var loadingView_ty = "kLoadingView"
         /// 高斯模糊
-        static var blurEffect: String = "kBlurEffect"
+        static var blurEffect_ty: String = "kBlurEffect"
     }
     
     /// 显示loading图
-    func showLoading() {
-        self.loadingView.startAnimating()
-        self.loadingView.isHidden = false
+    func showLoading_ty() {
+        self.loadingView_ty.startAnimating()
+        self.loadingView_ty.isHidden = false
     }
 
     /// 隐藏loading图
-    func hideLoading() {
-        self.loadingView.stopAnimating()
-        self.loadingView.isHidden = true
+    func hideLoading_ty() {
+        self.loadingView_ty.stopAnimating()
+        self.loadingView_ty.isHidden = true
     }
     
     /// Loading 视图
-    private var loadingView: UIActivityIndicatorView {
+    private var loadingView_ty: UIActivityIndicatorView {
         get {
-            if let animationView = objc_getAssociatedObject(self, &AssociatedKeys.loadingView) as? UIActivityIndicatorView {
+            if let animationView = objc_getAssociatedObject(self, &AssociatedKeys.loadingView_ty) as? UIActivityIndicatorView {
                 return animationView
             } else {
                 let view = UIActivityIndicatorView()
@@ -179,13 +179,13 @@ public extension UIView {
                     make.size.equalTo(view.size_ty)
                     make.center.equalToSuperview()
                 }
-                self.loadingView = view
+                self.loadingView_ty = view
                 return view
             }
         }
 
         set {
-            objc_setAssociatedObject(self, &AssociatedKeys.loadingView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &AssociatedKeys.loadingView_ty, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
@@ -254,14 +254,14 @@ public extension UIView {
     }
     
     /// 隐藏高斯模糊
-    func hideBlurEffect() {
-        if let effectView = objc_getAssociatedObject(self, &AssociatedKeys.blurEffect) as? UIVisualEffectView {
+    func hideBlurEffect_ty() {
+        if let effectView = objc_getAssociatedObject(self, &AssociatedKeys.blurEffect_ty) as? UIVisualEffectView {
             effectView.isHidden = true
         }
     }
     
     /// 将当前视图转为UIImage
-    func toImage() -> UIImage {
+    func toImage_ty() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in
             layer.render(in: rendererContext.cgContext)

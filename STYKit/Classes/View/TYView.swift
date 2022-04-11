@@ -16,6 +16,8 @@ public protocol TYBaseDelegate: NSObjectProtocol {
     func bindData_ty()
     /// 更新UI
     func updateUI_ty()
+    /// 注册通知
+    func registerNotification_ty()
 }
 
 open class TYView: UIView, TYBaseDelegate {
@@ -39,4 +41,5 @@ open class TYView: UIView, TYBaseDelegate {
     public func bindProperty_ty() {}
     public func bindData_ty() {}
     public func updateUI_ty() {}
+    public func registerNotification_ty() {}
 }

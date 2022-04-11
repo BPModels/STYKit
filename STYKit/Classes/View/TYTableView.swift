@@ -10,9 +10,9 @@ import Foundation
 open class TYTableView: UITableView {
     
     /// 是否隐藏默认为空页面
-    public var isHideEmpty = false
-    public var emptyImage: UIImage?
-    public var emptyHintText: String?
+    public var isHideEmptyView_ty = false
+    public var emptyImage_ty: UIImage?
+    public var emptyHintText_ty: String?
     
     open override func reloadData() {
         super.reloadData()
@@ -27,9 +27,9 @@ open class TYTableView: UITableView {
         }
         if (rows == 0 && sections == 0) || (rows == 0 && sections == 1 && headerView(forSection: 0) == nil && footerView(forSection: 0) == nil) {
             // 显示默认页面
-            if !self.isHideEmpty {
+            if !self.isHideEmptyView_ty {
                 let emptyView = TYTableViewEmptyView()
-                emptyView.setData(image: emptyImage, hintText: emptyHintText)
+                emptyView.setData(image: emptyImage_ty, hintText: emptyHintText_ty)
                 self.backgroundView = emptyView
             }
         } else {
@@ -42,24 +42,24 @@ open class TYTableView: UITableView {
 /// TableView 的空页面
 class TYTableViewEmptyView: TYView {
     
-    private var contentView: TYView = {
+    private var contentView_ty: TYView = {
         let view = TYView()
         view.backgroundColor = UIColor.clear
         return view
     }()
     
-    private var imageView: UIImageView = {
+    private var imageView_ty: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode     = .scaleAspectFill
         imageView.backgroundColor = .clear
         return imageView
     }()
     
-    private var hintLabel: TYLabel = {
+    private var hintLabel_ty: TYLabel = {
         let label = TYLabel()
         label.text          = ""
         label.textColor     = UIColor.black
-        label.font          = UIFont.custom(.PingFangTCSemibold, size: AdaptSize_ty(16))
+        label.font          = UIFont.custom_ty(.PingFangTCSemibold, size: AdaptSize_ty(16))
         label.textAlignment = .center
         return label
     }()
@@ -78,22 +78,22 @@ class TYTableViewEmptyView: TYView {
     
     override func createSubviews_ty() {
         super.createSubviews_ty()
-        self.addSubview(contentView)
-        contentView.addSubview(imageView)
-        contentView.addSubview(hintLabel)
-        contentView.snp.makeConstraints { make in
+        self.addSubview(contentView_ty)
+        contentView_ty.addSubview(imageView_ty)
+        contentView_ty.addSubview(hintLabel_ty)
+        contentView_ty.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
-        imageView.snp.makeConstraints { make in
+        imageView_ty.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview()
             make.size.equalTo(CGSize(width: AdaptSize_ty(84), height: AdaptSize_ty(84)))
         }
-        hintLabel.snp.makeConstraints { make in
+        hintLabel_ty.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(AdaptSize_ty(15))
             make.right.equalToSuperview().offset(AdaptSize_ty(-15))
-            make.top.equalTo(imageView.snp.bottom).offset(AdaptSize_ty(10))
-            make.height.equalTo(hintLabel.font.lineHeight)
+            make.top.equalTo(imageView_ty.snp.bottom).offset(AdaptSize_ty(10))
+            make.height.equalTo(hintLabel_ty.font.lineHeight)
             make.bottom.equalToSuperview()
         }
     }
@@ -106,17 +106,17 @@ class TYTableViewEmptyView: TYView {
     // MARK: ==== Event ====
     func setData(image: UIImage?, hintText: String?) {
         if let _image = image {
-            self.imageView.isHidden = false
-            self.imageView.image    = _image
+            self.imageView_ty.isHidden = false
+            self.imageView_ty.image    = _image
         } else {
             // 默认图
-            self.imageView.isHidden = true
+            self.imageView_ty.isHidden = true
         }
         if let _hintText = hintText {
-            self.hintLabel.text = _hintText
+            self.hintLabel_ty.text = _hintText
         } else {
             // 默认文案
-            self.hintLabel.text = "暂无数据"
+            self.hintLabel_ty.text = "暂无数据"
         }
     }
 }

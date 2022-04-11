@@ -22,21 +22,21 @@ open class TYNavigationBar: TYView {
     private let leftOffsetX  = AdaptSize_ty(12)
     private let rightOffsetX = AdaptSize_ty(-12)
     
-    public let titleLabel: TYLabel = {
+    public let titleLabel_ty: TYLabel = {
         let label = TYLabel()
         label.text = ""
-        label.font = UIFont.custom(.PingFangTCRegular, size: AdaptSize_ty(18))
+        label.font = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(18))
         return label
     }()
     
-    public let leftButton: TYButton = {
+    public let leftButton_ty: TYButton = {
         let button = TYButton()
-        button.setImage(UIImage.name("back_ty", type: .pdf), for: .normal)
+        button.setImage(UIImage.name_ty("back_ty", type: .pdf), for: .normal)
         button.contentHorizontalAlignment = .left
         return button
     }()
     
-    public lazy var rightButton: TYButton = {
+    public lazy var rightButton_ty: TYButton = {
         let button = TYButton()
         button.contentHorizontalAlignment = .right
         return button
@@ -55,25 +55,25 @@ open class TYNavigationBar: TYView {
     
     public override func createSubviews_ty() {
         super.createSubviews_ty()
-        self.addSubview(leftButton)
-        self.addSubview(titleLabel)
-        self.addSubview(rightButton)
-        leftButton.snp.makeConstraints { (make) in
+        self.addSubview(leftButton_ty)
+        self.addSubview(titleLabel_ty)
+        self.addSubview(rightButton_ty)
+        leftButton_ty.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(leftOffsetX).priority(.low)
-            make.centerY.equalTo(titleLabel)
+            make.centerY.equalTo(titleLabel_ty)
             make.width.equalTo(buttonSize.width)
             make.height.equalTo(buttonSize.height)
         }
-        titleLabel.snp.makeConstraints { (make) in
+        titleLabel_ty.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(AdaptSize_ty(-10))
             make.centerX.equalToSuperview()
-            make.left.greaterThanOrEqualTo(leftButton.snp.right).offset(AdaptSize_ty(5))
-            make.right.lessThanOrEqualTo(rightButton.snp.left).offset(-AdaptSize_ty(5))
-            make.height.equalTo(titleLabel.font.lineHeight)
+            make.left.greaterThanOrEqualTo(leftButton_ty.snp.right).offset(AdaptSize_ty(5))
+            make.right.lessThanOrEqualTo(rightButton_ty.snp.left).offset(-AdaptSize_ty(5))
+            make.height.equalTo(titleLabel_ty.font.lineHeight)
         }
-        rightButton.snp.makeConstraints { (make) in
+        rightButton_ty.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(rightOffsetX).priority(.low)
-            make.centerY.equalTo(titleLabel)
+            make.centerY.equalTo(titleLabel_ty)
             make.width.equalTo(buttonSize.width)
             make.height.equalTo(buttonSize.height)
         }
@@ -81,20 +81,20 @@ open class TYNavigationBar: TYView {
     
     public override func bindProperty_ty() {
         super.bindProperty_ty()
-        self.leftButton.addTarget(self, action: #selector(clickLeftAction(sender:)), for: .touchUpInside)
-        self.rightButton.addTarget(self, action: #selector(clickRightAction(sender:)), for: .touchUpInside)
+        self.leftButton_ty.addTarget(self, action: #selector(clickLeftAction_ty(sender:)), for: .touchUpInside)
+        self.rightButton_ty.addTarget(self, action: #selector(clickRightAction_ty(sender:)), for: .touchUpInside)
         // 设置默认标题
-        self.title           = currentVC?.title
+        self.title           = currentVC_ty?.title
         self.backgroundColor = .theme
     }
     
     // MARK: ==== Event ====
     /// 设置左边文案
     /// - Parameter text: 文案
-    public func setLeftTitle(text: String?) {
-        self.leftButton.setTitle(text, for: .normal)
-        let _newWidth = self.leftButton.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize.height)).width
-        self.leftButton.snp.updateConstraints { make in
+    public func setLeftTitle_ty(text: String?) {
+        self.leftButton_ty.setTitle(text, for: .normal)
+        let _newWidth = self.leftButton_ty.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize.height)).width
+        self.leftButton_ty.snp.updateConstraints { make in
             make.width.equalTo(_newWidth + AdaptSize_ty(10))
         }
     }
@@ -102,30 +102,30 @@ open class TYNavigationBar: TYView {
     /// 标题
     public var title: String? = "" {
         willSet {
-            self.titleLabel.text = newValue
+            self.titleLabel_ty.text = newValue
         }
     }
     
     /// 设置左边文案
     /// - Parameter text: 文案
-    public func setRightTitle(text: String?) {
-        self.rightButton.setTitle(text, for: .normal)
-        self.rightButton.isHidden = false
-        let _newWidth = self.rightButton.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize.height)).width
-        self.rightButton.snp.updateConstraints { make in
+    public func setRightTitle_ty(text: String?) {
+        self.rightButton_ty.setTitle(text, for: .normal)
+        self.rightButton_ty.isHidden = false
+        let _newWidth = self.rightButton_ty.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize.height)).width
+        self.rightButton_ty.snp.updateConstraints { make in
             make.width.equalTo(_newWidth + AdaptSize_ty(10))
         }
     }
     
     /// 点击左边按钮
-    @objc private func clickLeftAction(sender: TYButton) {
+    @objc private func clickLeftAction_ty(sender: TYButton) {
         sender.status = .disable
         self.delegate?.leftAction_ty()
         sender.status = .normal
     }
     
     /// 点击右边按钮
-    @objc private func clickRightAction(sender: TYButton) {
+    @objc private func clickRightAction_ty(sender: TYButton) {
         sender.status = .disable
         self.delegate?.rightAction_ty()
         sender.status = .normal

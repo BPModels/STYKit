@@ -24,13 +24,13 @@ open class TYButton: UIButton {
             self.updateStatus()
         }
     }
-    public var type: TYButtonType
+    public var type_ty: TYButtonType
     public var isAnimation: Bool
     /// 禁用状态下按钮的透明度
-    public let disableOpacity: Float = 0.3
+    public let disableOpacity_ty: Float = 0.3
     
     public init(type: TYButtonType = .normal, animation: Bool = true) {
-        self.type        = type
+        self.type_ty     = type
         self.isAnimation = animation
         super.init(frame: .zero)
         self.bindProperty_ty()
@@ -54,7 +54,7 @@ open class TYButton: UIButton {
         switch self.status {
         case .normal:
             self.isEnabled = true
-            if self.type == .theme {
+            if self.type_ty == .theme {
                 self.backgroundColor = .theme
             } else {
                 self.layer.opacity   = 1.0
@@ -63,17 +63,17 @@ open class TYButton: UIButton {
             break
         case .disable:
             self.isEnabled = false
-            if self.type == .theme {
+            if self.type_ty == .theme {
                 self.backgroundColor = .gray
             } else {
-                self.layer.opacity   = self.disableOpacity
+                self.layer.opacity   = self.disableOpacity_ty
             }
         }
     }
     
     // MARK: ==== Event ====
     public func bindProperty_ty() {
-        switch type {
+        switch type_ty {
         case .normal:
             self.setTitleColor(UIColor.black, for: .normal)
         case .theme:
@@ -98,7 +98,7 @@ open class TYButton: UIButton {
     
     @objc private func touchDown_ty(sender: UIButton) {
         self.isEnabled = true
-        if self.type != .normal {
+        if self.type_ty != .normal {
             self.layer.opacity = 0.7
         }
         guard self.isAnimation else { return }
@@ -112,7 +112,7 @@ open class TYButton: UIButton {
     }
     
     @objc private func touchUp_ty(sender: UIButton) {
-        if type != .normal {
+        if type_ty != .normal {
             self.layer.opacity = 1.0
         }
         guard self.isAnimation else { return }

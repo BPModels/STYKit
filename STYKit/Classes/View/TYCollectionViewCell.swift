@@ -14,4 +14,5 @@ open class TYCollectionViewCell: UICollectionViewCell, TYBaseDelegate {
     public func bindProperty_ty() {}
     public func bindData_ty() {}
     public func updateUI_ty() {}
+    public func registerNotification_ty() {}
 }

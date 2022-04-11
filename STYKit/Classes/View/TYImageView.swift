@@ -16,7 +16,7 @@ open class TYImageView: UIImageView {
     ///   - placeholdImage: 默认图片
     ///   - downloadProgress: 下载进度
     ///   - complete: 完成回调
-    public func setImage(imageStr: String, placeholdImage: UIImage? = nil, downloadProgress: SDImageLoaderProgressBlock?,  complete: SDExternalCompletionBlock?) {
+    public func setImage_ty(imageStr: String, placeholdImage: UIImage? = nil, downloadProgress: SDImageLoaderProgressBlock?,  complete: SDExternalCompletionBlock?) {
         var _imageStr: String? = imageStr
         if imageStr.hasChinese_ty() {
             _imageStr = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -36,7 +36,7 @@ open class TYImageView: UIImageView {
         }
     }
     
-    public func setCorner(redius: CGFloat) {
+    public func setCorner_ty(redius: CGFloat) {
         self.layer.cornerRadius  = redius
         self.layer.masksToBounds = true
     }

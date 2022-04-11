@@ -15,13 +15,13 @@ public enum TYTextFieldType {
 
 open class TYTextField: UITextField, UITextFieldDelegate {
     
-    public var type: TYTextFieldType
+    public var type_ty: TYTextFieldType
     public var maxCount_ty: Int = .max
-    public var editingBlock: StringBlock_ty?
-    public var editFinishedBlock: StringBlock_ty?
+    public var editingBlock_ty: StringBlock_ty?
+    public var editFinishedBlock_ty: StringBlock_ty?
     
     /// 显示左边空白视图（左边边距）
-    public var showLeftView: Bool {
+    public var showLeftView_ty: Bool {
         willSet {
             if newValue {
                 let _leftView = TYView(frame: CGRect(origin: .zero, size: CGSize(width: AdaptSize_ty(15), height: AdaptSize_ty(1))))
@@ -35,7 +35,7 @@ open class TYTextField: UITextField, UITextFieldDelegate {
         }
     }
     /// 显示边框
-    public var showBorder: Bool = false {
+    public var showBorder_ty: Bool = false {
         willSet {
             if newValue {
                 self.layer.borderWidth  = AdaptSize_ty(0.6)
@@ -50,7 +50,7 @@ open class TYTextField: UITextField, UITextFieldDelegate {
         }
     }
     /// 显示右边空白视图（右边边距）
-    public var showRightView: Bool {
+    public var showRightView_ty: Bool {
         willSet {
             if newValue {
                 let _rightView = TYView(frame: CGRect(origin: .zero, size: CGSize(width: AdaptSize_ty(15), height: AdaptSize_ty(1))))
@@ -65,26 +65,26 @@ open class TYTextField: UITextField, UITextFieldDelegate {
     }
     
     public init(type: TYTextFieldType) {
-        self.type          = type
-        self.showLeftView  = true
-        self.showRightView = true
-        self.showBorder    = false
+        self.type_ty          = type
+        self.showLeftView_ty  = true
+        self.showRightView_ty = true
+        self.showBorder_ty    = false
         super.init(frame: .zero)
-        self.bindProperty()
+        self.bindProperty_ty()
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    open func bindProperty() {
+    open func bindProperty_ty() {
         self.delegate = self
-        self.addTarget(self, action: #selector(editingAction), for: .editingChanged)
+        self.addTarget(self, action: #selector(editingAction_ty), for: .editingChanged)
     }
     
     // MARK: ==== Event ====
-    @objc private func editingAction() {
-        self.editingBlock?(self.text ?? "")
+    @objc private func editingAction_ty() {
+        self.editingBlock_ty?(self.text ?? "")
     }
     
     public func setPosition_ty(offset: Int) {
@@ -122,6 +122,6 @@ open class TYTextField: UITextField, UITextFieldDelegate {
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        self.editFinishedBlock?(text ?? "")
+        self.editFinishedBlock_ty?(text ?? "")
     }
 }

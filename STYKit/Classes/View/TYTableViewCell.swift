@@ -7,10 +7,19 @@
 
 import Foundation
 
-open class TYTableViewCell: UITableViewCell, TYBaseDelegate {
+open class TYTableViewCell: UITableViewCell {
     
     public struct Associated {
         static var lineView = "kLineView"
+    }
+    
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.bindProperty_ty()
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: ==== TYBaseDelegate ====
@@ -22,7 +31,7 @@ open class TYTableViewCell: UITableViewCell, TYBaseDelegate {
     public func bindData_ty() {}
     public func updateUI_ty() {}
     
-    public func setLine(left: CGFloat = AdaptSize_ty(15), right: CGFloat = 0, isHide: Bool) {
+    public func setLine_ty(left: CGFloat = AdaptSize_ty(15), right: CGFloat = 0, isHide: Bool) {
         if let lineView = objc_getAssociatedObject(self, &Associated.lineView) as? UIView {
             lineView.snp.updateConstraints { make in
                 make.left.equalToSuperview().offset(left)
