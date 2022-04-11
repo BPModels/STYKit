@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'STYKit_Example' do
+  pod 'STYKit', :path => '../'
+
+  target 'STYKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
