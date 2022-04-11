@@ -29,7 +29,7 @@ open class TYButton: UIButton {
     /// 禁用状态下按钮的透明度
     public let disableOpacity_ty: Float = 0.3
     
-    public init(type: TYButtonType = .normal, animation: Bool = true) {
+    public init(_ type: TYButtonType = .normal, animation: Bool = true) {
         self.type_ty     = type
         self.isAnimation = animation
         super.init(frame: .zero)
@@ -55,7 +55,7 @@ open class TYButton: UIButton {
         case .normal:
             self.isEnabled = true
             if self.type_ty == .theme {
-                self.backgroundColor = .theme
+                self.backgroundColor = .theme_ty
             } else {
                 self.layer.opacity   = 1.0
             }
@@ -80,15 +80,15 @@ open class TYButton: UIButton {
             self.setTitleColor(UIColor.white, for: .normal)
             self.layer.cornerRadius  = AdaptSize_ty(5)
             self.layer.masksToBounds = true
-            self.backgroundColor     = UIColor.theme
+            self.backgroundColor     = UIColor.theme_ty
         case .second:
             self.setTitleColor(UIColor.white, for: .normal)
             self.layer.cornerRadius  = AdaptSize_ty(5)
             self.layer.masksToBounds = true
             self.backgroundColor     = UIColor.white
-            self.layer.borderColor   = UIColor.theme.cgColor
+            self.layer.borderColor   = UIColor.theme_ty.cgColor
             self.layer.borderWidth   = AdaptSize_ty(1)
-            self.setTitleColor(UIColor.theme, for: .normal)
+            self.setTitleColor(UIColor.theme_ty, for: .normal)
         }
         self.addTarget(self, action: #selector(touchDown_ty(sender:)), for: .touchDown)
         self.addTarget(self, action: #selector(touchUp_ty(sender:)), for: .touchUpInside)

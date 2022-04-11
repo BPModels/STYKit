@@ -148,9 +148,9 @@ public extension UIView {
     
     private struct AssociatedKeys {
         /// 加载视图
-        static var loadingView_ty = "kLoadingView"
+        static var loadingView_ty = "kLoadingView_ty"
         /// 高斯模糊
-        static var blurEffect_ty: String = "kBlurEffect"
+        static var blurEffect_ty  = "kBlurEffect_ty"
     }
     
     /// 显示loading图
@@ -266,5 +266,12 @@ public extension UIView {
         return renderer.image { rendererContext in
             layer.render(in: rendererContext.cgContext)
         }
+    }
+    
+    /// 显示弹框
+    /// - Parameter message: 弹框内容
+    func toast_ty(_ message: String) {
+        let toastView = TYToastView(message: message)
+        toastView.show_ty()
     }
 }

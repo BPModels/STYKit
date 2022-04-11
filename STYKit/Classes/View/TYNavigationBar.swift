@@ -85,7 +85,7 @@ open class TYNavigationBar: TYView {
         self.rightButton_ty.addTarget(self, action: #selector(clickRightAction_ty(sender:)), for: .touchUpInside)
         // 设置默认标题
         self.title           = currentVC_ty?.title
-        self.backgroundColor = .theme
+        self.backgroundColor = .theme_ty
     }
     
     // MARK: ==== Event ====

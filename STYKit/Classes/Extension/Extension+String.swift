@@ -47,4 +47,12 @@ public extension String {
         let rect = NSString(string: self).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: height), options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
         return ceil(rect.width)
     }
+    
+    /// 根据字体和画布宽度,计算文字在画布上的高度
+    /// - parameter font: 字体
+    /// - parameter width: 限制的宽度
+    func textHeight_ty(font: UIFont, width: CGFloat) -> CGFloat {
+        let rect = NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        return ceil(rect.height)
+    }
 }

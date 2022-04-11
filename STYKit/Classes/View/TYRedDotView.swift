@@ -18,9 +18,9 @@ public class TYRedDotView: TYView {
         var backgroundColor: UIColor {
             switch self {
             case .red:
-                return UIColor.red0
+                return UIColor.red0_ty
             case .gray:
-                return UIColor.gray0
+                return UIColor.gray0_ty
             }
         }
         
