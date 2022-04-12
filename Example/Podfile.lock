@@ -1,9 +1,11 @@
 PODS:
+  - ObjectMapper (4.2.0)
   - SDWebImage (5.12.1):
     - SDWebImage/Core (= 5.12.1)
   - SDWebImage/Core (5.12.1)
   - SnapKit (5.0.1)
   - STYKit (0.1.0):
+    - ObjectMapper (= 4.2.0)
     - SDWebImage (= 5.12.1)
     - SnapKit (= 5.0.1)
 
@@ -12,6 +14,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ObjectMapper
     - SDWebImage
     - SnapKit
 
@@ -20,9 +23,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  STYKit: eacb0d4df50f5ac31cab42d73f9ed11c7ccb76de
+  STYKit: 2b842127655d9db64062524e8305ef36f5f0de5b
 
 PODFILE CHECKSUM: 93b5b509503d008be318a408232df5bc65994844
 

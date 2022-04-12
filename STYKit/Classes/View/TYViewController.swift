@@ -13,13 +13,13 @@ open class TYViewController: UIViewController, TYNavigationBarDelegate {
         static var customNavigationBar_ty = "customNavigationBar_ty"
     }
     
-    public var customNavigatioNBar_ty: TYNavigationBar? {
+    public var customNavigationBar_ty: TYNavigationBar? {
         return objc_getAssociatedObject(self, &Associatoed.customNavigationBar_ty) as? TYNavigationBar
     }
     
     open override var title: String? {
         willSet {
-            self.customNavigatioNBar_ty?.title = newValue
+            self.customNavigationBar_ty?.title = newValue
         }
     }
     
@@ -46,7 +46,7 @@ open class TYViewController: UIViewController, TYNavigationBarDelegate {
             make.left.right.top.equalToSuperview()
             make.height.equalTo(kNavigationHeight_ty)
         }
-        self.customNavigatioNBar_ty?.delegate = self
+        self.customNavigationBar_ty?.delegate = self
     }
     
     open func createSubviews_ty() {}

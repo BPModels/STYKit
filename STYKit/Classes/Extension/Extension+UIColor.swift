@@ -30,7 +30,8 @@ public extension UIColor {
         return RGBA_ty(red: red, green: green, blue: blue, alpha: alphe)
     }
     
-    
+    /// 文字 (red: 34, green: 34, blue: 34)
+    static let black0_ty = RGBA_ty(red: 34, green: 34, blue: 34)
     /// 小红点 (red: 255, green: 71, blue: 71)
     static let red0_ty  = RGBA_ty(red: 255, green: 15, blue: 75)
     /// 文字 (red: 166, green: 166, blue: 166)

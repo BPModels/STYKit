@@ -54,6 +54,11 @@ public func AdaptSize_ty(_ size: CGFloat) -> CGFloat {
     return newSize
 }
 
+/// 当前NVC
+public var currentNVC_ty: UINavigationController? {
+    return currentVC_ty?.navigationController
+}
+
 /// 当前VC
 public var currentVC_ty: UIViewController? {
     var rootViewController: UIViewController?
@@ -101,5 +106,4 @@ public var currentVC_ty: UIViewController? {
     }
     return rootViewController
 }
-
 

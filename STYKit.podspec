@@ -38,6 +38,10 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
+    # 布局约束（MIT License）
    s.dependency 'SnapKit', '5.0.1'
+   # 图片下载器
    s.dependency 'SDWebImage', '5.12.1'
+   # JSON转对象（MIT License）
+   s.dependency 'ObjectMapper', '4.2.0'
 end

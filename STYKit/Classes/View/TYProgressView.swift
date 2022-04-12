@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class KFProgressView: TYView {
+public class TYProgressView: TYView {
     
     public enum TYProgressType: Int {
         /// 直线

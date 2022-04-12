@@ -20,4 +20,63 @@ public extension UIImage {
         }
         return UIImage(contentsOfFile: imagePath)
     }
+    
+    /// 统一压缩方式
+    /// - Parameter maxSize: 单位：KB
+    /// - Returns: 压缩后最佳尺寸
+    func compressSize_ty(kb maxSize: CGFloat) -> Data? {
+        var compression: CGFloat = 1
+        guard var data = self.jpegData(compressionQuality: 1), data.sizeKB_ty > maxSize else {
+            return self.jpegData(compressionQuality: 1)
+        }
+        var max: CGFloat = 1
+        var min: CGFloat = 0
+        // 压缩比例
+        for _ in 0..<6 {
+            compression = (max + min)/2
+            guard let _data = self.jpegData(compressionQuality: compression) else {
+                return nil
+            }
+            data = _data
+            if data.sizeKB_ty < maxSize * 0.9 {
+                min = compression
+            } else if data.sizeKB_ty > maxSize {
+                max = compression
+            } else {
+                break
+            }
+        }
+        guard data.sizeKB_ty >= maxSize else {
+            return data
+        }
+        // 压缩尺寸
+        var lastSize: CGFloat = .zero
+        while data.sizeKB_ty > maxSize && data.sizeKB_ty != lastSize {
+            lastSize  = data.sizeKB_ty
+            let scale = CGFloat(sqrtf(Float(maxSize) / Float(data.count)))
+            let size  = CGSize(width: self.size.width * scale, height: self.size.height * scale)
+            UIGraphicsBeginImageContext(size)
+            self.draw(in: CGRect(origin: .zero, size: size))
+            UIGraphicsEndImageContext()
+            guard let imageData = self.jpegData(compressionQuality: compression) else {
+                return nil
+            }
+            data = imageData
+        }
+        return data
+    }
+    
+    /// 统一压缩方式
+    /// - Parameter size: 尺寸
+    /// - Returns: 压缩后图片尺寸
+    func compress_ty(size: CGSize, compressionQuality: CGFloat) -> Data? {
+        // 压缩尺寸
+        UIGraphicsBeginImageContext(size)
+        self.draw(in: CGRect(origin: .zero, size: size))
+        UIGraphicsEndImageContext()
+        guard let imageData = self.jpegData(compressionQuality: compressionQuality) else {
+            return nil
+        }
+        return imageData
+    }
 }

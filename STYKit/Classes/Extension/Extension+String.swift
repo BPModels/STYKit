@@ -56,3 +56,22 @@ public extension String {
         return ceil(rect.height)
     }
 }
+
+import CommonCrypto
+public extension String {
+    /// 获取MD5值
+    func md5_ty() -> String {
+        let hash         = NSMutableString()
+        let str          = self.cString(using: String.Encoding.utf8)
+        let strLength    = CUnsignedInt(self.lengthOfBytes(using: String.Encoding.utf8))
+        let digestLength = Int(CC_MD5_DIGEST_LENGTH)
+        let result       = UnsafeMutablePointer<UInt8>.allocate(capacity: 16)
+
+        CC_MD5(str!, strLength, result)
+        for i in 0..<digestLength {
+            hash.appendFormat("%02x", result[i])
+        }
+        free(result)
+        return hash as String
+    }
+}
