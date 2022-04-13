@@ -63,7 +63,7 @@ public class TYBrowserView_ty:
         let button = TYButton_ty()
         button.setTitle("全部", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font   = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(14))
+        button.titleLabel?.font   = UIFont.regular_ty(size: AdaptSize_ty(14))
         button.backgroundColor    = UIColor.black0_ty.withAlphaComponent(0.9)
         button.layer.cornerRadius = AdaptSize_ty(5)
         button.isHidden           = true

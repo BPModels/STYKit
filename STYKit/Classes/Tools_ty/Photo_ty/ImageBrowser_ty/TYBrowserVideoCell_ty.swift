@@ -41,7 +41,7 @@ class TYBrowserVideoCell_ty:
         button.setTitle("播放", for: .normal)
         button.setTitle("暂停", for: .selected)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(14))
+        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(14))
         button.isHidden = true
         return button
     }()
@@ -50,7 +50,7 @@ class TYBrowserVideoCell_ty:
         let label = TYLabel_ty()
         label.text          = "00:00"
         label.textColor     = UIColor.white
-        label.font          = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(12))
+        label.font          = UIFont.regular_ty(size: AdaptSize_ty(12))
         label.textAlignment = .left
         return label
     }()
@@ -59,7 +59,7 @@ class TYBrowserVideoCell_ty:
         let label = TYLabel_ty()
         label.text          = "00:00"
         label.textColor     = UIColor.white
-        label.font          = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(12))
+        label.font          = UIFont.regular_ty(size: AdaptSize_ty(12))
         label.textAlignment = .left
         return label
     }()
@@ -70,7 +70,7 @@ class TYBrowserVideoCell_ty:
         let button = TYButton_ty()
         button.setTitle("关闭", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font    = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(10))
+        button.titleLabel?.font    = UIFont.regular_ty(size: AdaptSize_ty(10))
         button.backgroundColor     = UIColor.gray0_ty.withAlphaComponent(0.4)
         button.layer.cornerRadius  = AdaptSize_ty(15)
         button.layer.masksToBounds = true

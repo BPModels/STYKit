@@ -47,7 +47,7 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
         let label = UILabel()
         label.text          = "图标"
         label.textColor     = UIColor.white
-        label.font          = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(18))
+        label.font          = UIFont.regular_ty(size: AdaptSize_ty(18))
         label.textAlignment = .center
         label.isHidden      = true
         return label
@@ -62,7 +62,7 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
         let label = UILabel()
         label.text          = ""
         label.textColor     = UIColor.white
-        label.font          = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(10))
+        label.font          = UIFont.regular_ty(size: AdaptSize_ty(10))
         label.textAlignment = .left
         label.isHidden      = true
         return label

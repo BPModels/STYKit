@@ -82,7 +82,7 @@ open class TYBaseAlertView_ty: TYTopWindowView_ty {
         let label           = UILabel()
         label.numberOfLines = 1
         label.textColor     = UIColor.black
-        label.font          = UIFont.custom_ty(.PingFangTCSemibold, size: AdaptSize_ty(20))
+        label.font          = UIFont.semibold_ty(size: AdaptSize_ty(20))
         label.textAlignment = .center
         return label
     }()
@@ -101,7 +101,7 @@ open class TYBaseAlertView_ty: TYTopWindowView_ty {
     open var descriptionLabel_ty: UILabel = {
         let label = UILabel()
         label.textColor     = UIColor.black
-        label.font          = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(15))
+        label.font          = UIFont.regular_ty(size: AdaptSize_ty(15))
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -120,7 +120,7 @@ open class TYBaseAlertView_ty: TYTopWindowView_ty {
         button.size_ty = CGSize(width: AdaptSize_ty(100), height: AdaptSize_ty(35))
         button.backgroundColor = UIColor.gray0_ty
         button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font    = UIFont.custom_ty(.PingFangTCSemibold, size: AdaptSize_ty(14))
+        button.titleLabel?.font    = UIFont.semibold_ty(size: AdaptSize_ty(14))
         button.layer.cornerRadius  = AdaptSize_ty(17.5)
         button.layer.masksToBounds = true
         return button
@@ -131,7 +131,7 @@ open class TYBaseAlertView_ty: TYTopWindowView_ty {
         let button = TYButton_ty(.theme, animation: false)
         button.size_ty = CGSize(width: AdaptSize_ty(100), height: AdaptSize_ty(35))
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font    = UIFont.custom_ty(.PingFangTCSemibold, size: AdaptSize_ty(14))
+        button.titleLabel?.font    = UIFont.semibold_ty(size: AdaptSize_ty(14))
         return button
     }()
     

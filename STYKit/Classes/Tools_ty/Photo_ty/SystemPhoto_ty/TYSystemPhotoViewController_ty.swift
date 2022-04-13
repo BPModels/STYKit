@@ -60,7 +60,7 @@ class TYSystemPhotoView_tyController_ty: TYViewController_ty, TYSystemAlbumListV
         if let bar = self.customNavigationBar_ty {
             bar.addSubview(titleBackgroundView_ty)
             bar.sendSubviewToBack(titleBackgroundView_ty)
-            bar.titleLabel_ty.font      = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(15))
+            bar.titleLabel_ty.font      = UIFont.regular_ty(size: AdaptSize_ty(15))
             bar.titleLabel_ty.textColor = UIColor.black
             titleBackgroundView_ty.snp.makeConstraints { make in
                 make.size.equalTo(CGSize.zero)

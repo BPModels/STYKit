@@ -21,21 +21,21 @@ class TYPhotoAlbumToolsView_ty: TYView_ty {
         let button = TYButton_ty()
         button.setTitle("分享", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(13))
+        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(13))
         return button
     }()
     private var saveButton_ty: TYButton_ty = {
         let button = TYButton_ty()
         button.setTitle("保存", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(13))
+        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(13))
         return button
     }()
     private var deleteButton_ty: TYButton_ty = {
         let button = TYButton_ty()
         button.setTitle("删除", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(13))
+        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(13))
         return button
     }()
 

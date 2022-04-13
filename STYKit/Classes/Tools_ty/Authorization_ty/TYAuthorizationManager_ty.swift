@@ -142,6 +142,7 @@ public class TYAuthorizationManager_ty: NSObject, CLLocationManagerDelegate {
         }.show_ty()
     }
     
+    /// 跳转到App设置页面
     private func jumpToAppSetting_ty() {
         let appSetting = URL(string: UIApplication.openSettingsURLString)
 

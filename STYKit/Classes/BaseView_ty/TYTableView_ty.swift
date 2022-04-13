@@ -59,7 +59,7 @@ class TYTableView_tyEmpTYView_ty: TYView_ty {
         let label = TYLabel_ty()
         label.text          = ""
         label.textColor     = UIColor.black
-        label.font          = UIFont.custom_ty(.PingFangTCSemibold, size: AdaptSize_ty(16))
+        label.font          = UIFont.semibold_ty(size: AdaptSize_ty(16))
         label.textAlignment = .center
         return label
     }()

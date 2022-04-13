@@ -42,7 +42,7 @@ public class TYRedDotView_ty: TYView_ty {
     private let numLabel_ty: TYLabel_ty = {
         let label = TYLabel_ty()
         label.text          = ""
-        label.font          = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(10))
+        label.font          = UIFont.regular_ty(size: AdaptSize_ty(10))
         label.textAlignment = .center
         return label
     }()

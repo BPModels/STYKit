@@ -25,7 +25,7 @@ open class TYNavigationBar_ty: TYView_ty {
     public let titleLabel_ty: TYLabel_ty = {
         let label = TYLabel_ty()
         label.text = ""
-        label.font = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(18))
+        label.font = UIFont.regular_ty(size: AdaptSize_ty(18))
         return label
     }()
     

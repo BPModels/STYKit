@@ -13,7 +13,7 @@ class TYSystemAlbumCell_ty: UITableViewCell {
         let label = UILabel()
         label.text          = ""
         label.textColor     = UIColor.black
-        label.font          = UIFont.custom_ty(.PingFangTCRegular, size: AdaptSize_ty(15))
+        label.font          = UIFont.regular_ty(size: AdaptSize_ty(15))
         label.textAlignment = .left
         return label
     }()

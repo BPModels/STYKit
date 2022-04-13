@@ -68,7 +68,7 @@ open class TYActionSheet_ty: TYTopWindowView_ty {
             button.setImage(_icon, for: .normal)
             button.imageView?.size_ty = CGSize(width: AdaptSize_ty(20), height: AdaptSize_ty(20))
         }
-        button.titleLabel?.font = UIFont.custom_ty(.PingFangTCSemibold, size: AdaptSize_ty(15))
+        button.titleLabel?.font = UIFont.semibold_ty(size: AdaptSize_ty(15))
         button.addTarget(self, action: #selector(clickAction_ty(sender:)), for: .touchUpInside)
         mainView_ty.addSubview(button)
         button.snp.makeConstraints { (make) in
@@ -90,7 +90,7 @@ open class TYActionSheet_ty: TYTopWindowView_ty {
         let label = TYLabel_ty()
         label.text          = _title
         label.textColor     = UIColor.gray0_ty
-        label.font          = UIFont.custom_ty(.PingFangTCMedium, size: AdaptSize_ty(14))
+        label.font          = UIFont.medium_ty(size: AdaptSize_ty(14))
         label.textAlignment = .center
         mainView_ty.addSubview(label)
         label.snp.makeConstraints { (make) in
@@ -115,7 +115,7 @@ open class TYActionSheet_ty: TYTopWindowView_ty {
 
         let cancelButton = TYButton_ty()
         cancelButton.setTitle("取消", for: .normal)
-        cancelButton.titleLabel?.font = UIFont.custom_ty(.PingFangTCSemibold, size: AdaptSize_ty(15))
+        cancelButton.titleLabel?.font = UIFont.semibold_ty(size: AdaptSize_ty(15))
         cancelButton.setTitleColor(UIColor.black0_ty, for: .normal)
         cancelButton.addTarget(self, action: #selector(self.hide_ty), for: .touchUpInside)
         mainView_ty.addSubview(cancelButton)

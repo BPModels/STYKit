@@ -17,7 +17,7 @@ open class TYToastView_ty: TYView_ty {
         label.size_ty               = CGSize(width: AdaptSize_ty(100), height: AdaptSize_ty(50))
         label.text                  = ""
         label.textColor             = UIColor.white
-        label.font                  = UIFont.custom_ty(.PingFangTCMedium, size: AdaptSize_ty(14))
+        label.font                  = UIFont.medium_ty(size: AdaptSize_ty(14))
         label.textAlignment         = .center
         label.numberOfLines         = 0
         label.backgroundColor       = UIColor.black.withAlphaComponent(0.75)
