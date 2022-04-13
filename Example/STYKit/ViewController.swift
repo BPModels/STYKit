@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        TYAlertManager.share_ty.oneButton_ty(title: "我是标题", description: "我是描述", buttonName: "知道了", closure: nil).show_ty()
+        sendLog("点击页面📃")
     }
 
     override func didReceiveMemoryWarning() {
