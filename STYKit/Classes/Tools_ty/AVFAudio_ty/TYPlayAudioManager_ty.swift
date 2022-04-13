@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 
-/// 声音管理器
+/// 播放音频
 @objc(TYPlayAudioManager_ty)
 open class TYPlayAudioManager_ty: NSObject {
 

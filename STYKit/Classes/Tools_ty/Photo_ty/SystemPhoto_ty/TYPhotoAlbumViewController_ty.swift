@@ -157,6 +157,5 @@ public class TYPhotoAlbumViewController_ty:
     public override func rightAction_ty() {
         super.rightAction_ty()
         self.isSelect_ty = !self.isSelect_ty
-        print("开始选择")
     }
 }

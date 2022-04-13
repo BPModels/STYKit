@@ -20,6 +20,7 @@ protocol TYVideoManagerDelegate_ty: NSObjectProtocol {
     func updateStatus_ty(status: AVPlayerItem.Status)
 }
 
+/// 播放视频
 class TYVideoManager_ty: NSObject {
     
     private var player_ty: AVPlayer?

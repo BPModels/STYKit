@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 
+/// 录音
 @objc(TYRecordAudioManager_tyDelegate)
 public protocol TYRecordAudioManagerDelegate_ty: NSObjectProtocol {
     /// 每0.1s刷新一次
