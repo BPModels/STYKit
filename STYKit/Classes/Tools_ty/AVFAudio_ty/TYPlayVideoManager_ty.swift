@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-protocol TYVideoManagerDelegate_ty: NSObjectProtocol {
+public protocol TYVideoManagerDelegate_ty: NSObjectProtocol {
     /// 开始播放
     func playBlock_ty()
     /// 暂停播放
@@ -21,14 +21,14 @@ protocol TYVideoManagerDelegate_ty: NSObjectProtocol {
 }
 
 /// 播放视频
-class TYVideoManager_ty: NSObject {
+public class TYVideoManager_ty: NSObject {
     
     private var player_ty: AVPlayer?
     private var model_ty: TYMediaVideoModel_ty?
     private var contentLayer_ty: CALayer?
     weak var delegate_ty: TYVideoManagerDelegate_ty?
     
-    func setData_ty(model: TYMediaVideoModel_ty, contentLayer: CALayer) {
+    public func setData_ty(model: TYMediaVideoModel_ty, contentLayer: CALayer) {
         self.model_ty        = model
         self.contentLayer_ty = contentLayer
         self.setPlayer_ty()
@@ -70,7 +70,7 @@ class TYVideoManager_ty: NSObject {
     
     // MARK: ==== Event ====
     /// 播放
-    func play_ty() {
+    public func play_ty() {
         guard self.player_ty?.currentItem?.asset.isPlayable ?? false else {
             kWindow_ty.toast_ty("资源不可播放")
             return
@@ -88,7 +88,7 @@ class TYVideoManager_ty: NSObject {
     }
     
     /// 暂停
-    func pause_ty() {
+    public func pause_ty() {
         self.player_ty?.pause()
         DispatchQueue.main.async { [weak self] in
             self?.delegate_ty?.pauseBlock_ty()
@@ -113,7 +113,7 @@ class TYVideoManager_ty: NSObject {
     }
     
     // MARK: ==== KVO ====
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "status" {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self, let status = self.player_ty?.currentItem?.status else {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class TYToastView_ty: TYView_ty {
+public class TYToastView_ty: TYView_ty {
     private let maxWidth_ty     = AdaptSize_ty(230)
     private let defaultWidth_ty = AdaptSize_ty(120)
     private let defaultHight_ty = AdaptSize_ty(70)

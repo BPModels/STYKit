@@ -7,6 +7,7 @@
 
 import SDWebImage
 
+/// 下载管理器
 public class TYDownloadManager_ty: NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
     
     public static let share_ty = TYDownloadManager_ty()

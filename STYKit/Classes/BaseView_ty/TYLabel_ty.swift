@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class TYLabel_ty: UILabel {
+public class TYLabel_ty: UILabel {
     /// 内边距
     public var textInsets_ty: UIEdgeInsets?
     

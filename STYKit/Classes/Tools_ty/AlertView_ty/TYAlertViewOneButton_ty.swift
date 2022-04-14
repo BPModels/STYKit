@@ -7,7 +7,7 @@
 
 import Foundation
 
-class KFAlertViewOneButton_ty: TYBaseAlertView_ty {
+public class KFAlertViewOneButton_ty: TYBaseAlertView_ty {
     
     private var partitionContentLineView_ty: TYView_ty = {
         let view = TYView_ty()
@@ -29,7 +29,7 @@ class KFAlertViewOneButton_ty: TYBaseAlertView_ty {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func createSubviews_ty() {
+    public override func createSubviews_ty() {
         super.createSubviews_ty()
         mainView_ty.addSubview(titleLabel_ty)
         mainView_ty.addSubview(descriptionLabel_ty)
@@ -76,7 +76,7 @@ class KFAlertViewOneButton_ty: TYBaseAlertView_ty {
         }
     }
     
-    override func bindProperty_ty() {
+    public override func bindProperty_ty() {
         super.bindProperty_ty()
         self.backgroundView_ty.isUserInteractionEnabled = false
     }

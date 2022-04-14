@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 缓存
 public class TYCache_ty: NSObject {
     
     /// 保存数据到plist文件

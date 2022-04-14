@@ -9,13 +9,65 @@
 import UIKit
 import STYKit
 
-class ViewController: UIViewController {
+class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataSource, BPRefreshProtocol {
+    
+    var count = 2
+
+    private var tableView: TYTableView_ty = {
+        let tableView = TYTableView_ty()
+        tableView.estimatedRowHeight             = AdaptSize_ty(56)
+        tableView.backgroundColor                = UIColor.gray0_ty
+        tableView.separatorStyle                 = .none
+        tableView.showsVerticalScrollIndicator   = false
+        tableView.showsHorizontalScrollIndicator = false
+        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .randomColor_ty()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.createSubviews_ty()
+        self.bindProperty_ty()
+        self.view.backgroundColor = .white
     }
+    
+    override func createSubviews_ty() {
+        super.createSubviews_ty()
+        self.view.addSubview(tableView)
+    }
+    
+    override func bindProperty_ty() {
+        super.bindProperty_ty()
+        self.tableView.delegate   = self
+        self.tableView.dataSource = self
+        self.tableView.refreshDelegate = self
+        
+        tableView.setRefreshHeaderEnable { finishedBlock in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.count = 10
+                self.tableView.reloadData()
+                finishedBlock?()
+                print(self.tableView.page)
+            }
+        }
+        
+        tableView.setRefreshFooterEnable { finishedBlock in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.count += 1
+                self.tableView.reloadData()
+                finishedBlock?()
+                print(self.tableView.page)
+            }
+        }
+    }
+    
+    override func updateViewConstraints() {
+        self.tableView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalToSuperview().offset(kNavigationHeight_ty)
+        }
+        super.updateViewConstraints()
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -26,6 +78,21 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: ==== UITableViewDelegate, UITableViewDataSource ====
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.backgroundColor = .randomColor_ty()
+        return cell
     }
 
 }

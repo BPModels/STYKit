@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class TYPhotoManager_ty: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+public class TYPhotoManager_ty: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @objc public static let share_ty = TYPhotoManager_ty()
     /// 系统相机的拍照后的回调使用
@@ -58,7 +58,7 @@ open class TYPhotoManager_ty: NSObject, UIImagePickerControllerDelegate, UINavig
         TYAuthorizationManager_ty.share_ty.photo_ty { (result) in
             guard result else { return }
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                let vc = TYSystemPhotoView_tyController_ty()
+                let vc = TYSystemPhotoViewController_ty()
                 vc.maxSelectCount_ty = maxCount
                 vc.selectedBlock_ty = { (medioModelList) in
                     block?(medioModelList)
@@ -77,7 +77,7 @@ open class TYPhotoManager_ty: NSObject, UIImagePickerControllerDelegate, UINavig
     @objc
     public func showPhoto_ty(complete block: (([UIImage])->Void)?, maxCount: Int = 1, autoPop: Bool = true, push: Bool = true) {
         TYAuthorizationManager_ty.share_ty.photo_ty { (result) in
-            let vc = TYSystemPhotoView_tyController_ty()
+            let vc = TYSystemPhotoViewController_ty()
             vc.maxSelectCount_ty = maxCount
             vc.autoPop_ty = autoPop
             vc.push_ty = push

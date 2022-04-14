@@ -13,7 +13,7 @@ public enum TYTextFieldType_ty {
     case password
 }
 
-open class TYTextField_ty: UITextField, UITextFieldDelegate {
+public class TYTextField_ty: UITextField, UITextFieldDelegate {
     
     public var type_ty: TYTextFieldType_ty
     public var maxCount_ty: Int = .max

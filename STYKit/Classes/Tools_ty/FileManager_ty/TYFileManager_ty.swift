@@ -8,6 +8,7 @@
 import Foundation
 import ObjectMapper
 
+/// 文件管理器
 public struct TYFileManager_ty {
     
     public static let share_ty = TYFileManager_ty()

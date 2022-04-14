@@ -8,7 +8,7 @@
 import Foundation
 import SDWebImage
 
-open class TYImageView_ty: UIImageView {
+public class TYImageView_ty: UIImageView {
     
     /// 设置图片
     /// - Parameters:

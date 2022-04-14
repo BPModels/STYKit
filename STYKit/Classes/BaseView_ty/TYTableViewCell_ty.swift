@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class TYTableViewCell_ty: UITableViewCell {
+public class TYTableViewCell_ty: UITableViewCell {
     
     public struct Associated {
         static var lineView = "kLineView"

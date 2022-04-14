@@ -10,7 +10,7 @@ import Foundation
 /// 全局待办事项控制器
 /// 支持移除功能
 @objc
-open class TYToDoService_ty: NSObject {
+public class TYToDoService_ty: NSObject {
     
     @objc
     static public let share_ty = TYToDoService_ty()

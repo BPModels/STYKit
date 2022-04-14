@@ -1,5 +1,5 @@
 //
-//  TYSystemPhotoView_tyController_ty.swift
+//  TYSystemPhotoViewController_ty.swift
 //  STYKit
 //
 //  Created by apple on 2022/4/11.
@@ -8,7 +8,7 @@
 import Photos
 import UIKit
 
-class TYSystemPhotoView_tyController_ty: TYViewController_ty, TYSystemAlbumListViewDelegate_ty, TYSystemPhotoViewDelegate_ty {
+public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumListViewDelegate_ty, TYSystemPhotoViewDelegate_ty {
 
     /// 当前相册对象
     private var albumModel_ty: TYPhotoAlbumModel_ty? {
@@ -38,14 +38,14 @@ class TYSystemPhotoView_tyController_ty: TYViewController_ty, TYSystemAlbumListV
     /// 内容视图
     private let contentView_ty   = TYSystemPhotoView_ty()
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.createSubviews_ty()
         self.bindProperty_ty()
         self.bindData_ty()
     }
 
-    override func createSubviews_ty() {
+    public override func createSubviews_ty() {
         super.createSubviews_ty()
         self.view.addSubview(contentView_ty)
         self.view.addSubview(albumListView_ty)
@@ -70,7 +70,7 @@ class TYSystemPhotoView_tyController_ty: TYViewController_ty, TYSystemAlbumListV
         }
     }
 
-    override func bindProperty_ty() {
+    public override func bindProperty_ty() {
         super.bindProperty_ty()
         self.albumListView_ty.delegate_ty  = self
         self.contentView_ty.delegate_ty    = self
@@ -90,7 +90,7 @@ class TYSystemPhotoView_tyController_ty: TYViewController_ty, TYSystemAlbumListV
         }
     }
 
-    override func bindData_ty() {
+    public override func bindData_ty() {
         super.bindData_ty()
         // 获取相册列表
         self.setAssetCollection { [weak self] in
@@ -105,7 +105,7 @@ class TYSystemPhotoView_tyController_ty: TYViewController_ty, TYSystemAlbumListV
         }
     }
     
-    override func leftAction_ty() {
+    public override func leftAction_ty() {
         if (self.push_ty) {
             super.leftAction_ty()
         } else {
@@ -113,7 +113,7 @@ class TYSystemPhotoView_tyController_ty: TYViewController_ty, TYSystemAlbumListV
         }
     }
 
-    override func rightAction_ty() {
+    public override func rightAction_ty() {
         super.rightAction_ty()
         let group = DispatchGroup()
         var mediaModelList = [TYMediaModel_ty]()
@@ -318,29 +318,29 @@ class TYSystemPhotoView_tyController_ty: TYViewController_ty, TYSystemAlbumListV
     }
     
     // MARK: ==== TYSystemPhotoViewDelegate_ty ====
-    func clickImage_ty(indexPath: IndexPath, from imageView: UIImageView?) {
+    public func clickImage_ty(indexPath: IndexPath, from imageView: UIImageView?) {
         guard let model = self.albumModel_ty else { return }
         TYBrowserView_ty(type: .system_ty(result: model.assets_ty), current: indexPath.row).show_ty(animationView: imageView)
     }
     
-    func selectedImage_ty() {
+    public func selectedImage_ty() {
         self.updateRightButtonStatus()
     }
-    func unselectImage_ty() {
+    public func unselectImage_ty() {
         self.updateRightButtonStatus()
     }
 
     // MARK: ==== TYSystemAlbumListViewDelegate_ty ====
-    func selectedAlbum_ty(model: TYPhotoAlbumModel_ty?) {
+    public func selectedAlbum_ty(model: TYPhotoAlbumModel_ty?) {
         self.albumModel_ty = model
         self.updateTitleView()
     }
     
-    func showAlbumAction_ty() {
+    public func showAlbumAction_ty() {
         self.updateTitleView()
     }
     
-    func hideAlbumAction_ty() {
+    public func hideAlbumAction_ty() {
         self.updateTitleView()
     }
 

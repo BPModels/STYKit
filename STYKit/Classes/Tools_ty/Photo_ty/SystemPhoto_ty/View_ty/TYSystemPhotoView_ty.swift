@@ -9,13 +9,13 @@
 import Photos
 import UIKit
 
-protocol TYSystemPhotoViewDelegate_ty: NSObjectProtocol {
+public protocol TYSystemPhotoViewDelegate_ty: NSObjectProtocol {
     func clickImage_ty(indexPath: IndexPath, from imageView: UIImageView?)
     func selectedImage_ty()
     func unselectImage_ty()
 }
 
-class TYSystemPhotoView_ty: TYView_ty, UICollectionViewDelegate, UICollectionViewDataSource, TYPhotoAlbumCellDelegate_ty {
+public class TYSystemPhotoView_ty: TYView_ty, UICollectionViewDelegate, UICollectionViewDataSource, TYPhotoAlbumCellDelegate_ty {
     
     weak var delegate_ty: TYSystemPhotoViewDelegate_ty?
     private let kBPPhotoAlbumCellID_ty = "kBPPhotoAlbumCell"
@@ -46,11 +46,11 @@ class TYSystemPhotoView_ty: TYView_ty, UICollectionViewDelegate, UICollectionVie
         self.bindProperty_ty()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createSubviews_ty() {
+    public override func createSubviews_ty() {
         super.createSubviews_ty()
         self.addSubview(collectionView_ty)
         collectionView_ty.snp.makeConstraints { (make) in
@@ -58,7 +58,7 @@ class TYSystemPhotoView_ty: TYView_ty, UICollectionViewDelegate, UICollectionVie
         }
     }
     
-    override func bindProperty_ty() {
+    public override func bindProperty_ty() {
         super.bindProperty_ty()
         self.collectionView_ty.delegate   = self
         self.collectionView_ty.dataSource = self
@@ -67,23 +67,23 @@ class TYSystemPhotoView_ty: TYView_ty, UICollectionViewDelegate, UICollectionVie
     
     // MARK: ==== Event ====
     
-    func reload(album model: TYPhotoAlbumModel_ty?) {
+    public func reload(album model: TYPhotoAlbumModel_ty?) {
         self.albumModel_ty = model
         self.collectionView_ty.reloadData()
     }
     
     /// 获取已选择照片列表
-    func selectedPhotoList() -> [PHAsset] {
+    public func selectedPhotoList() -> [PHAsset] {
         return self.selectedList_ty
     }
     
     // MARK: ==== UICollectionViewDelegate && UICollectionViewDataSource ====
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.albumModel_ty?.assets_ty.count ?? 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kBPPhotoAlbumCellID_ty, for: indexPath) as? TYMediaCell_ty, let asset = self.albumModel_ty?.assets_ty[indexPath.row] else {
             return TYCollectionViewCell_ty()
         }
@@ -94,7 +94,7 @@ class TYSystemPhotoView_ty: TYView_ty, UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? TYMediaCell_ty else {
             return
         }
@@ -103,7 +103,7 @@ class TYSystemPhotoView_ty: TYView_ty, UICollectionViewDelegate, UICollectionVie
     
     
     // MARK: ==== TYPhotoAlbumCellDelegate_ty ====
-    func selectedImage_ty(model: Any) {
+    public func selectedImage_ty(model: Any) {
         guard let _model = model as? PHAsset,
               !self.selectedList_ty.contains(_model),
               self.selectedList_ty.count < maxSelectCount_ty else {
@@ -114,14 +114,14 @@ class TYSystemPhotoView_ty: TYView_ty, UICollectionViewDelegate, UICollectionVie
         self.delegate_ty?.selectedImage_ty()
     }
 
-    func unselectImage_ty(model: Any) {
+    public func unselectImage_ty(model: Any) {
         guard let _model = model as? PHAsset, let index = self.selectedList_ty.firstIndex(of: _model) else { return }
         self.selectedList_ty.remove(at: index)
         self.collectionView_ty.reloadData()
         self.delegate_ty?.unselectImage_ty()
     }
     
-    func selectedExcess_ty() {
+    public func selectedExcess_ty() {
         kWindow_ty.toast_ty("您最多可以上传\(maxSelectCount_ty)张图片")
     }
 }

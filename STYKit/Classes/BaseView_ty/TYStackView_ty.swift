@@ -20,7 +20,7 @@ public enum TYDirectionType_ty: Int {
     case center
 }
 
-open class TYStackView_ty: TYView_ty {
+public class TYStackView_ty: TYView_ty {
     public var offsetX_ty: CGFloat = .zero
     public var offsetY_ty: CGFloat = .zero
     public var spacing_ty: CGFloat

@@ -8,13 +8,13 @@
 import Photos
 import UIKit
 
-protocol TYSystemAlbumListViewDelegate_ty: NSObjectProtocol {
+public protocol TYSystemAlbumListViewDelegate_ty: NSObjectProtocol {
     func selectedAlbum_ty(model: TYPhotoAlbumModel_ty?)
     func showAlbumAction_ty()
     func hideAlbumAction_ty()
 }
 
-class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataSource {
+public class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataSource {
 
     private let cellID_ty = "kBPSystemAlbumCell"
     private var albumList_ty: [TYPhotoAlbumModel_ty] = []
@@ -54,7 +54,7 @@ class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataS
         return view
     }()
 
-    override func createSubviews_ty() {
+    public override func createSubviews_ty() {
         super.createSubviews_ty()
         self.addSubview(backgroundView_ty)
         self.addSubview(tableView_ty)
@@ -63,7 +63,7 @@ class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataS
         }
     }
 
-    override func bindProperty_ty() {
+    public override func bindProperty_ty() {
         super.bindProperty_ty()
         self.layer.masksToBounds  = true
         self.tableView_ty.register(TYSystemAlbumCell_ty.classForCoder(), forCellReuseIdentifier: cellID_ty)
@@ -75,7 +75,7 @@ class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataS
 
     // MARK: ==== Event ====
 
-    func setData_ty(albumList: [TYPhotoAlbumModel_ty], current model: TYPhotoAlbumModel_ty?) {
+    public func setData_ty(albumList: [TYPhotoAlbumModel_ty], current model: TYPhotoAlbumModel_ty?) {
         self.albumList_ty    = albumList
         self.currentModel_ty = model
         tableViewHeight_ty   = CGFloat(albumList.count) * cellHeight_ty
@@ -87,7 +87,7 @@ class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataS
         }
     }
 
-    func showView_ty() {
+    public func showView_ty() {
         self.isHidden = false
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
@@ -99,7 +99,7 @@ class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataS
     }
 
     @objc
-    func hideView_ty() {
+    public func hideView_ty() {
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
             self.tableView_ty.transform = .identity
@@ -114,11 +114,11 @@ class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataS
 
     // MARK: ==== UITableViewDelegate && UITableViewDataSource ====
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.albumList_ty.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID_ty, for: indexPath) as? TYSystemAlbumCell_ty else {
             return UITableViewCell()
         }
@@ -131,16 +131,16 @@ class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataS
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.currentModel_ty = self.albumList_ty[indexPath.row]
         self.hideView_ty()
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight_ty
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
 }

@@ -18,7 +18,7 @@ public enum TYButtonType_ty {
 }
 
 @IBDesignable
-open class TYButton_ty: UIButton {
+public class TYButton_ty: UIButton {
     public var status: TYButtonStatusEnum_ty = .normal {
         didSet {
             self.updateStatus()
@@ -41,7 +41,10 @@ open class TYButton_ty: UIButton {
     }
     
     deinit {
-        
+        self.removeTarget(self, action: #selector(touchDown_ty(sender:)), for: .touchDown)
+        self.removeTarget(self, action: #selector(touchUp_ty(sender:)), for: .touchUpInside)
+        self.removeTarget(self, action: #selector(touchUp_ty(sender:)), for: .touchUpOutside)
+        self.removeTarget(self, action: #selector(touchUp_ty(sender:)), for: .touchCancel)
     }
     
     // MARK: ==== Layout ====

@@ -13,7 +13,7 @@ public protocol TYPhotoAlbumToolsDelegate_ty: NSObjectProtocol {
     func clickDeleteAction_ty()
 }
 
-class TYPhotoAlbumToolsView_ty: TYView_ty {
+public class TYPhotoAlbumToolsView_ty: TYView_ty {
 
     weak var delegate_ty: TYPhotoAlbumToolsDelegate_ty?
 
@@ -49,7 +49,7 @@ class TYPhotoAlbumToolsView_ty: TYView_ty {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func createSubviews_ty() {
+    public override func createSubviews_ty() {
         super.createSubviews_ty()
         let itemSize = CGSize(width: AdaptSize_ty(50), height: 50)
         shareButton_ty.size_ty    = itemSize
@@ -67,7 +67,7 @@ class TYPhotoAlbumToolsView_ty: TYView_ty {
         }
     }
 
-    override func bindProperty_ty() {
+    public override func bindProperty_ty() {
         super.bindProperty_ty()
         self.backgroundColor = UIColor.black.withAlphaComponent(0.7)
     }

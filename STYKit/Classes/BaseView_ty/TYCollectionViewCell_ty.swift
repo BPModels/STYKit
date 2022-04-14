@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class TYCollectionViewCell_ty: UICollectionViewCell, TYBaseDelegate_ty {
+public class TYCollectionViewCell_ty: UICollectionViewCell, TYBaseDelegate_ty {
 
     // MARK: ==== TYBaseDelegate_ty ====
     public func createSubviews_ty() {}

@@ -8,7 +8,7 @@
 import Foundation
 
 /// TableView 的空页面
-class TYEmptyView_ty: TYView_ty {
+public class TYEmptyView_ty: TYView_ty {
     
     private var contentView_ty: TYView_ty = {
         let view = TYView_ty()
@@ -38,13 +38,30 @@ class TYEmptyView_ty: TYView_ty {
         self.bindProperty_ty()
     }
     
+    public init(image: UIImage?, hintText: String?) {
+        super.init(frame: .zero)
+        if let _image = image {
+            self.imageView_ty.isHidden = false
+            self.imageView_ty.image    = _image
+        } else {
+            // 默认图
+            self.imageView_ty.isHidden = true
+        }
+        if let _hintText = hintText {
+            self.hintLabel_ty.text = _hintText
+        } else {
+            // 默认文案
+            self.hintLabel_ty.text = "暂无数据"
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: ==== KFViewDelegate ====
     
-    override func createSubviews_ty() {
+    public override func createSubviews_ty() {
         super.createSubviews_ty()
         self.addSubview(contentView_ty)
         contentView_ty.addSubview(imageView_ty)
@@ -66,25 +83,8 @@ class TYEmptyView_ty: TYView_ty {
         }
     }
     
-    override func bindProperty_ty() {
+    public override func bindProperty_ty() {
         super.bindProperty_ty()
         self.backgroundColor = .clear
-    }
-    
-    // MARK: ==== Event ====
-    func setData_ty(image: UIImage?, hintText: String?) {
-        if let _image = image {
-            self.imageView_ty.isHidden = false
-            self.imageView_ty.image    = _image
-        } else {
-            // 默认图
-            self.imageView_ty.isHidden = true
-        }
-        if let _hintText = hintText {
-            self.hintLabel_ty.text = _hintText
-        } else {
-            // 默认文案
-            self.hintLabel_ty.text = "暂无数据"
-        }
     }
 }

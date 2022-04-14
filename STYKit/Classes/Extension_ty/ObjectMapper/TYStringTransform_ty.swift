@@ -7,15 +7,15 @@
 
 import ObjectMapper
 
-class TYStringTransform_ty: TransformType {
+public class TYStringTransform_ty: TransformType {
 
-    typealias Object = String
+    public typealias Object = String
     
-    typealias JSON = Any?
+    public typealias JSON = Any?
     
-    init() {}
+    public init() {}
         
-    func transformFromJSON(_ value: Any?) -> String? {
+    public func transformFromJSON(_ value: Any?) -> String? {
         var result: String?
         guard let json = value else {
             return result
@@ -28,7 +28,7 @@ class TYStringTransform_ty: TransformType {
         return result
     }
     
-    func transformToJSON(_ value: String?) -> Any?? {
+    public func transformToJSON(_ value: String?) -> Any?? {
         guard let _value = value else {
             return nil
         }

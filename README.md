@@ -22,7 +22,7 @@ pod 'STYKit'
 
 ## Author
 
-916878440@qq.com, 916878440@qq.com
+Sam, 916878440@qq.com
 
 ## License
 

@@ -9,12 +9,8 @@ import UIKit
 
 public class TYCollectionView_ty: UICollectionView {
     
-    /// 是否隐藏默认空页面
-    public var isHideEmptyView_ty: Bool = false
-    /// 为空占位图
-    public var emptyImage_ty: UIImage?
-    /// 为空文案
-    public var emptyHintText_ty: String?
+    /// 指定为空的页面
+    public var emptyView_ty: UIView?
     
     public override func reloadData() {
         super.reloadData()
@@ -34,10 +30,14 @@ public class TYCollectionView_ty: UICollectionView {
             self.backgroundView = nil
             return
         }
-        if !self.isHideEmptyView_ty {
-            let emptyView = TYEmptyView_ty()
-            emptyView.setData_ty(image: self.emptyImage_ty, hintText: self.emptyHintText_ty)
-            self.backgroundView = emptyView
+        if (rows == 0 && sesctions == 0) || (rows == 0 && sesctions == 1 && headerView == nil && footerView == nil) {
+            // 显示默认页面
+            if let emptyView = emptyView_ty {
+                self.backgroundView = emptyView
+            }
+        } else {
+            // 隐藏默认页面
+            self.backgroundColor = nil
         }
     }
 }

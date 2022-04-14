@@ -7,7 +7,7 @@
 
 import SnapKit
 
-open class TYActionSheet_ty: TYTopWindowView_ty {
+public class TYActionSheet_ty: TYTopWindowView_ty {
 
     public let cellHeight_ty: CGFloat  = AdaptSize_ty(55)
     let lineHeight_ty: CGFloat  = 1/UIScreen.main.scale

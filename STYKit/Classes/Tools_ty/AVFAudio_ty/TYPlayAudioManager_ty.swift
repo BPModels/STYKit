@@ -10,7 +10,7 @@ import AVFoundation
 
 /// 播放音频
 @objc(TYPlayAudioManager_ty)
-open class TYPlayAudioManager_ty: NSObject {
+public class TYPlayAudioManager_ty: NSObject {
 
     @objc
     public static let share_ty = TYPlayAudioManager_ty()

@@ -13,7 +13,7 @@ public protocol TYNavigationBarDelegate_ty: NSObjectProtocol {
     func rightAction_ty()
 }
 
-open class TYNavigationBar_ty: TYView_ty {
+public class TYNavigationBar_ty: TYView_ty {
     public var leftViewList_ty  = [UIView]()
     public var rightViewList_ty = [UIView]()
     public var delegate: TYNavigationBarDelegate_ty?

@@ -139,19 +139,19 @@ public class TYPhotoAlbumViewController_ty:
     }
 
     // MARK: ==== TYPhotoAlbumCellDelegate_ty ====
-    func selectedImage_ty(model: Any) {
+    public func selectedImage_ty(model: Any) {
         guard let _model = model as? TYMediaModel_ty, !self.selectedList_ty.contains(_model) else { return }
         self.selectedList_ty.append(_model)
         self.collectionView_ty.reloadData()
     }
 
-    func unselectImage_ty(model: Any) {
+    public func unselectImage_ty(model: Any) {
         guard let _model = model as? TYMediaModel_ty, let index = self.selectedList_ty.firstIndex(of: _model) else { return }
         self.selectedList_ty.remove(at: index)
         self.collectionView_ty.reloadData()
     }
     
-    func selectedExcess_ty() {}
+    public func selectedExcess_ty() {}
     
     // MARK: ==== TYNavigationBarDelegate_ty ====
     public override func rightAction_ty() {

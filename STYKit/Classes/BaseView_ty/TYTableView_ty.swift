@@ -7,14 +7,12 @@
 
 import Foundation
 
-open class TYTableView_ty: UITableView {
+public class TYTableView_ty: UITableView {
     
-    /// 是否隐藏默认为空页面
-    public var isHideEmpTYView_ty = false
-    public var emptyImage_ty: UIImage?
-    public var emptyHintText_ty: String?
+    /// 指定为空的页面
+    public var emptyView_ty: UIView?
     
-    open override func reloadData() {
+    public override func reloadData() {
         super.reloadData()
         self.configEmpTYView_ty()
     }
@@ -27,10 +25,8 @@ open class TYTableView_ty: UITableView {
         }
         if (rows == 0 && sections == 0) || (rows == 0 && sections == 1 && headerView(forSection: 0) == nil && footerView(forSection: 0) == nil) {
             // 显示默认页面
-            if !self.isHideEmpTYView_ty {
-                let empTYView_ty = TYEmptyView_ty()
-                empTYView_ty.setData_ty(image: emptyImage_ty, hintText: emptyHintText_ty)
-                self.backgroundView = empTYView_ty
+            if let emptyView = emptyView_ty {
+                self.backgroundView = emptyView
             }
         } else {
             // 隐藏默认页面
@@ -38,4 +34,3 @@ open class TYTableView_ty: UITableView {
         }
     }
 }
-

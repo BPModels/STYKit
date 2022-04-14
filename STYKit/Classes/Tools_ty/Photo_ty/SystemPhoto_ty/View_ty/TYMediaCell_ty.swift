@@ -8,7 +8,7 @@
 import Photos
 import UIKit
 
-protocol TYPhotoAlbumCellDelegate_ty: NSObjectProtocol {
+public protocol TYPhotoAlbumCellDelegate_ty: NSObjectProtocol {
     func selectedImage_ty(model: Any)
     func unselectImage_ty(model: Any)
     /// 超额选择

@@ -21,7 +21,7 @@ public protocol TYRecordAudioManagerDelegate_ty: NSObjectProtocol {
 
 /// 声音管理器
 @objc(BPAudioManager)
-open class TYRecordAudioManager_ty: NSObject, AVAudioRecorderDelegate {
+public class TYRecordAudioManager_ty: NSObject, AVAudioRecorderDelegate {
 
     @objc
     static public let share_ty = TYRecordAudioManager_ty()
