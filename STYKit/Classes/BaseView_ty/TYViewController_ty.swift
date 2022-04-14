@@ -26,6 +26,7 @@ open class TYViewController_ty: UIViewController, TYNavigationBarDelegate_ty {
     open override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.setCustomNavigationBar()
     }
     
     open override func viewWillAppear(_ animated: Bool) {

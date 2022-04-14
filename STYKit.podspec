@@ -32,10 +32,10 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'STYKit/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'STYKit' => ['STYKit/Assets/*.png']
-  # }
-  s.swift_version = '5.0'
+   s.resource_bundles = {
+     'STYKit' => ['STYKit/Assets/*.png']
+   }
+   s.swift_version = '5.0'
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
     # 布局约束（MIT License）

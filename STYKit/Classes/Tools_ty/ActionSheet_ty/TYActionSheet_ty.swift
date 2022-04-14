@@ -104,7 +104,7 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
     /// 添加默认的底部间距和取消按钮
     private func addDefaultItem_ty() {
         let spaceView = UIView()
-        spaceView.backgroundColor = .gray0_ty
+        spaceView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         mainView_ty.addSubview(spaceView)
         spaceView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()

@@ -63,7 +63,11 @@ public class TYPhotoManager_ty: NSObject, UIImagePickerControllerDelegate, UINav
                 vc.selectedBlock_ty = { (medioModelList) in
                     block?(medioModelList)
                 }
-                currentNVC_ty?.push_ty(vc: vc)
+                if let nvc = currentNVC_ty {
+                    nvc.push_ty(vc: vc)
+                } else {
+                    currentVC_ty?.present(vc, animated: true)
+                }
             } else {
                 kWindow_ty.toast_ty("该设备不支持相册功能")
             }
@@ -79,9 +83,8 @@ public class TYPhotoManager_ty: NSObject, UIImagePickerControllerDelegate, UINav
         TYAuthorizationManager_ty.share_ty.photo_ty { (result) in
             let vc = TYSystemPhotoViewController_ty()
             vc.maxSelectCount_ty = maxCount
-            vc.autoPop_ty = autoPop
-            vc.push_ty = push
-            vc.selectedBlock_ty = { (medioModelList) in
+            vc.autoPop_ty        = autoPop
+            vc.selectedBlock_ty  = { (medioModelList) in
                 var imageList = [UIImage]()
                 medioModelList.forEach { model in
                     if let imageModel = model as? TYMediaImageModel_ty, let _image = imageModel.image_ty {

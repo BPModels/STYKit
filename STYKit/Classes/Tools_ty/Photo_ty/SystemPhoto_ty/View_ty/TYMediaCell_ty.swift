@@ -70,8 +70,9 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
 
     private var selectButton_ty: TYButton_ty = {
         let button = TYButton_ty()
-        button.setImage(UIImage(named: "unselectImage"), for: .normal)
-        button.setImage(UIImage(named: "selectedImage"), for: .selected)
+        button.setImage(UIImage(name_ty: "unselect_ty"), for: .normal)
+        button.setImage(UIImage(name_ty: "selected_ty"), for: .selected)
+        button.imageEdgeInsets = UIEdgeInsets(top: AdaptSize_ty(5), left: AdaptSize_ty(5), bottom: AdaptSize_ty(5), right: AdaptSize_ty(5))
         return button
     }()
 

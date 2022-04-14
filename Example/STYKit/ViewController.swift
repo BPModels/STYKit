@@ -67,12 +67,6 @@ class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataS
         }
         super.updateViewConstraints()
     }
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        sendLog("点击页面📃")
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -93,6 +87,12 @@ class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataS
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.backgroundColor = .randomColor_ty()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        TYPhotoManager_ty.share_ty.show_ty { modelList in
+            print(modelList.count)
+        }
     }
 
 }

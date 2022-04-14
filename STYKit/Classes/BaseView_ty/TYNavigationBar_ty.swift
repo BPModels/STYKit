@@ -24,21 +24,24 @@ public class TYNavigationBar_ty: TYView_ty {
     
     public let titleLabel_ty: TYLabel_ty = {
         let label = TYLabel_ty()
-        label.text = ""
-        label.font = UIFont.regular_ty(size: AdaptSize_ty(18))
+        label.text      = ""
+        label.textColor = UIColor.black0_ty
+        label.font      = UIFont.regular_ty(size: AdaptSize_ty(18))
         return label
     }()
     
     public let leftButton_ty: TYButton_ty = {
         let button = TYButton_ty()
-        button.setImage(UIImage.name_ty("back_ty", type: .pdf), for: .normal)
+        button.setImage(UIImage(name_ty: "back_ty", type: .pdf), for: .normal)
+        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(16))
         button.contentHorizontalAlignment = .left
         return button
     }()
     
     public lazy var rightButton_ty: TYButton_ty = {
         let button = TYButton_ty()
-        button.contentHorizontalAlignment = .right
+        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(16))
+        button.contentHorizontalAlignment = .center
         return button
     }()
     
@@ -85,7 +88,7 @@ public class TYNavigationBar_ty: TYView_ty {
         self.rightButton_ty.addTarget(self, action: #selector(clickRightAction_ty(sender:)), for: .touchUpInside)
         // 设置默认标题
         self.title           = currentVC_ty?.title
-        self.backgroundColor = .theme_ty
+        self.backgroundColor = .white
     }
     
     // MARK: ==== Event ====

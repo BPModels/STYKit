@@ -14,12 +14,31 @@ public extension UIImage {
         case pdf = "pdf"
     }
     
-    class func name_ty(_ name: String, type: UIImageType_ty) -> UIImage? {
-        guard let imagePath = Bundle.main.path(forResource: name, ofType: type.rawValue) else {
-            return nil
+    convenience init?(name_ty: String, type: UIImageType_ty = .png) {
+        // 使用【use_frameworks!】
+        let mainPath = Bundle.main.bundlePath
+        var bundler  = Bundle(path: mainPath + "/Frameworks/STYKit.framework/STYKit.bundle")
+        if bundler == nil {
+            bundler = Bundle(path: mainPath + "/STYKit.bundle")
         }
-        return UIImage(contentsOfFile: imagePath)
+        if let path = bundler?.path(forResource: name_ty, ofType: type.rawValue) {
+            let url = URL(fileURLWithPath: path)
+            if let data = try? Data(contentsOf: url) {
+                self.init(data: data)
+            } else {
+                self.init()
+            }
+        } else {
+            self.init()
+        }
     }
+//    
+//    class func name_ty(_ name: String, type: UIImageType_ty) -> UIImage? {
+//        guard let imagePath = Bundle.main.path(forResource: name, ofType: type.rawValue) else {
+//            return nil
+//        }
+//        return UIImage(contentsOfFile: imagePath)
+//    }
     
     /// 统一压缩方式
     /// - Parameter maxSize: 单位：KB

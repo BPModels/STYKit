@@ -8,6 +8,7 @@
 import Photos
 import UIKit
 
+/// 系统相册列表（包含相册选择）
 public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumListViewDelegate_ty, TYSystemPhotoViewDelegate_ty {
 
     /// 当前相册对象
@@ -18,7 +19,7 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
     }
     private var titleBackgroundView_ty: TYView_ty = {
         let view = TYView_ty()
-        view.backgroundColor = UIColor.gray0_ty
+        view.backgroundColor          = UIColor.gray0_ty
         view.layer.masksToBounds      = true
         view.isUserInteractionEnabled = false
         return view
@@ -28,11 +29,9 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
     /// 选择后的闭包回调
     var selectedBlock_ty:(([TYMediaModel_ty])->Void)?
     /// 最大选择数量
-    var maxSelectCount_ty: Int = 1
+    var maxSelectCount_ty: Int   = 1
     ///是否自动消失
-    var autoPop_ty: Bool = true
-    ///页面跳转方式
-    var push_ty: Bool = true
+    var autoPop_ty: Bool         = true
     /// 相册列表视图
     private var albumListView_ty = TYSystemAlbumListView_ty()
     /// 内容视图
@@ -66,26 +65,30 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
                 make.size.equalTo(CGSize.zero)
                 make.center.equalTo(self.customNavigationBar_ty!.titleLabel_ty)
             }
-            
         }
     }
 
     public override func bindProperty_ty() {
         super.bindProperty_ty()
-        self.albumListView_ty.delegate_ty  = self
-        self.contentView_ty.delegate_ty    = self
-        self.albumListView_ty.isHidden     = true
-        self.contentView_ty.maxSelectCount_ty = maxSelectCount_ty
-        // 点击相册名可更换其他相册
-        let tapAction = UITapGestureRecognizer(target: self, action: #selector(self.switchAlbumList))
+        self.albumListView_ty.delegate_ty       = self
+        self.contentView_ty.delegate_ty         = self
+        self.albumListView_ty.isHidden          = true
+        self.contentView_ty.maxSelectCount_ty   = maxSelectCount_ty
+        
         if let bar = self.customNavigationBar_ty {
+            // 标题 - 点击相册名可更换其他相册
+            let tapAction = UITapGestureRecognizer(target: self, action: #selector(self.switchAlbumList))
             bar.titleLabel_ty.isUserInteractionEnabled = true
             bar.titleLabel_ty.addGestureRecognizer(tapAction)
-            // 确定选择
+            // 右边按钮 - 确定选择
             bar.rightButton_ty.setTitleColor(UIColor.white, for: .normal)
             bar.rightButton_ty.layer.masksToBounds = true
+            bar.rightButton_ty.layer.cornerRadius  = AdaptSize_ty(5)
+            bar.rightButton_ty.backgroundColor     = UIColor.theme_ty
+            // 左边按钮 - 返回
             bar.setLeftTitle_ty(text: "")
-            bar.leftButton_ty.setImage(UIImage(named: "photo_album_close_icon"), for: .normal)
+            bar.leftButton_ty.setImage(UIImage(name_ty: "close_ty"), for: .normal)
+            bar.leftButton_ty.imageEdgeInsets = UIEdgeInsets(top: AdaptSize_ty(4), left: AdaptSize_ty(10), bottom: AdaptSize_ty(4), right: AdaptSize_ty(10))
             self.updateRightButtonStatus()
         }
     }
@@ -106,11 +109,7 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
     }
     
     public override func leftAction_ty() {
-        if (self.push_ty) {
-            super.leftAction_ty()
-        } else {
-            self.dismiss(animated: true, completion: nil)
-        }
+        super.leftAction_ty()
     }
 
     public override func rightAction_ty() {
@@ -150,7 +149,7 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
             if result {
                 self.selectedBlock_ty?(mediaModelList)
                 if (self.autoPop_ty) {
-                    currentNVC_ty?.pop_ty()
+                    self.leftAction_ty()
                 }
             }
         }
@@ -205,7 +204,7 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
     
     /// 更新右上角确定按钮的状态
     private func updateRightButtonStatus() {
-        let list = self.contentView_ty.selectedPhotoList()
+        let list  = self.contentView_ty.selectedPhotoList()
         var title = "完成"
         if list.isEmpty {
             self.customNavigationBar_ty?.rightButton_ty.status = .disable
@@ -214,20 +213,16 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
             self.customNavigationBar_ty?.rightButton_ty.status = .normal
         }
         if let bar = self.customNavigationBar_ty {
-            bar.setRightTitle_ty(text: title) 
-//            let _width = bar.rightButton.sizeThatFits(CGSize(width: kScreenWidth, height: AdaptSize_ty(27))).width
-//            let rightButtonSize = CGSize(width: _width + AdaptSize_ty(10), height: AdaptSize_ty(27))
-//            bar.rightButton.layer.cornerRadius = rightButtonSize.height/2
-//            bar.rightButton.backgroundColor    = UIColor.gradientColor(with: rightButtonSize, colors: UIColor.themeGradientList, direction: .horizontal)
+            bar.setRightTitle_ty(text: title)
         }
     }
     
     /// 更新标题
     private func updateTitleView() {
         if self.albumListView_ty.isHidden {
-            self.customNavigationBar_ty?.title = (self.albumModel_ty?.assetCollection_ty?.localizedTitle ?? "") + "下"
+            self.customNavigationBar_ty?.title = (self.albumModel_ty?.assetCollection_ty?.localizedTitle ?? "")
         } else {
-            self.customNavigationBar_ty?.title = (self.albumModel_ty?.assetCollection_ty?.localizedTitle ?? "") + "上"
+            self.customNavigationBar_ty?.title = (self.albumModel_ty?.assetCollection_ty?.localizedTitle ?? "")
         }
         if let _titleLabel = self.customNavigationBar_ty?.titleLabel_ty, let _title = _titleLabel.text {
             let _width = _title.textWidth_ty(font: _titleLabel.font, height: _titleLabel.font.lineHeight)
