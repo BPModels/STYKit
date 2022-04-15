@@ -67,6 +67,18 @@ class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataS
         }
         super.updateViewConstraints()
     }
+    
+    override func bindData_ty() {
+        super.bindData_ty()
+        var request = TYLoginRequest_ty.sendSMS(code: "1", mobile: "17521192823")
+        request     = TYLoginRequest_ty.appInit
+        TYNetworkManager_ty.share_ty.request_ty(TYResponse_ty<TYHomeModel>.self, request: request) { response in
+            print("Success:\(response?.data_ty)")
+            
+        } fail: { responseError in
+            print("Fail:\n\(responseError)")
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -90,9 +102,7 @@ class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        TYPhotoManager_ty.share_ty.show_ty { modelList in
-            print(modelList.count)
-        }
+        bindData_ty()
     }
 
 }

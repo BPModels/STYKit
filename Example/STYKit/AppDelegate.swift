@@ -7,16 +7,43 @@
 //
 
 import UIKit
+import STYKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        TYNetworkConfig_ty.share_ty.domainApi_ty = "http://gwtest.520taliao.com"
+        let extJson = self.getHeaderExt_ty()
+        TYNetworkConfig_ty.share_ty.headerParameters_ty = [
+            "authorization":"",
+            "_uid":"",
+            "platform":"meetfriend",
+            "_ext_":extJson
+        ]
         return true
+    }
+    
+    private func getHeaderExt_ty() -> String {
+        var extDic = [String:String]()
+        extDic["androidId"]      = ""
+        extDic["appVersion"]     = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        extDic["appVersionCode"] = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
+        extDic["channelCode"]    = "98"
+        extDic["imei"]           = ""
+        extDic["mac"]            = ""
+        extDic["oaid"]           = ""
+        extDic["packageName"]    = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String ?? ""
+        extDic["phoneFirm"]      = "apple"
+        extDic["phoneModel"]     = TYDeviceManager_ty.share_ty.model_ty().rawValue
+        extDic["phoneSystem"]    = UIDevice.current.systemVersion
+        extDic["phoneUuid"]      = TYDeviceManager_ty.share_ty.UUID()
+        extDic["source"]         = "IOS"
+        return extDic.toJson_ty()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

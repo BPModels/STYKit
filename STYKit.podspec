@@ -33,7 +33,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'STYKit/Classes/**/*'
   
    s.resource_bundles = {
-     'STYKit' => ['STYKit/Assets/*.png']
+     'STYKit' => ['STYKit/Assets/*']
    }
    s.swift_version = '5.0'
   # s.public_header_files = 'Pod/Classes/**/*.h'
@@ -43,5 +43,9 @@ TODO: Add long description of the pod here.
    # 图片下载器
    s.dependency 'SDWebImage', '5.12.1'
    # JSON转对象（MIT License）
-   s.dependency 'ObjectMapper', '4.2.0'
+   s.dependency 'ObjectMapper', '3.5.3'
+   # 网络请求
+   s.dependency 'Alamofire', '5.0.0-rc.2'
+   # JSON转对象的配合网络请求（MIT）
+   s.dependency 'AlamofireObjectMapper', '6.2.0'
 end
