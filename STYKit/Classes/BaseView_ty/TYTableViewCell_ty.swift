@@ -7,13 +7,13 @@
 
 import Foundation
 
-public class TYTableViewCell_ty: UITableViewCell {
+open class TYTableViewCell_ty: UITableViewCell {
     
     public struct Associated_ty {
         static var lineView_ty = "kLineView_ty"
     }
     
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    open override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.bindProperty_ty()
     }
@@ -23,15 +23,15 @@ public class TYTableViewCell_ty: UITableViewCell {
     }
     
     // MARK: ==== TYBaseDelegate_ty ====
-    public func createSubviews_ty() {}
-    public func bindProperty_ty() {
+    open func createSubviews_ty() {}
+    open func bindProperty_ty() {
         self.selectionStyle = .none
         self.separatorInset = UIEdgeInsets(top: 0, left: kScreenWidth_ty, bottom: 0, right: 0)
     }
-    public func bindData_ty() {}
-    public func updateUI_ty() {}
+    open func bindData_ty() {}
+    open func updateUI_ty() {}
     
-    public func setLine_ty(left_ty: CGFloat = AdaptSize_ty(15), right_ty: CGFloat = 0, isHide_ty: Bool) {
+    open func setLine_ty(left_ty: CGFloat = AdaptSize_ty(15), right_ty: CGFloat = 0, isHide_ty: Bool) {
         if let lineView_ty = objc_getAssociatedObject(self, &Associated_ty.lineView_ty) as? UIView {
             lineView_ty.snp.updateConstraints { make_ty in
                 make_ty.left.equalToSuperview().offset(left_ty)

@@ -37,9 +37,9 @@ open class TYView_ty: UIView, TYBaseDelegate_ty {
     }
     
     // MARK: ==== TYBaseDelegate_ty ====
-    public func createSubviews_ty() {}
-    public func bindProperty_ty() {}
-    public func bindData_ty() {}
-    public func updateUI_ty() {}
-    public func registerNotification_ty() {}
+    open func createSubviews_ty() {}
+    open func bindProperty_ty() {}
+    open func bindData_ty() {}
+    open func updateUI_ty() {}
+    open func registerNotification_ty() {}
 }

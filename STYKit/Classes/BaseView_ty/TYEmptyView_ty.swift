@@ -8,7 +8,7 @@
 import Foundation
 
 /// TableView 的空页面
-public class TYEmptyView_ty: TYView_ty {
+open class TYEmptyView_ty: TYView_ty {
     
     private var contentView_ty: TYView_ty = {
         let view_ty = TYView_ty()
@@ -38,7 +38,7 @@ public class TYEmptyView_ty: TYView_ty {
         self.bindProperty_ty()
     }
     
-    public init(image: UIImage?, hintText_ty: String?) {
+    open init(image: UIImage?, hintText_ty: String?) {
         super.init(frame: .zero)
         if let _image_ty = image {
             self.imageView_ty.isHidden = false
@@ -61,7 +61,7 @@ public class TYEmptyView_ty: TYView_ty {
     
     // MARK: ==== KFViewDelegate ====
     
-    public override func createSubviews_ty() {
+    open override func createSubviews_ty() {
         super.createSubviews_ty()
         self.addSubview(contentView_ty)
         contentView_ty.addSubview(imageView_ty)
@@ -83,7 +83,7 @@ public class TYEmptyView_ty: TYView_ty {
         }
     }
     
-    public override func bindProperty_ty() {
+    open override func bindProperty_ty() {
         super.bindProperty_ty()
         self.backgroundColor = .clear
     }

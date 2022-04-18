@@ -8,7 +8,7 @@
 import Foundation
 import SDWebImage
 
-public class TYImageView_ty: UIImageView {
+open class TYImageView_ty: UIImageView {
     
     /// 设置图片
     /// - Parameters:
@@ -16,7 +16,7 @@ public class TYImageView_ty: UIImageView {
     ///   - placeholdImage: 默认图片
     ///   - downloadProgress: 下载进度
     ///   - complete: 完成回调
-    public func setImage_ty(imageStr_ty: String, placeholdImage_ty: UIImage? = nil, downloadProgress_ty: SDImageLoaderProgressBlock?,  complete_ty: SDExternalCompletionBlock?) {
+    open func setImage_ty(imageStr_ty: String, placeholdImage_ty: UIImage? = nil, downloadProgress_ty: SDImageLoaderProgressBlock?,  complete_ty: SDExternalCompletionBlock?) {
         var _imageStr_ty: String? = imageStr_ty
         if imageStr_ty.hasChinese_ty() {
             _imageStr_ty = imageStr_ty.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -36,7 +36,7 @@ public class TYImageView_ty: UIImageView {
         }
     }
     
-    public func setCorner_ty(redius_ty: CGFloat) {
+    open func setCorner_ty(redius_ty: CGFloat) {
         self.layer.cornerRadius  = redius_ty
         self.layer.masksToBounds = true
     }
