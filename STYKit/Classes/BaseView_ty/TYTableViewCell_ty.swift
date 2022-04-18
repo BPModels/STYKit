@@ -13,7 +13,7 @@ open class TYTableViewCell_ty: UITableViewCell {
         static var lineView_ty = "kLineView_ty"
     }
     
-    open override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.bindProperty_ty()
     }

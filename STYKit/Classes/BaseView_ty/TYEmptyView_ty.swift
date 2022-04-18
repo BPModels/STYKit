@@ -38,7 +38,7 @@ open class TYEmptyView_ty: TYView_ty {
         self.bindProperty_ty()
     }
     
-    open init(image: UIImage?, hintText_ty: String?) {
+    public init(image: UIImage?, hintText_ty: String?) {
         super.init(frame: .zero)
         if let _image_ty = image {
             self.imageView_ty.isHidden = false
@@ -55,7 +55,7 @@ open class TYEmptyView_ty: TYView_ty {
         }
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
