@@ -25,11 +25,11 @@ public class TYToDoService_ty: NSObject {
     /// 事项类型
     @objc
     public enum TYTodoType_ty: Int {
-        case normal = 0
+        case normal_ty = 0
     }
     
     class TYTodoModel_ty: NSObject {
-        var type_ty: TYTodoType_ty = .normal
+        var type_ty: TYTodoType_ty = .normal_ty
         var eventBlock_ty: (()->Void)?
         var delayTime_ty: TimeInterval = 0
         var isRun_ty: Bool = false
@@ -47,14 +47,14 @@ public class TYToDoService_ty: NSObject {
     ///   - eventBlock: 事件
     ///   - delayTime: 延迟时间
     @objc
-    public func addEvent(type: TYTodoType_ty, eventBlock: (()->Void)?, delayTime: TimeInterval) {
-        let model = TYTodoModel_ty()
-        model.type_ty       = type
-        model.eventBlock_ty = eventBlock
-        model.delayTime_ty  = delayTime
-        self.todoList_ty.append(model)
+    public func addEvent(type_ty: TYTodoType_ty, eventBlock_ty: (()->Void)?, delayTime_ty: TimeInterval) {
+        let model_ty = TYTodoModel_ty()
+        model_ty.type_ty       = type_ty
+        model_ty.eventBlock_ty = eventBlock_ty
+        model_ty.delayTime_ty  = delayTime_ty
+        self.todoList_ty.append(model_ty)
         if self.timer_ty == nil {
-            self.timer_ty = Timer(timeInterval: self.interval_ty, target: self, selector: #selector(peeler), userInfo: nil, repeats: true)
+            self.timer_ty = Timer(timeInterval: self.interval_ty, target: self, selector: #selector(peeler_ty), userInfo: nil, repeats: true)
             RunLoop.current.add(self.timer_ty!, forMode: .common)
             self.timer_ty?.fire()
         }
@@ -63,10 +63,10 @@ public class TYToDoService_ty: NSObject {
     /// 移除事件
     /// - Parameter type: 事件类型
     @objc
-    public func removeEvent(type: TYTodoType_ty) {
-        for (index, model) in self.todoList_ty.enumerated() {
-            if model.type_ty == type, index < self.todoList_ty.count {
-                self.todoList_ty.remove(at: index)
+    public func removeEvent_ty(type_ty: TYTodoType_ty) {
+        for (index_ty, model_ty) in self.todoList_ty.enumerated() {
+            if model_ty.type_ty == type_ty, index_ty < self.todoList_ty.count {
+                self.todoList_ty.remove(at: index_ty)
                 break
             }
         }
@@ -75,14 +75,14 @@ public class TYToDoService_ty: NSObject {
     // TODO: ==== Event ====
     
     @objc
-    private func peeler() {
-        for (index, model) in self.todoList_ty.enumerated() {
-            model.delayTime_ty -= self.interval_ty
-            if model.delayTime_ty <= 0 && !model.isRun_ty {
-                model.isRun_ty = true
-                model.eventBlock_ty?()
-                if index < self.todoList_ty.count {
-                    self.todoList_ty.remove(at: index)
+    private func peeler_ty() {
+        for (index_ty, model_ty) in self.todoList_ty.enumerated() {
+            model_ty.delayTime_ty -= self.interval_ty
+            if model_ty.delayTime_ty <= 0 && !model_ty.isRun_ty {
+                model_ty.isRun_ty = true
+                model_ty.eventBlock_ty?()
+                if index_ty < self.todoList_ty.count {
+                    self.todoList_ty.remove(at: index_ty)
                 }
                 if self.todoList_ty.isEmpty {
                     self.timer_ty?.invalidate()

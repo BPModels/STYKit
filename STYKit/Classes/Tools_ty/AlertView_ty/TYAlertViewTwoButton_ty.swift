@@ -9,27 +9,27 @@ import UIKit
 
 public class TYAlertViewTwoButton_ty: TYBaseAlertView_ty {
     
-    public init(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?, isDestruct: Bool = false) {
+    public init(title_ty: String?, description_ty: String, leftBtnName_ty: String, leftBtnClosure_ty: (() -> Void)?, rightBtnName_ty: String, rightBtnClosure_ty: (() -> Void)?, isDestruct_ty: Bool = false) {
         super.init(frame: .zero)
-        self.isDestruct_ty            = isDestruct
-        self.titleLabel_ty.text       = title
-        self.descriptionLabel_ty.text = description
-        self.rightActionBlock_ty      = rightBtnClosure
-        self.leftActionBlock_ty       = leftBtnClosure
-        self.leftButton_ty.setTitle(leftBtnName, for: .normal)
-        self.rightButton_ty.setTitle(rightBtnName, for: .normal)
+        self.isDestruct_ty            = isDestruct_ty
+        self.titleLabel_ty.text       = title_ty
+        self.descriptionLabel_ty.text = description_ty
+        self.rightActionBlock_ty      = rightBtnClosure_ty
+        self.leftActionBlock_ty       = leftBtnClosure_ty
+        self.leftButton_ty.setTitle(leftBtnName_ty, for: .normal)
+        self.rightButton_ty.setTitle(rightBtnName_ty, for: .normal)
         self.createSubviews_ty()
         self.bindProperty_ty()
     }
-    public init(title: String?, description: NSMutableAttributedString, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?, isDestruct: Bool = false) {
+    public init(title_ty: String?, description_ty: NSMutableAttributedString, leftBtnName_ty: String, leftBtnClosure_ty: (() -> Void)?, rightBtnName_ty: String, rightBtnClosure_ty: (() -> Void)?, isDestruct_ty: Bool = false) {
         super.init(frame: .zero)
-        self.isDestruct_ty                         = isDestruct
-        self.titleLabel_ty.text                    = title
-        self.descriptionLabel_ty.attributedText    = description
-        self.rightActionBlock_ty                   = rightBtnClosure
-        self.leftActionBlock_ty                    = leftBtnClosure
-        self.leftButton_ty.setTitle(leftBtnName, for: .normal)
-        self.rightButton_ty.setTitle(rightBtnName, for: .normal)
+        self.isDestruct_ty                         = isDestruct_ty
+        self.titleLabel_ty.text                    = title_ty
+        self.descriptionLabel_ty.attributedText    = description_ty
+        self.rightActionBlock_ty                   = rightBtnClosure_ty
+        self.leftActionBlock_ty                    = leftBtnClosure_ty
+        self.leftButton_ty.setTitle(leftBtnName_ty, for: .normal)
+        self.rightButton_ty.setTitle(rightBtnName_ty, for: .normal)
         self.createSubviews_ty()
         self.bindProperty_ty()
     }
@@ -55,7 +55,7 @@ public class TYAlertViewTwoButton_ty: TYBaseAlertView_ty {
         }
         mainViewHeight_ty += topPadding_ty + titleHeight_ty
         let descriptionLabelW_ty = mainViewWidth_ty - leftPadding_ty - rightPadding_ty
-        let descriptionLabelH_ty = descriptionLabel_ty.text?.textHeight_ty(font: descriptionLabel_ty.font, width: descriptionLabelW_ty) ?? 0
+        let descriptionLabelH_ty = descriptionLabel_ty.text?.textHeight_ty(font_ty: descriptionLabel_ty.font, width_ty: descriptionLabelW_ty) ?? 0
         descriptionLabel_ty.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: descriptionLabelW_ty, height: descriptionLabelH_ty))
             make.top.equalToSuperview()

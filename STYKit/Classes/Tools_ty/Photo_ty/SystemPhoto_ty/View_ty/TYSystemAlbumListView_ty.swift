@@ -9,18 +9,18 @@ import Photos
 import UIKit
 
 public protocol TYSystemAlbumListViewDelegate_ty: NSObjectProtocol {
-    func selectedAlbum_ty(model: TYPhotoAlbumModel_ty?)
+    func selectedAlbum_ty(model_ty: TYPhotoAlbumModel_ty?)
     func showAlbumAction_ty()
     func hideAlbumAction_ty()
 }
 
 public class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableViewDataSource {
 
-    private let cellID_ty = "kBPSystemAlbumCell"
+    private let cellID_ty = "kBPSystemAlbumCell_ty"
     private var albumList_ty: [TYPhotoAlbumModel_ty] = []
     private var currentModel_ty: TYPhotoAlbumModel_ty? {
         didSet {
-            self.delegate_ty?.selectedAlbum_ty(model: currentModel_ty)
+            self.delegate_ty?.selectedAlbum_ty(model_ty: currentModel_ty)
             self.tableView_ty.reloadData()
         }
     }
@@ -41,17 +41,17 @@ public class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableVi
     }
 
     var tableView_ty: TYTableView_ty = {
-        let tableView = TYTableView_ty()
-        tableView.showsHorizontalScrollIndicator = false
-        tableView.showsVerticalScrollIndicator   = false
-        return tableView
+        let tableView_ty = TYTableView_ty()
+        tableView_ty.showsHorizontalScrollIndicator = false
+        tableView_ty.showsVerticalScrollIndicator   = false
+        return tableView_ty
     }()
 
     private var backgroundView_ty: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-        view.isUserInteractionEnabled = true
-        return view
+        let view_ty = UIView()
+        view_ty.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        view_ty.isUserInteractionEnabled = true
+        return view_ty
     }()
 
     public override func createSubviews_ty() {
@@ -69,16 +69,16 @@ public class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableVi
         self.tableView_ty.register(TYSystemAlbumCell_ty.classForCoder(), forCellReuseIdentifier: cellID_ty)
         self.tableView_ty.delegate   = self
         self.tableView_ty.dataSource = self
-        let tapAction = UITapGestureRecognizer(target: self, action: #selector(hideView_ty))
-        self.backgroundView_ty.addGestureRecognizer(tapAction)
+        let tapAction_ty = UITapGestureRecognizer(target: self, action: #selector(hideView_ty))
+        self.backgroundView_ty.addGestureRecognizer(tapAction_ty)
     }
 
     // MARK: ==== Event ====
 
-    public func setData_ty(albumList: [TYPhotoAlbumModel_ty], current model: TYPhotoAlbumModel_ty?) {
-        self.albumList_ty    = albumList
-        self.currentModel_ty = model
-        tableViewHeight_ty   = CGFloat(albumList.count) * cellHeight_ty
+    public func setData_ty(albumList_ty: [TYPhotoAlbumModel_ty], current_ty model_ty: TYPhotoAlbumModel_ty?) {
+        self.albumList_ty    = albumList_ty
+        self.currentModel_ty = model_ty
+        tableViewHeight_ty   = CGFloat(albumList_ty.count) * cellHeight_ty
         tableViewHeight_ty   = tableViewHeight_ty > tableViewMaxH_ty ? tableViewMaxH_ty : tableViewHeight_ty
         tableView_ty.snp.remakeConstraints { (make) in
             make.center.width.equalToSuperview()
@@ -92,7 +92,7 @@ public class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableVi
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
             self.tableView_ty.transform = CGAffineTransform(translationX: 0, y: self.tableViewHeight_ty)
-        } completion: { [weak self] finished in
+        } completion: { [weak self] finished_ty in
             guard let self = self else { return }
             self.delegate_ty?.showAlbumAction_ty()
         }
@@ -103,9 +103,9 @@ public class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableVi
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
             self.tableView_ty.transform = .identity
-        } completion: { [weak self] (finished) in
+        } completion: { [weak self] (finished_ty) in
             guard let self = self else { return }
-            if finished {
+            if finished_ty {
                 self.isHidden = true
                 self.delegate_ty?.hideAlbumAction_ty()
             }
@@ -119,16 +119,16 @@ public class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableVi
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID_ty, for: indexPath) as? TYSystemAlbumCell_ty else {
+        guard let cell_ty = tableView.dequeueReusableCell(withIdentifier: cellID_ty, for: indexPath) as? TYSystemAlbumCell_ty else {
             return UITableViewCell()
         }
-        let model = self.albumList_ty[indexPath.row]
-        let selected: Bool = {
-            guard let _currentModel = self.currentModel_ty else { return false }
-            return _currentModel.id_ty == model.id_ty
+        let model_ty = self.albumList_ty[indexPath.row]
+        let selected_ty: Bool = {
+            guard let _currentModel_ty = self.currentModel_ty else { return false }
+            return _currentModel_ty.id_ty == model_ty.id_ty
         }()
-        cell.setData_ty(model: model, isCurrent: selected)
-        return cell
+        cell_ty.setData_ty(model_ty: model_ty, isCurrent_ty: selected_ty)
+        return cell_ty
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

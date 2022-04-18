@@ -18,8 +18,8 @@ public class TYRequestModel_ty {
     ///请求Request类型对象
     private var taskRequest_ty: Request?
 
-    init(request: Request) {
-        self.taskRequest_ty = request
+    init(request_ty: Request) {
+        self.taskRequest_ty = request_ty
     }
 }
 
@@ -30,9 +30,9 @@ extension TYRequestModel_ty: TYTaskRequestDelegate_ty {
     }
 
     public func cancel_ty() {
-        guard let request = self.taskRequest_ty else {
+        guard let request_ty = self.taskRequest_ty else {
             return
         }
-        request.cancel()
+        request_ty.cancel()
     }
 }

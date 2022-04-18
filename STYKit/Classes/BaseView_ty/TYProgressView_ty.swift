@@ -11,9 +11,9 @@ public class TYProgressView_ty: TYView_ty {
     
     public enum TYProgressType_ty: Int {
         /// 直线
-        case line
+        case line_ty
         /// 圆形
-        case round
+        case round_ty
     }
     private var type_ty: TYProgressType_ty
     private var lineWidth_ty: CGFloat
@@ -21,10 +21,10 @@ public class TYProgressView_ty: TYView_ty {
     private var progressLayer_ty = CAShapeLayer()
     
     /// lineWidth: 仅适用于非直线进度条
-    public init(type: TYProgressType_ty, size: CGSize, lineWidth: CGFloat = AdaptSize_ty(10)) {
-        self.type_ty      = type
-        self.lineWidth_ty = lineWidth
-        super.init(frame: CGRect(origin: .zero, size: size))
+    public init(type_ty: TYProgressType_ty, size_ty: CGSize, lineWidth_ty: CGFloat = AdaptSize_ty(10)) {
+        self.type_ty      = type_ty
+        self.lineWidth_ty = lineWidth_ty
+        super.init(frame: CGRect(origin: .zero, size: size_ty))
         self.createSubviews_ty()
         self.bindProperty_ty()
     }
@@ -37,9 +37,9 @@ public class TYProgressView_ty: TYView_ty {
         super.createSubviews_ty()
         self.progressLayer_ty.frame = CGRect(origin: .zero, size: size_ty)
         switch type_ty {
-            case .line:
+            case .line_ty:
                 self.drawLineShape_ty()
-            case .round:
+            case .round_ty:
                 self.drawRoundShape_ty()
         }
     }
@@ -51,11 +51,11 @@ public class TYProgressView_ty: TYView_ty {
     
     // MARK: ==== Event ====
     private func drawLineShape_ty() {
-        let bottomLayer             = CAShapeLayer()
-        bottomLayer.frame           = bounds
-        bottomLayer.backgroundColor = UIColor.gray.cgColor
-        bottomLayer.cornerRadius    = height_ty/2
-        self.layer.addSublayer(bottomLayer)
+        let bottomLayer_ty             = CAShapeLayer()
+        bottomLayer_ty.frame           = bounds
+        bottomLayer_ty.backgroundColor = UIColor.gray.cgColor
+        bottomLayer_ty.cornerRadius    = height_ty/2
+        self.layer.addSublayer(bottomLayer_ty)
         
         progressLayer_ty.frame           = CGRect(x: 0, y: 0, width: 0, height: height_ty)
         progressLayer_ty.backgroundColor = UIColor.blue.cgColor
@@ -65,21 +65,21 @@ public class TYProgressView_ty: TYView_ty {
     }
     
     private func drawRoundShape_ty() {
-        let center     = CGPoint(x: width_ty/2, y: height_ty/2)
-        let radius     = (width_ty - lineWidth_ty*2)/2
-        let startAngle = -CGFloat.pi/2
-        let endAngle   = CGFloat.pi*3/2
-        let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        let center_ty     = CGPoint(x: width_ty/2, y: height_ty/2)
+        let radius_ty     = (width_ty - lineWidth_ty*2)/2
+        let startAngle_ty = -CGFloat.pi/2
+        let endAngle_ty   = CGFloat.pi*3/2
+        let path_ty = UIBezierPath(arcCenter: center_ty, radius: radius_ty, startAngle: startAngle_ty, endAngle: endAngle_ty, clockwise: true)
         
-        let bottomLayer         = CAShapeLayer()
-        bottomLayer.path        = path.cgPath
-        bottomLayer.frame       = bounds
-        bottomLayer.fillColor   = UIColor.clear.cgColor
-        bottomLayer.strokeColor = UIColor.clear.cgColor
-        bottomLayer.lineWidth   = lineWidth_ty
-        self.layer.addSublayer(bottomLayer)
+        let bottomLayer_ty         = CAShapeLayer()
+        bottomLayer_ty.path        = path_ty.cgPath
+        bottomLayer_ty.frame       = bounds
+        bottomLayer_ty.fillColor   = UIColor.clear.cgColor
+        bottomLayer_ty.strokeColor = UIColor.clear.cgColor
+        bottomLayer_ty.lineWidth   = lineWidth_ty
+        self.layer.addSublayer(bottomLayer_ty)
         
-        progressLayer_ty.path        = path.cgPath
+        progressLayer_ty.path        = path_ty.cgPath
         progressLayer_ty.lineWidth   = lineWidth_ty
         progressLayer_ty.lineCap     = .round
         progressLayer_ty.fillColor   = UIColor.clear.cgColor
@@ -88,18 +88,18 @@ public class TYProgressView_ty: TYView_ty {
         self.layer.addSublayer(progressLayer_ty)
     }
     
-    public func updateProgress_ty(progress: CGFloat, duration: TimeInterval = 0.25, complete block: DefaultBlock_ty? = nil) {
-        UIView.animate(withDuration: duration) { [weak self] in
+    public func updateProgress_ty(progress_ty: CGFloat, duration_ty: TimeInterval = 0.25, complete_ty block_ty: DefaultBlock_ty? = nil) {
+        UIView.animate(withDuration: duration_ty) { [weak self] in
             guard let self = self else { return }
             switch self.type_ty {
-                case .line:
-                    self.progressLayer_ty.width_ty = self.width_ty * progress
-                case .round:
-                    self.progressLayer_ty.strokeEnd = progress
+                case .line_ty:
+                    self.progressLayer_ty.width_ty = self.width_ty * progress_ty
+                case .round_ty:
+                    self.progressLayer_ty.strokeEnd = progress_ty
             }
-        } completion: { finished in
-            if finished {
-                block?()
+        } completion: { finished_ty in
+            if finished_ty {
+                block_ty?()
             }
         }
     }

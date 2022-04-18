@@ -9,10 +9,10 @@ import UIKit
 import AVFoundation
 
 protocol TYBrowserVideoCellDelegate_ty: NSObjectProtocol {
-    func videoViewLongPressAction_ty(model: TYMediaVideoModel_ty?)
-    func videoViewClosedAction_ty(view: UIView)
-    func scrolling_ty(reduce scale: Float)
-    func closeAction_ty(view: UIView)
+    func videoViewLongPressAction_ty(model_ty: TYMediaVideoModel_ty?)
+    func videoViewClosedAction_ty(view_ty: UIView)
+    func scrolling_ty(reduce_ty scale_ty: Float)
+    func closeAction_ty(view_ty: UIView)
 }
 
 class TYBrowserVideoCell_ty:
@@ -41,7 +41,7 @@ class TYBrowserVideoCell_ty:
         button.setTitle("播放", for: .normal)
         button.setTitle("暂停", for: .selected)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(14))
+        button.titleLabel?.font = UIFont.regular_ty(AdaptSize_ty(14))
         button.isHidden = true
         return button
     }()
@@ -50,7 +50,7 @@ class TYBrowserVideoCell_ty:
         let label = TYLabel_ty()
         label.text          = "00:00"
         label.textColor     = UIColor.white
-        label.font          = UIFont.regular_ty(size: AdaptSize_ty(12))
+        label.font          = UIFont.regular_ty(AdaptSize_ty(12))
         label.textAlignment = .left
         return label
     }()
@@ -59,18 +59,18 @@ class TYBrowserVideoCell_ty:
         let label = TYLabel_ty()
         label.text          = "00:00"
         label.textColor     = UIColor.white
-        label.font          = UIFont.regular_ty(size: AdaptSize_ty(12))
+        label.font          = UIFont.regular_ty(AdaptSize_ty(12))
         label.textAlignment = .left
         return label
     }()
     
-    private var progressView_ty = TYProgressView_ty(type: .line, size: CGSize(width: AdaptSize_ty(250), height: AdaptSize_ty(2)))
+    private var progressView_ty = TYProgressView_ty(type_ty: .line_ty, size_ty: CGSize(width: AdaptSize_ty(250), height: AdaptSize_ty(2)))
     
     private var closedButton_ty: TYButton_ty = {
         let button = TYButton_ty()
         button.setTitle("关闭", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font    = UIFont.regular_ty(size: AdaptSize_ty(10))
+        button.titleLabel?.font    = UIFont.regular_ty(AdaptSize_ty(10))
         button.backgroundColor     = UIColor.gray0_ty.withAlphaComponent(0.4)
         button.layer.cornerRadius  = AdaptSize_ty(15)
         button.layer.masksToBounds = true
@@ -159,7 +159,7 @@ class TYBrowserVideoCell_ty:
     // MARK: ==== Event ====
     func setData_ty(model: TYMediaVideoModel_ty) {
         self.model_ty = model
-        self.playManager_ty.setData_ty(model: model, contentLayer: self.customContentView_ty.layer)
+        self.playManager_ty.setData_ty(model_ty: model, contentLayer_ty: self.customContentView_ty.layer)
     }
     
     @objc private func playAction_ty(sender: TYButton_ty) {
@@ -172,7 +172,7 @@ class TYBrowserVideoCell_ty:
     }
     
     @objc private func closedAction_ty() {
-        self.delegate_ty?.videoViewClosedAction_ty(view: self.contentView)
+        self.delegate_ty?.videoViewClosedAction_ty(view_ty: self.contentView)
     }
     
     @objc private func playAction_ty() {
@@ -193,7 +193,7 @@ class TYBrowserVideoCell_ty:
     
     @objc private func longPressAction(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            self.delegate_ty?.videoViewLongPressAction_ty(model: self.model_ty)
+            self.delegate_ty?.videoViewLongPressAction_ty(model_ty: self.model_ty)
         }
     }
     
@@ -215,12 +215,12 @@ class TYBrowserVideoCell_ty:
                     return _scale > self.drawMinScale_ty ? _scale : self.drawMinScale_ty
                 }
             }()
-            self.delegate_ty?.scrolling_ty(reduce: Float(scale))
+            self.delegate_ty?.scrolling_ty(reduce_ty: Float(scale))
             // a:控制x轴缩放；d：控制y轴缩放；
             self.customContentView_ty.transform = CGAffineTransform(a: scale, b: 0, c: 0, d: scale, tx: point.x, ty: point.y)
         case .ended:
             if point.y - originPoint_ty.y > self.maxOffsetY_ty {
-                self.delegate_ty?.closeAction_ty(view: self.customContentView_ty)
+                self.delegate_ty?.closeAction_ty(view_ty: self.customContentView_ty)
             } else {
                 UIView.animate(withDuration: 0.15) { [weak self] in
                     self?.customContentView_ty.transform = .identity
@@ -242,7 +242,7 @@ class TYBrowserVideoCell_ty:
     }
     /// 播放进度
     func progressBlock_ty(progress: Double, currentSecond: Double) {
-        self.progressView_ty.updateProgress_ty(progress: CGFloat(progress))
+        self.progressView_ty.updateProgress_ty(progress_ty: CGFloat(progress))
         self.leftTimeLabel_ty.text = currentSecond.minuteSecondStr_ty()
     }
     func updateStatus_ty(status: AVPlayerItem.Status) {

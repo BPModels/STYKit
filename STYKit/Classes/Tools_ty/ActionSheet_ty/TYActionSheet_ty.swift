@@ -9,32 +9,32 @@ import SnapKit
 
 public class TYActionSheet_ty: TYTopWindowView_ty {
 
-    public let cellHeight_ty: CGFloat  = AdaptSize_ty(55)
-    let lineHeight_ty: CGFloat  = 1/UIScreen.main.scale
-    let spaceHeight_ty: CGFloat = AdaptSize_ty(7)
-    public var maxH_ty = CGFloat.zero
-    var buttonList_ty: [TYButton_ty] = []
+    public let cellHeight_ty: CGFloat   = AdaptSize_ty(55)
+    let lineHeight_ty: CGFloat          = 1/UIScreen.main.scale
+    let spaceHeight_ty: CGFloat         = AdaptSize_ty(7)
+    public var maxH_ty                  = CGFloat.zero
+    var buttonList_ty: [TYButton_ty]    = []
     public var actionDict_ty: [String:DefaultBlock_ty] = [:]
     private var title_ty: String?
 
     /// 无裁切的底部视图的父视图
     public var contentView_ty: TYView_ty = {
-        let view = TYView_ty()
-        view.backgroundColor = UIColor.clear
-        return view
+        let view_ty = TYView_ty()
+        view_ty.backgroundColor = UIColor.clear
+        return view_ty
     }()
     
     /// 负责显示视图的底视图
     public var mainView_ty: UIView = {
-        let view = UIView()
-        view.backgroundColor    = UIColor.white
-        view.layer.cornerRadius = AdaptSize_ty(8)
-        return view
+        let view_ty = UIView()
+        view_ty.backgroundColor    = UIColor.white
+        view_ty.layer.cornerRadius = AdaptSize_ty(8)
+        return view_ty
     }()
     
-    public init(title: String? = nil) {
+    public init(title_ty: String? = nil) {
         super.init(frame: .zero)
-        self.title_ty = title
+        self.title_ty = title_ty
         self.createSubviews_ty()
         self.bindProperty_ty()
     }
@@ -56,44 +56,44 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
 
     // MARK: ==== Event ====
     @discardableResult @objc
-    public func addItem_ty(icon: UIImage? = nil, title: String, isDestroy: Bool = false, actionBlock: DefaultBlock_ty?) -> TYActionSheet_ty {
-        let button = TYButton_ty(.normal)
-        button.setTitle(title, for: .normal)
-        if isDestroy {
-            button.setTitleColor(UIColor.red0_ty, for: .normal)
+    public func addItem_ty(icon_ty: UIImage? = nil, title_ty: String, isDestroy_ty: Bool = false, actionBlock_ty: DefaultBlock_ty?) -> TYActionSheet_ty {
+        let button_ty = TYButton_ty(.normal_ty)
+        button_ty.setTitle(title_ty, for: .normal)
+        if isDestroy_ty {
+            button_ty.setTitleColor(UIColor.red0_ty, for: .normal)
         } else {
-            button.setTitleColor(UIColor.black0_ty, for: .normal)
+            button_ty.setTitleColor(UIColor.black0_ty, for: .normal)
         }
-        if let _icon = icon {
-            button.setImage(_icon, for: .normal)
-            button.imageView?.size_ty = CGSize(width: AdaptSize_ty(20), height: AdaptSize_ty(20))
+        if let _icon_ty = icon_ty {
+            button_ty.setImage(_icon_ty, for: .normal)
+            button_ty.imageView?.size_ty = CGSize(width: AdaptSize_ty(20), height: AdaptSize_ty(20))
         }
-        button.titleLabel?.font = UIFont.semibold_ty(size: AdaptSize_ty(15))
-        button.addTarget(self, action: #selector(clickAction_ty(sender:)), for: .touchUpInside)
-        mainView_ty.addSubview(button)
-        button.snp.makeConstraints { (make) in
+        button_ty.titleLabel?.font = UIFont.semibold_ty(AdaptSize_ty(15))
+        button_ty.addTarget(self, action: #selector(clickAction_ty(sender_ty:)), for: .touchUpInside)
+        mainView_ty.addSubview(button_ty)
+        button_ty.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalToSuperview().offset(maxH_ty)
             make.height.equalTo(cellHeight_ty)
         }
         maxH_ty += cellHeight_ty
-        self.buttonList_ty.append(button)
-        if actionBlock != nil {
-            self.actionDict_ty[title] = actionBlock
+        self.buttonList_ty.append(button_ty)
+        if actionBlock_ty != nil {
+            self.actionDict_ty[title_ty] = actionBlock_ty
         }
         return self
     }
     
     /// 添加标题
     private func addTitle_ty() {
-        guard let _title = self.title_ty else { return }
-        let label = TYLabel_ty()
-        label.text          = _title
-        label.textColor     = UIColor.gray0_ty
-        label.font          = UIFont.medium_ty(size: AdaptSize_ty(14))
-        label.textAlignment = .center
-        mainView_ty.addSubview(label)
-        label.snp.makeConstraints { (make) in
+        guard let _title_ty = self.title_ty else { return }
+        let label_ty = TYLabel_ty()
+        label_ty.text          = _title_ty
+        label_ty.textColor     = UIColor.gray0_ty
+        label_ty.font          = UIFont.medium_ty(AdaptSize_ty(14))
+        label_ty.textAlignment = .center
+        mainView_ty.addSubview(label_ty)
+        label_ty.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalToSuperview().offset(maxH_ty)
             make.height.equalTo(cellHeight_ty)
@@ -103,34 +103,34 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
 
     /// 添加默认的底部间距和取消按钮
     private func addDefaultItem_ty() {
-        let spaceView = UIView()
-        spaceView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        mainView_ty.addSubview(spaceView)
-        spaceView.snp.makeConstraints { (make) in
+        let spaceView_ty = UIView()
+        spaceView_ty.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        mainView_ty.addSubview(spaceView_ty)
+        spaceView_ty.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalToSuperview().offset(maxH_ty)
             make.height.equalTo(spaceHeight_ty)
         }
         maxH_ty += spaceHeight_ty
 
-        let cancelButton = TYButton_ty()
-        cancelButton.setTitle("取消", for: .normal)
-        cancelButton.titleLabel?.font = UIFont.semibold_ty(size: AdaptSize_ty(15))
-        cancelButton.setTitleColor(UIColor.black0_ty, for: .normal)
-        cancelButton.addTarget(self, action: #selector(self.hide_ty), for: .touchUpInside)
-        mainView_ty.addSubview(cancelButton)
-        cancelButton.snp.makeConstraints { (make) in
+        let cancelButton_ty = TYButton_ty()
+        cancelButton_ty.setTitle("取消", for: .normal)
+        cancelButton_ty.titleLabel?.font = UIFont.semibold_ty(AdaptSize_ty(15))
+        cancelButton_ty.setTitleColor(UIColor.black0_ty, for: .normal)
+        cancelButton_ty.addTarget(self, action: #selector(self.hide_ty), for: .touchUpInside)
+        mainView_ty.addSubview(cancelButton_ty)
+        cancelButton_ty.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.top.equalTo(spaceView.snp.bottom)
+            make.top.equalTo(spaceView_ty.snp.bottom)
             make.height.equalTo(cellHeight_ty)
         }
         maxH_ty += cellHeight_ty + kSafeBottomMargin_ty
-        self.buttonList_ty.append(cancelButton)
+        self.buttonList_ty.append(cancelButton_ty)
     }
 
     private func adjustMainView_ty() {
         mainView_ty.size_ty = CGSize(width: kScreenWidth_ty, height: maxH_ty)
-        mainView_ty.clipRectCorner_ty(directionList: [.topLeft, .topRight], cornerRadius: AdaptSize_ty(15))
+        mainView_ty.clipRectCorner_ty(directionList_ty: [.topLeft, .topRight], cornerRadius_ty: AdaptSize_ty(15))
         mainView_ty.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -141,12 +141,12 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
         }
     }
     
-    @objc public func clickAction_ty(sender: TYButton_ty) {
-        guard let title = sender.currentTitle else {
+    @objc public func clickAction_ty(sender_ty: TYButton_ty) {
+        guard let title_ty = sender_ty.currentTitle else {
             print("暂无事件")
             return
         }
-        self.actionDict_ty[title]?()
+        self.actionDict_ty[title_ty]?()
         // 默认点击后收起ActionSheet
         self.hide_ty()
     }
@@ -165,8 +165,8 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
         }
     }
 
-    public override func show_ty(view: UIView = kWindow_ty) {
-        super.show_ty(view: view)
+    public override func show_ty(view_ty: UIView = kWindow_ty) {
+        super.show_ty(view_ty: view_ty)
         self.addDefaultItem_ty()
         self.adjustMainView_ty()
         TYRecordAudioManager_ty.share_ty.shake_ty()

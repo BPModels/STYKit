@@ -13,22 +13,22 @@ public class TYToastView_ty: TYView_ty {
     private let defaultHight_ty = AdaptSize_ty(70)
     
     private var descriptionLabel_ty: TYLabel_ty = {
-        let label = TYLabel_ty()
-        label.size_ty               = CGSize(width: AdaptSize_ty(100), height: AdaptSize_ty(50))
-        label.text                  = ""
-        label.textColor             = UIColor.white
-        label.font                  = UIFont.medium_ty(size: AdaptSize_ty(14))
-        label.textAlignment         = .center
-        label.numberOfLines         = 0
-        label.backgroundColor       = UIColor.black.withAlphaComponent(0.75)
-        label.layer.cornerRadius    = AdaptSize_ty(5)
-        label.layer.masksToBounds   = true
-        return label
+        let label_ty = TYLabel_ty()
+        label_ty.size_ty               = CGSize(width: AdaptSize_ty(100), height: AdaptSize_ty(50))
+        label_ty.text                  = ""
+        label_ty.textColor             = UIColor.white
+        label_ty.font                  = UIFont.medium_ty(AdaptSize_ty(14))
+        label_ty.textAlignment         = .center
+        label_ty.numberOfLines         = 0
+        label_ty.backgroundColor       = UIColor.black.withAlphaComponent(0.75)
+        label_ty.layer.cornerRadius    = AdaptSize_ty(5)
+        label_ty.layer.masksToBounds   = true
+        return label_ty
     }()
     
-    init(message: String) {
+    init(_ message_ty: String) {
         super.init(frame: .zero)
-        self.descriptionLabel_ty.text = message
+        self.descriptionLabel_ty.text = message_ty
     }
     
     required public init?(coder: NSCoder) {

@@ -16,23 +16,23 @@ public class TYStringTransform_ty: TransformType {
     public init() {}
         
     public func transformFromJSON(_ value: Any?) -> String? {
-        var result: String?
-        guard let json = value else {
-            return result
+        var result_ty: String?
+        guard let json_ty = value else {
+            return result_ty
         }
-        if json is String {
-            result = json as? String
-        } else if json is Int {
-            result = "\(json)"
+        if json_ty is String {
+            result_ty = json_ty as? String
+        } else if json_ty is Int {
+            result_ty = "\(json_ty)"
         }
-        return result
+        return result_ty
     }
     
     public func transformToJSON(_ value: String?) -> Any?? {
-        guard let _value = value else {
+        guard let _value_ty = value else {
             return nil
         }
-        return _value
+        return _value_ty
     }
 }
 

@@ -22,8 +22,8 @@ public typealias IndexPathBlock_ty = ((IndexPath)->Void)
 public let isPad_ty = UIDevice.current.userInterfaceIdiom == .pad
 
 public let kWindow_ty: UIWindow = {
-    if let _window = UIApplication.shared.keyWindow {
-        return _window
+    if let _window_ty = UIApplication.shared.keyWindow {
+        return _window_ty
     } else {
         return UIWindow(frame: .zero)
     }
@@ -35,13 +35,13 @@ public let kScreenWidth_ty  = UIScreen.main.bounds.size.width
 public let kScreenHeight_ty = UIScreen.main.bounds.size.height
 ///状态栏高度
 public let kStatusBarHeight_ty: CGFloat = {
-    var _height = UIApplication.shared.statusBarFrame.size.height
+    var _height_ty = UIApplication.shared.statusBarFrame.size.height
     if #available(iOS 13, *) {
-        if let _statusHeight = UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.size.height {
-            _height = _statusHeight
+        if let _statusHeight_ty = UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.size.height {
+            _height_ty = _statusHeight_ty
         }
     }
-    return _height
+    return _height_ty
 }()
 /// 顶部导航栏高度
 public let kNavigationHeight_ty = kStatusBarHeight_ty + 44.0
@@ -49,9 +49,9 @@ public let kNavigationHeight_ty = kStatusBarHeight_ty + 44.0
 @available(iOS 11.0, *)
 public let kSafeBottomMargin_ty = kWindow_ty.safeAreaInsets.bottom
 
-public func AdaptSize_ty(_ size: CGFloat) -> CGFloat {
-    let newSize = kScreenWidth_ty / (isPad_ty ? 768 : 375) * size
-    return newSize
+public func AdaptSize_ty(_ size_ty: CGFloat) -> CGFloat {
+    let newSize_ty = kScreenWidth_ty / (isPad_ty ? 768 : 375) * size_ty
+    return newSize_ty
 }
 
 /// 当前NVC
@@ -61,64 +61,64 @@ public var currentNVC_ty: UINavigationController? {
 
 /// 当前VC
 public var currentVC_ty: UIViewController? {
-    var rootViewController: UIViewController?
-    let textEffectsWindowClass: AnyClass? = NSClassFromString("UITextEffectsWindow")
-    for window in UIApplication.shared.windows where !window.isHidden {
-        if let _textEffectsWindowClass = textEffectsWindowClass, window.isKind(of: _textEffectsWindowClass) { continue }
-        if let windowRootViewController = window.rootViewController {
-            rootViewController = windowRootViewController
+    var rootViewController_ty: UIViewController?
+    let textEffectsWindowClass_ty: AnyClass? = NSClassFromString("UITextEffectsWindow")
+    for window_ty in UIApplication.shared.windows where !window_ty.isHidden {
+        if let _textEffectsWindowClass_ty = textEffectsWindowClass_ty, window_ty.isKind(of: _textEffectsWindowClass_ty) { continue }
+        if let windowRootViewController_ty = window_ty.rootViewController {
+            rootViewController_ty = windowRootViewController_ty
             break
         }
     }
-    var isFind = false
-    while !isFind {
+    var isFind_ty = false
+    while !isFind_ty {
         // presented view controller
-        if let presentedViewController = rootViewController?.presentedViewController {
-            rootViewController = presentedViewController
+        if let presentedViewController_ty = rootViewController_ty?.presentedViewController {
+            rootViewController_ty = presentedViewController_ty
             continue
         }
         // UITabBarController
-        if let tabBarController = rootViewController as? UITabBarController,
-            let selectedViewController = tabBarController.selectedViewController {
-            rootViewController = selectedViewController
+        if let tabBarController_ty = rootViewController_ty as? UITabBarController,
+            let selectedViewController_ty = tabBarController_ty.selectedViewController {
+            rootViewController_ty = selectedViewController_ty
             continue
         }
         // UINavigationController
-        if let navigationController = rootViewController as? UINavigationController,
-            let visibleViewController = navigationController.visibleViewController {
-            rootViewController = visibleViewController
+        if let navigationController_ty = rootViewController_ty as? UINavigationController,
+            let visibleViewController_ty = navigationController_ty.visibleViewController {
+            rootViewController_ty = visibleViewController_ty
             continue
         }
         // UIPageController
-        if let pageViewController = rootViewController as? UIPageViewController,
-            pageViewController.viewControllers?.count == 1 {
-            rootViewController = pageViewController.viewControllers?.first
+        if let pageViewController_ty = rootViewController_ty as? UIPageViewController,
+            pageViewController_ty.viewControllers?.count == 1 {
+            rootViewController_ty = pageViewController_ty.viewControllers?.first
             continue
         }
         // child view controller
-        for subview in rootViewController?.view?.subviews ?? [] {
-            if let childViewController = subview.next as? UIViewController {
-                rootViewController = childViewController
+        for subview_ty in rootViewController_ty?.view?.subviews ?? [] {
+            if let childViewController_ty = subview_ty.next as? UIViewController {
+                rootViewController_ty = childViewController_ty
                 continue
             }
         }
-        isFind = true
+        isFind_ty = true
     }
-    return rootViewController
+    return rootViewController_ty
 }
 
 /// 发送日志到钉钉
 /// - Parameter content: 内容
-public func sendLog(_ content: String) {
-    let projectName  = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "NULL"
-    guard let url = URL(string: "https://oapi.dingtalk.com/robot/send?access_token=ce9a301a2ecf61146066a9bdf0e1f8795e86e69a7085c58e78bcdb86204dd93e") else {
+public func sendLog_ty(_ content_ty: String) {
+    let projectName_ty  = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "NULL"
+    guard let url_ty = URL(string: "https://oapi.dingtalk.com/robot/send?access_token=ce9a301a2ecf61146066a9bdf0e1f8795e86e69a7085c58e78bcdb86204dd93e") else {
         return
     }
-    let json = ["msgtype": "text","text": ["content":"【\(projectName)】通知：\(content)"]].toJson_ty()
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-    request.httpBody = json.data(using: .utf8)
-    let task = URLSession.shared.dataTask(with: request)
-    task.resume()
+    let json_ty = ["msgtype": "text","text": ["content":"【\(projectName_ty)】通知：\(content_ty)"]].toJson_ty()
+    var request_ty = URLRequest(url: url_ty)
+    request_ty.httpMethod = "POST"
+    request_ty.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+    request_ty.httpBody = json_ty.data(using: .utf8)
+    let task_ty = URLSession.shared.dataTask(with: request_ty)
+    task_ty.resume()
 }

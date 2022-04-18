@@ -16,32 +16,32 @@ public class TYDateTransform_ty: TransformType {
     public init() {}
         
     public func transformFromJSON(_ value: Any?) -> Date? {
-        var result: Date?
-        guard let json = value else {
-            return result
+        var result_ty: Date?
+        guard let json_ty = value else {
+            return result_ty
         }
-        if json is Int, var intValue = json as? Int {
-            intValue /= 1000
-            result = Date(timeIntervalSince1970: TimeInterval(intValue))
-        } else if json is Double, var doubleValue = json as? TimeInterval {
-            doubleValue /= 1000
-            result = Date(timeIntervalSince1970: doubleValue)
-        } else if json is Float, var floatValue = json as? Float {
-            floatValue /= 1000
-            result = Date(timeIntervalSince1970: TimeInterval(floatValue))
-        } else if json is String, let stringValue = json as? String {
-            var doulbeValue = Double(stringValue) ?? 0
+        if json_ty is Int, var intValue_ty = json_ty as? Int {
+            intValue_ty /= 1000
+            result_ty = Date(timeIntervalSince1970: TimeInterval(intValue_ty))
+        } else if json_ty is Double, var doubleValue_ty = json_ty as? TimeInterval {
+            doubleValue_ty /= 1000
+            result_ty = Date(timeIntervalSince1970: doubleValue_ty)
+        } else if json_ty is Float, var floatValue_ty = json_ty as? Float {
+            floatValue_ty /= 1000
+            result_ty = Date(timeIntervalSince1970: TimeInterval(floatValue_ty))
+        } else if json_ty is String, let stringValue_ty = json_ty as? String {
+            var doulbeValue = Double(stringValue_ty) ?? 0
             doulbeValue    /= 1000
-            result = Date(timeIntervalSince1970: doulbeValue)
+            result_ty = Date(timeIntervalSince1970: doulbeValue)
         }
-        return result
+        return result_ty
     }
     
     public func transformToJSON(_ value: Date?) -> Any?? {
-        guard let _value = value else {
+        guard let _value_ty = value else {
             return nil
         }
-        return Int(_value.timeIntervalSince1970 * 1000)
+        return Int(_value_ty.timeIntervalSince1970 * 1000)
     }
 }
 

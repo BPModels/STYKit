@@ -10,64 +10,64 @@ import Foundation
 public extension UserDefaults {
 
     /// 下标语法,方便存储和获取 UserDefaults 值对象
-    subscript(key: String) -> Data? {
+    subscript(key_ty: String) -> Data? {
         get {
-            guard let data = value(forKey: key) as? Data else {
+            guard let data_ty = value(forKey: key_ty) as? Data else {
                 return nil
             }
-            return data
+            return data_ty
         }
         
-        set {
-            if let value = newValue {
-                set(value, forKey: key)
+        set(newValue_ty) {
+            if let value_ty = newValue_ty {
+                set(value_ty, forKey: key_ty)
             } else {
-                removeObject(forKey: key)
+                removeObject(forKey: key_ty)
             }
         }
     }
     
-    func setter_ty(_ value: Data?, forKey key: String) {
-        self[key] = value
+    func setter_ty(_ value_ty: Data?, forKey_ty key_ty: String) {
+        self[key_ty] = value_ty
         synchronize()
     }
 
     /// 归档的数据中,是否有Key对应的数据
-    func hasKey_ty(_ key: String) -> Bool {
-        return nil != object(forKey: key)
+    func hasKey_ty(_ key_ty: String) -> Bool {
+        return nil != object(forKey: key_ty)
     }
 
     /// 归档数据
-    func archive_ty(object: Any?, forkey key: String) {
-        if let value = object {
-            var data: Data?
+    func archive_ty(object_ty: Any?, forkey_ty key_ty: String) {
+        if let value_ty = object_ty {
+            var data_ty: Data?
             // 现将数据编码, 然后存档
             if #available(iOS 11, *) {
                 do {
-                    data = try NSKeyedArchiver.archivedData(withRootObject: value, requiringSecureCoding: true)
+                    data_ty = try NSKeyedArchiver.archivedData(withRootObject: value_ty, requiringSecureCoding: true)
                 } catch {
-                    print("archive fail!!\n key: \(key)\n value: \(value)")
+                    print("archive fail!!\n key: \(key_ty)\n value: \(value_ty)")
                 }
             } else {
-                data = NSKeyedArchiver.archivedData(withRootObject: value)
+                data_ty = NSKeyedArchiver.archivedData(withRootObject: value_ty)
             }
-            setter_ty(data, forKey: key)
+            setter_ty(data_ty, forKey_ty: key_ty)
         }else{
-            removeObject(forKey: key)
+            removeObject(forKey: key_ty)
         }
     }
 
     /// 解档数据
-    func unarchivedObject_ty(forkey key: String) -> Any? {
-        var value: Any?
-        guard let data = data(forKey: key) else {
+    func unarchivedObject_ty(forkey_ty key_ty: String) -> Any? {
+        var value_ty: Any?
+        guard let data_ty = data(forKey: key_ty) else {
             return nil
         }
         do {
-            value = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
+            value_ty = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data_ty)
         } catch {
-            print("unarchived fail!!\n key: \(key)\n")
+            print("unarchived fail!!\n key: \(key_ty)\n")
         }
-        return value
+        return value_ty
     }
 }

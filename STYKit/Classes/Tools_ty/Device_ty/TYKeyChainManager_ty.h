@@ -11,11 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TYKeyChainManager_ty : NSObject
 
-+ (void)save:(NSString *)service data:(id)data;
++ (void)save_ty:(NSString *)service_ty data_ty:(id)data_ty;
 
-+ (id)load:(NSString *)service;
++ (id)load_ty:(NSString *)service_ty;
 
-+ (void)delete:(NSString *)service;
++ (void)delete_ty:(NSString *)service_ty;
 
 @end
 

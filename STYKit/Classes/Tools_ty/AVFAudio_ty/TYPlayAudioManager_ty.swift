@@ -38,32 +38,32 @@ public class TYPlayAudioManager_ty: NSObject {
 
     ///播放音频
     @objc
-    public func playAudio_ty(url: URL, finishedBlock: DefaultBlock_ty?) {
-        TYAuthorizationManager_ty.share_ty.authorizeMicrophoneWith_ty { result in
-            if result {
-                let item = AVPlayerItem(url: url)
-                if item.asset.isPlayable {
+    public func playAudio_ty(url_ty: URL, finishedBlock_ty: DefaultBlock_ty?) {
+        TYAuthorizationManager_ty.share_ty.authorizeMicrophoneWith_ty { result_ty in
+            if result_ty {
+                let item_ty = AVPlayerItem(url: url_ty)
+                if item_ty.asset.isPlayable {
                     do {
                         try AVAudioSession.sharedInstance().setCategory(.playback)
                     } catch {
-                        print("初始化播放器失败")
-                        finishedBlock?()
+                        print("初始化播放器失败_ty")
+                        finishedBlock_ty?()
                         return
                     }
-                    if let error = self.player_ty.error {
-                        print("播放器加载失败:\(error)")
+                    if let error_ty = self.player_ty.error {
+                        print("播放器加载失败:\(error_ty)_ty")
                         self.player_ty = AVPlayer()
                     }
-                    self.playback_ty = finishedBlock
-                    self.player_ty.replaceCurrentItem(with: item)
+                    self.playback_ty = finishedBlock_ty
+                    self.player_ty.replaceCurrentItem(with: item_ty)
                     self.player_ty.seek(to: .zero)
                     self.player_ty.playImmediately(atRate: 1.0)
                     self.isPlaying_ty = true
-                    self.urlStr_ty = url.absoluteString
+                    self.urlStr_ty    = url_ty.absoluteString
                 } else {
-                    kWindow_ty.toast_ty("无效音频")
-                    print("无效音频: \(url.absoluteString)")
-                    finishedBlock?()
+                    kWindow_ty.toast_ty("无效音频_ty")
+                    print("无效音频: \(url_ty.absoluteString)")
+                    finishedBlock_ty?()
                 }
             }
         }

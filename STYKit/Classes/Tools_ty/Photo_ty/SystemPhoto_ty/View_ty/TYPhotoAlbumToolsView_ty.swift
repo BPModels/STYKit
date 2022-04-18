@@ -18,25 +18,25 @@ public class TYPhotoAlbumToolsView_ty: TYView_ty {
     weak var delegate_ty: TYPhotoAlbumToolsDelegate_ty?
 
     private var shareButton_ty: TYButton_ty = {
-        let button = TYButton_ty()
-        button.setTitle("分享", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(13))
-        return button
+        let button_ty = TYButton_ty()
+        button_ty.setTitle("分享", for: .normal)
+        button_ty.setTitleColor(UIColor.white, for: .normal)
+        button_ty.titleLabel?.font = UIFont.regular_ty(AdaptSize_ty(13))
+        return button_ty
     }()
     private var saveButton_ty: TYButton_ty = {
-        let button = TYButton_ty()
-        button.setTitle("保存", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(13))
-        return button
+        let button_ty = TYButton_ty()
+        button_ty.setTitle("保存", for: .normal)
+        button_ty.setTitleColor(UIColor.white, for: .normal)
+        button_ty.titleLabel?.font = UIFont.regular_ty(AdaptSize_ty(13))
+        return button_ty
     }()
     private var deleteButton_ty: TYButton_ty = {
-        let button = TYButton_ty()
-        button.setTitle("删除", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(13))
-        return button
+        let button_ty = TYButton_ty()
+        button_ty.setTitle("删除", for: .normal)
+        button_ty.setTitleColor(UIColor.white, for: .normal)
+        button_ty.titleLabel?.font = UIFont.regular_ty(AdaptSize_ty(13))
+        return button_ty
     }()
 
     override init(frame: CGRect) {
@@ -51,10 +51,10 @@ public class TYPhotoAlbumToolsView_ty: TYView_ty {
 
     public override func createSubviews_ty() {
         super.createSubviews_ty()
-        let itemSize = CGSize(width: AdaptSize_ty(50), height: 50)
-        shareButton_ty.size_ty    = itemSize
-        saveButton_ty.size_ty     = itemSize
-        deleteButton_ty.size_ty   = itemSize
+        let itemSize_ty = CGSize(width: AdaptSize_ty(50), height: 50)
+        shareButton_ty.size_ty    = itemSize_ty
+        saveButton_ty.size_ty     = itemSize_ty
+        deleteButton_ty.size_ty   = itemSize_ty
         let stackView_ty = UIStackView(arrangedSubviews: [shareButton_ty, saveButton_ty, deleteButton_ty])
         stackView_ty.alignment    = .center
         stackView_ty.axis         = .horizontal

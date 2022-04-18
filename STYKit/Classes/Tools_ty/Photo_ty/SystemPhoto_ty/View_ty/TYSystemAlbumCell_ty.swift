@@ -10,18 +10,18 @@ import UIKit
 class TYSystemAlbumCell_ty: UITableViewCell {
 
     private var nameLabel_ty: UILabel = {
-        let label = UILabel()
-        label.text          = ""
-        label.textColor     = UIColor.black
-        label.font          = UIFont.regular_ty(size: AdaptSize_ty(15))
-        label.textAlignment = .left
-        return label
+        let label_ty = UILabel()
+        label_ty.text          = ""
+        label_ty.textColor     = UIColor.black
+        label_ty.font          = UIFont.regular_ty(AdaptSize_ty(15))
+        label_ty.textAlignment = .left
+        return label_ty
     }()
     private var selectedImageView_ty: TYImageView_ty = {
-        let imageView = TYImageView_ty()
-        imageView.contentMode = .scaleAspectFill
-        imageView.image       = UIImage(named: "chat_photo_selected")
-        return imageView
+        let imageView_ty = TYImageView_ty()
+        imageView_ty.contentMode = .scaleAspectFill
+        imageView_ty.image       = UIImage(named: "chat_photo_selected")
+        return imageView_ty
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -54,8 +54,8 @@ class TYSystemAlbumCell_ty: UITableViewCell {
         self.selectionStyle = .none
     }
 
-    func setData_ty(model: TYPhotoAlbumModel_ty, isCurrent: Bool) {
-        self.nameLabel_ty.text         = (model.assetCollection_ty?.localizedTitle ?? "") + "(\(model.assets_ty.count))"
-        self.selectedImageView_ty.isHidden = !isCurrent
+    func setData_ty(model_ty: TYPhotoAlbumModel_ty, isCurrent_ty: Bool) {
+        self.nameLabel_ty.text         = (model_ty.assetCollection_ty?.localizedTitle ?? "") + "(\(model_ty.assets_ty.count))"
+        self.selectedImageView_ty.isHidden = !isCurrent_ty
     }
 }

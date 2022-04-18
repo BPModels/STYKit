@@ -16,28 +16,28 @@ public class TYImageView_ty: UIImageView {
     ///   - placeholdImage: 默认图片
     ///   - downloadProgress: 下载进度
     ///   - complete: 完成回调
-    public func setImage_ty(imageStr: String, placeholdImage: UIImage? = nil, downloadProgress: SDImageLoaderProgressBlock?,  complete: SDExternalCompletionBlock?) {
-        var _imageStr: String? = imageStr
-        if imageStr.hasChinese_ty() {
-            _imageStr = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+    public func setImage_ty(imageStr_ty: String, placeholdImage_ty: UIImage? = nil, downloadProgress_ty: SDImageLoaderProgressBlock?,  complete_ty: SDExternalCompletionBlock?) {
+        var _imageStr_ty: String? = imageStr_ty
+        if imageStr_ty.hasChinese_ty() {
+            _imageStr_ty = imageStr_ty.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         }
-        guard let imageStr = _imageStr else {
-            complete?(nil, nil, .none, nil)
+        guard let imageStr_ty = _imageStr_ty else {
+            complete_ty?(nil, nil, .none, nil)
             return
         }
         DispatchQueue.global().async {
-            let imageUrl = URL(string: imageStr)
-            self.sd_setImage(with: imageUrl, placeholderImage: placeholdImage, progress: downloadProgress) { image, error, cacheType, url in
+            let imageUrl_ty = URL(string: imageStr_ty)
+            self.sd_setImage(with: imageUrl_ty, placeholderImage: placeholdImage_ty, progress: downloadProgress_ty) { image_ty, error_ty, cacheType_ty, url_ty in
                 DispatchQueue.main.async {
-                    self.image = image
-                    complete?(image, error, cacheType, url)
+                    self.image = image_ty
+                    complete_ty?(image_ty, error_ty, cacheType_ty, url_ty)
                 }
             }
         }
     }
     
-    public func setCorner_ty(redius: CGFloat) {
-        self.layer.cornerRadius  = redius
+    public func setCorner_ty(redius_ty: CGFloat) {
+        self.layer.cornerRadius  = redius_ty
         self.layer.masksToBounds = true
     }
 }

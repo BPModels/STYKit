@@ -35,53 +35,53 @@ public class TYAuthorizationManager_ty: NSObject, CLLocationManagerDelegate {
     
     // MARK: - ---获取相册权限
     @objc
-    public func photo_ty(completion:@escaping (Bool) -> Void) {
+    public func photo_ty(completion_ty:@escaping (Bool) -> Void) {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
-            completion(false)
+            completion_ty(false)
             return
         }
-        let status = PHPhotoLibrary.authorizationStatus()
-        switch status {
+        let status_ty = PHPhotoLibrary.authorizationStatus()
+        switch status_ty {
         case .authorized:
-            completion(true)
+            completion_ty(true)
         case .denied, .restricted:
-            completion(false)
-            self.showAlert_ty(type: .photo_ty)
+            completion_ty(false)
+            self.showAlert_ty(type_ty: .photo_ty)
         case .notDetermined:
-            PHPhotoLibrary.requestAuthorization({ (status) in
+            PHPhotoLibrary.requestAuthorization({ (status_ty) in
                 DispatchQueue.main.async {
-                    let result = status == PHAuthorizationStatus.authorized
-                    completion(result)
-                    if (!result) {
-                        self.showAlert_ty(type: .photo_ty)
+                    let result_ty = status_ty == PHAuthorizationStatus.authorized
+                    completion_ty(result_ty)
+                    if (!result_ty) {
+                        self.showAlert_ty(type_ty: .photo_ty)
                     }
                 }
             })
         case .limited:
-            completion(true)
+            completion_ty(true)
         @unknown default:
             return
         }
     }
     
     // MARK: - --相机权限
-    public func camera_ty(completion:@escaping (Bool) -> Void ) {
+    public func camera_ty(completion_ty:@escaping (Bool) -> Void ) {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             return
         }
-        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-        switch status {
+        let status_ty = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        switch status_ty {
         case .authorized:
-            completion(true)
+            completion_ty(true)
         case .denied, .restricted:
-            completion(false)
-            self.showAlert_ty(type: .camera_ty)
+            completion_ty(false)
+            self.showAlert_ty(type_ty: .camera_ty)
         case .notDetermined:
-            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (result: Bool) in
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (result_ty: Bool) in
                 DispatchQueue.main.async {
-                    completion(result)
-                    if (!result) {
-                        self.showAlert_ty(type: .camera_ty)
+                    completion_ty(result_ty)
+                    if (!result_ty) {
+                        self.showAlert_ty(type_ty: .camera_ty)
                     }
                 }
             })
@@ -91,22 +91,22 @@ public class TYAuthorizationManager_ty: NSObject, CLLocationManagerDelegate {
     }
     
     // MARK: - --麦克风权限
-    public func authorizeMicrophoneWith_ty(completion:@escaping (Bool) -> Void ) {
+    public func authorizeMicrophoneWith_ty(completion_ty:@escaping (Bool) -> Void ) {
         
-        let status = AVAudioSession.sharedInstance().recordPermission
+        let status_ty = AVAudioSession.sharedInstance().recordPermission
         
-        switch status {
+        switch status_ty {
         case .granted:
-            completion(true)
+            completion_ty(true)
         case .denied:
-            completion(false)
-            self.showAlert_ty(type: .microphone_ty)
+            completion_ty(false)
+            self.showAlert_ty(type_ty: .microphone_ty)
         case .undetermined:
-            AVAudioSession.sharedInstance().requestRecordPermission { (result) in
+            AVAudioSession.sharedInstance().requestRecordPermission { (result_ty) in
                 DispatchQueue.main.async {
-                    completion(result)
-                    if (!result) {
-                        self.showAlert_ty(type: .microphone_ty)
+                    completion_ty(result_ty)
+                    if (!result_ty) {
+                        self.showAlert_ty(type_ty: .microphone_ty)
                     }
                 }
             }
@@ -116,13 +116,13 @@ public class TYAuthorizationManager_ty: NSObject, CLLocationManagerDelegate {
     }
     
     // MARK: - --远程通知权限
-    public func authorizeRemoteNotification_ty(_ completion:@escaping (Bool) -> Void) {
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+    public func authorizeRemoteNotification_ty(_ completion_ty:@escaping (Bool) -> Void) {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings_ty) in
             DispatchQueue.main.async {
-                if settings.authorizationStatus == .denied || settings.authorizationStatus == .notDetermined {
-                    completion(false)
+                if settings_ty.authorizationStatus == .denied || settings_ty.authorizationStatus == .notDetermined {
+                    completion_ty(false)
                 }else{
-                    completion(true)
+                    completion_ty(true)
                 }
             }
         }
@@ -132,25 +132,25 @@ public class TYAuthorizationManager_ty: NSObject, CLLocationManagerDelegate {
     // MARK: ==== CLLocationManagerDelegate ====
     
     // TODO: ==== Tools ====
-    private func showAlert_ty(type: TYAuthorizationType_ty) {
-        let projectName  = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? ""
-        let title        = String(format: "无法访问你的%@", type.rawValue)
-        let description  = String(format: "请到设置 -> %@ -> %@，打开访问权限", projectName, type.rawValue)
+    private func showAlert_ty(type_ty: TYAuthorizationType_ty) {
+        let projectName_ty  = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? ""
+        let title_ty        = String(format: "无法访问你的%@", type_ty.rawValue)
+        let description_ty  = String(format: "请到设置 -> %@ -> %@，打开访问权限", projectName_ty, type_ty.rawValue)
 
-        TYAlertManager_ty.share_ty.twoButton_ty(title: title, description: description, leftBtnName: "取消", leftBtnClosure: nil, rightBtnName: "打开") {
+        TYAlertManager_ty.share_ty.twoButton_ty(title_ty: title_ty, description_ty: description_ty, leftBtnName_ty: "取消", leftBtnClosure_ty: nil, rightBtnName_ty: "打开") {
             self.jumpToAppSetting_ty()
         }.show_ty()
     }
     
     /// 跳转到App设置页面
     private func jumpToAppSetting_ty() {
-        let appSetting = URL(string: UIApplication.openSettingsURLString)
+        let appSetting_ty = URL(string: UIApplication.openSettingsURLString)
 
-        if appSetting != nil {
+        if appSetting_ty != nil {
             if #available(iOS 10, *) {
-                UIApplication.shared.open(appSetting!, options: [:], completionHandler: nil)
+                UIApplication.shared.open(appSetting_ty!, options: [:], completionHandler: nil)
             } else {
-                UIApplication.shared.openURL(appSetting!)
+                UIApplication.shared.openURL(appSetting_ty!)
             }
         }
     }

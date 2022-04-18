@@ -23,7 +23,7 @@ public protocol TYBaseDelegate_ty: NSObjectProtocol {
 open class TYView_ty: UIView, TYBaseDelegate_ty {
     deinit {
         #if DEBUG
-        print("\(self.classForCoder): 释放")
+        print("\(self.classForCoder): 释放 _ty")
         #endif
     }
     

@@ -16,33 +16,33 @@ public protocol TYNavigationBarDelegate_ty: NSObjectProtocol {
 public class TYNavigationBar_ty: TYView_ty {
     public var leftViewList_ty  = [UIView]()
     public var rightViewList_ty = [UIView]()
-    public var delegate: TYNavigationBarDelegate_ty?
+    public var delegate_ty: TYNavigationBarDelegate_ty?
     
-    private let buttonSize   = CGSize(width: AdaptSize_ty(53), height: AdaptSize_ty(27))
+    private let buttonSize_ty   = CGSize(width: AdaptSize_ty(53), height: AdaptSize_ty(27))
     private let leftOffsetX  = AdaptSize_ty(12)
     private let rightOffsetX = AdaptSize_ty(-12)
     
     public let titleLabel_ty: TYLabel_ty = {
-        let label = TYLabel_ty()
-        label.text      = ""
-        label.textColor = UIColor.black0_ty
-        label.font      = UIFont.regular_ty(size: AdaptSize_ty(18))
-        return label
+        let label_ty = TYLabel_ty()
+        label_ty.text      = ""
+        label_ty.textColor = UIColor.black0_ty
+        label_ty.font      = UIFont.regular_ty(AdaptSize_ty(18))
+        return label_ty
     }()
     
     public let leftButton_ty: TYButton_ty = {
-        let button = TYButton_ty()
-        button.setImage(UIImage(name_ty: "back_ty", type: .pdf), for: .normal)
-        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(16))
-        button.contentHorizontalAlignment = .left
-        return button
+        let button_ty = TYButton_ty()
+        button_ty.setImage(UIImage(name_ty: "back_ty", type_ty: .pdf_ty), for: .normal)
+        button_ty.titleLabel?.font = UIFont.regular_ty(AdaptSize_ty(16))
+        button_ty.contentHorizontalAlignment = .left
+        return button_ty
     }()
     
     public lazy var rightButton_ty: TYButton_ty = {
-        let button = TYButton_ty()
-        button.titleLabel?.font = UIFont.regular_ty(size: AdaptSize_ty(16))
-        button.contentHorizontalAlignment = .center
-        return button
+        let button_ty = TYButton_ty()
+        button_ty.titleLabel?.font = UIFont.regular_ty(AdaptSize_ty(16))
+        button_ty.contentHorizontalAlignment = .center
+        return button_ty
     }()
     
     public override init(frame: CGRect) {
@@ -64,8 +64,8 @@ public class TYNavigationBar_ty: TYView_ty {
         leftButton_ty.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(leftOffsetX).priority(.low)
             make.centerY.equalTo(titleLabel_ty)
-            make.width.equalTo(buttonSize.width)
-            make.height.equalTo(buttonSize.height)
+            make.width.equalTo(buttonSize_ty.width)
+            make.height.equalTo(buttonSize_ty.height)
         }
         titleLabel_ty.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(AdaptSize_ty(-10))
@@ -77,33 +77,33 @@ public class TYNavigationBar_ty: TYView_ty {
         rightButton_ty.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(rightOffsetX).priority(.low)
             make.centerY.equalTo(titleLabel_ty)
-            make.width.equalTo(buttonSize.width)
-            make.height.equalTo(buttonSize.height)
+            make.width.equalTo(buttonSize_ty.width)
+            make.height.equalTo(buttonSize_ty.height)
         }
     }
     
     public override func bindProperty_ty() {
         super.bindProperty_ty()
-        self.leftButton_ty.addTarget(self, action: #selector(clickLeftAction_ty(sender:)), for: .touchUpInside)
-        self.rightButton_ty.addTarget(self, action: #selector(clickRightAction_ty(sender:)), for: .touchUpInside)
+        self.leftButton_ty.addTarget(self, action: #selector(clickLeftAction_ty(sender_ty:)), for: .touchUpInside)
+        self.rightButton_ty.addTarget(self, action: #selector(clickRightAction_ty(sender_ty:)), for: .touchUpInside)
         // 设置默认标题
-        self.title           = currentVC_ty?.title
+        self.title_ty        = currentVC_ty?.title
         self.backgroundColor = .white
     }
     
     // MARK: ==== Event ====
     /// 设置左边文案
     /// - Parameter text: 文案
-    public func setLeftTitle_ty(text: String?) {
-        self.leftButton_ty.setTitle(text, for: .normal)
-        let _newWidth = self.leftButton_ty.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize.height)).width
+    public func setLeftTitle_ty(text_ty: String?) {
+        self.leftButton_ty.setTitle(text_ty, for: .normal)
+        let _newWidth_ty = self.leftButton_ty.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize_ty.height)).width
         self.leftButton_ty.snp.updateConstraints { make in
-            make.width.equalTo(_newWidth + AdaptSize_ty(10))
+            make.width.equalTo(_newWidth_ty + AdaptSize_ty(10))
         }
     }
     
     /// 标题
-    public var title: String? = "" {
+    public var title_ty: String? = "" {
         willSet {
             self.titleLabel_ty.text = newValue
         }
@@ -111,27 +111,27 @@ public class TYNavigationBar_ty: TYView_ty {
     
     /// 设置左边文案
     /// - Parameter text: 文案
-    public func setRightTitle_ty(text: String?) {
-        self.rightButton_ty.setTitle(text, for: .normal)
+    public func setRightTitle_ty(text_ty: String?) {
+        self.rightButton_ty.setTitle(text_ty, for: .normal)
         self.rightButton_ty.isHidden = false
-        let _newWidth = self.rightButton_ty.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize.height)).width
+        let _newWidth_ty = self.rightButton_ty.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize_ty.height)).width
         self.rightButton_ty.snp.updateConstraints { make in
-            make.width.equalTo(_newWidth + AdaptSize_ty(10))
+            make.width.equalTo(_newWidth_ty + AdaptSize_ty(10))
         }
     }
     
     /// 点击左边按钮
-    @objc private func clickLeftAction_ty(sender: TYButton_ty) {
-        sender.status = .disable
-        self.delegate?.leftAction_ty()
-        sender.status = .normal
+    @objc private func clickLeftAction_ty(sender_ty: TYButton_ty) {
+        sender_ty.status_ty = .disable_ty
+        self.delegate_ty?.leftAction_ty()
+        sender_ty.status_ty = .normal_ty
     }
     
     /// 点击右边按钮
-    @objc private func clickRightAction_ty(sender: TYButton_ty) {
-        sender.status = .disable
-        self.delegate?.rightAction_ty()
-        sender.status = .normal
+    @objc private func clickRightAction_ty(sender_ty: TYButton_ty) {
+        sender_ty.status_ty = .disable_ty
+        self.delegate_ty?.rightAction_ty()
+        sender_ty.status_ty = .normal_ty
     }
     
 }

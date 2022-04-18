@@ -11,24 +11,24 @@ public class TYRedDotView_ty: TYView_ty {
     
     public enum TYRedDotViewEnum_ty {
         /// 红色背景
-        case red
+        case red_ty
         /// 灰色背景
-        case gray
+        case gray_ty
         
-        var backgroundColor: UIColor {
+        var backgroundColor_ty: UIColor {
             switch self {
-            case .red:
+            case .red_ty:
                 return UIColor.red0_ty
-            case .gray:
+            case .gray_ty:
                 return UIColor.gray0_ty
             }
         }
         
-        var titleColor: UIColor {
+        var titleColor_ty: UIColor {
             switch self {
-            case .red:
+            case .red_ty:
                 return UIColor.white
-            case .gray:
+            case .gray_ty:
                 return UIColor.black
             }
         }
@@ -37,21 +37,21 @@ public class TYRedDotView_ty: TYView_ty {
     private var showNumber_ty: Bool
     private let maxNumber_ty: Int   = 99
     private var defaultH_ty:CGFloat = .zero
-    private var colorType_ty: TYRedDotViewEnum_ty = .red
+    private var colorType_ty: TYRedDotViewEnum_ty = .red_ty
     
     private let numLabel_ty: TYLabel_ty = {
-        let label = TYLabel_ty()
-        label.text          = ""
-        label.font          = UIFont.regular_ty(size: AdaptSize_ty(10))
-        label.textAlignment = .center
-        return label
+        let label_ty = TYLabel_ty()
+        label_ty.text          = ""
+        label_ty.font          = UIFont.regular_ty(AdaptSize_ty(10))
+        label_ty.textAlignment = .center
+        return label_ty
     }()
     
     /// 是否显示未读数，false则显示红点
     /// - Parameter showNumber: 未读数量
-    public init(showNumber: Bool = false, colorType: TYRedDotViewEnum_ty = .red) {
-        self.colorType_ty  = colorType
-        self.showNumber_ty = showNumber
+    public init(showNumber_ty: Bool = false, colorType_ty: TYRedDotViewEnum_ty = .red_ty) {
+        self.colorType_ty  = colorType_ty
+        self.showNumber_ty = showNumber_ty
         super.init(frame: .zero)
         if showNumber_ty {
             defaultH_ty = AdaptSize_ty(16)
@@ -91,30 +91,30 @@ public class TYRedDotView_ty: TYView_ty {
     
     public override func updateUI_ty() {
         super.updateUI_ty()
-        self.backgroundColor    = colorType_ty.backgroundColor
-        self.numLabel_ty.textColor = colorType_ty.titleColor
+        self.backgroundColor       = colorType_ty.backgroundColor_ty
+        self.numLabel_ty.textColor = colorType_ty.titleColor_ty
     }
     
     // MARK: ==== Event ====
-    public func updateNumber_ty(_ num: Int) {
-        let value          = self.getNumberStr_ty(num: num)
-        self.numLabel_ty.text = value
-        self.isHidden      = num <= 0
+    public func updateNumber_ty(_ num_ty: Int) {
+        let value_ty          = self.getNumberStr_ty(num_ty: num_ty)
+        self.numLabel_ty.text = value_ty
+        self.isHidden         = num_ty <= 0
         // update layout
         if self.superview != nil {
-            var w = defaultH_ty
-            if (num > 9 || num < 0) {
-                w = value.textWidth_ty(font: numLabel_ty.font, height: defaultH_ty) + AdaptSize_ty(10)
+            var w_ty = defaultH_ty
+            if (num_ty > 9 || num_ty < 0) {
+                w_ty = value_ty.textWidth_ty(font_ty: numLabel_ty.font, height_ty: defaultH_ty) + AdaptSize_ty(10)
             }
             self.snp.updateConstraints { (make) in
-                make.size.equalTo(CGSize(width: w, height: defaultH_ty))
+                make.size.equalTo(CGSize(width: w_ty, height: defaultH_ty))
             }
         }
     }
     
     // TODO: ==== Tools ====
-    public func getNumberStr_ty(num: Int) -> String {
-        return num > maxNumber_ty ? "\(maxNumber_ty)+" : "\(num)"
+    public func getNumberStr_ty(num_ty: Int) -> String {
+        return num_ty > maxNumber_ty ? "\(maxNumber_ty)+" : "\(num_ty)"
     }
     
 }

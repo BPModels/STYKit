@@ -11,10 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSData (Extension_ty)
 
-+(NSData*)random_ty:(NSUInteger)size;
++(NSData*)random_ty:(NSUInteger)size_ty;
 
 // 16进制转NSData
-+ (NSData*)convertHexStrToData_ty:(NSString*)str;
++ (NSData*)convertHexStrToData_ty:(NSString*)str_ty;
 
 // data转16进制
 - (NSString *)convertDataToHexStr_ty;

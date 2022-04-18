@@ -11,67 +11,67 @@
 
 @implementation NSData (Extension_ty)
 
-+(NSData*)random_ty:(NSUInteger)size
++(NSData*)random_ty:(NSUInteger)size_ty
 {
-    NSData * ret_val = nil;
-    if ( size == 0 ) errno = EINVAL;
+    NSData * ret_val_ty = nil;
+    if ( size_ty == 0 ) errno = EINVAL;
     else {
-        NSUInteger byte_length = size * sizeof(uint8_t);
-        uint8_t * data = malloc( byte_length );
-        memset ( (void*)data, 0x0, size );
-        OSStatus err = SecRandomCopyBytes (kSecRandomDefault, byte_length, data );
-        if ( !err ) ret_val = [NSData dataWithBytes:data length:byte_length];
-        free ( data );
+        NSUInteger byte_length_ty = size_ty * sizeof(uint8_t);
+        uint8_t * data_ty = malloc( byte_length_ty );
+        memset ( (void*)data_ty, 0x0, size_ty );
+        OSStatus err_ty = SecRandomCopyBytes (kSecRandomDefault, byte_length_ty, data_ty );
+        if ( !err_ty ) ret_val_ty = [NSData dataWithBytes:data_ty length:byte_length_ty];
+        free ( data_ty );
     }
-    return ret_val;
+    return ret_val_ty;
 }
 
 // 16进制转NSData
-+ (NSData*)convertHexStrToData_ty:(NSString*)str {
-    if (!str || [str length] ==0) {
++ (NSData*)convertHexStrToData_ty:(NSString*)str_ty {
+    if (!str_ty || [str_ty length] ==0) {
         return nil;
     }
    
-    NSMutableData *hexData = [[NSMutableData alloc]initWithCapacity:8];
-    NSRange range;
-    if ([str length] %2==0) {
-        range = NSMakeRange(0,2);
+    NSMutableData *hexData_ty = [[NSMutableData alloc]initWithCapacity:8];
+    NSRange range_ty;
+    if ([str_ty length] %2==0) {
+        range_ty = NSMakeRange(0,2);
     } else {
-        range = NSMakeRange(0,1);
+        range_ty = NSMakeRange(0,1);
     }
-    for (NSInteger i = range.location; i < [str length]; i +=2) {
-        unsigned int anInt;
-        NSString *hexCharStr = [str substringWithRange:range];
-        NSScanner *scanner = [[NSScanner alloc]initWithString:hexCharStr];
+    for (NSInteger i_ty = range_ty.location; i_ty < [str_ty length]; i_ty +=2) {
+        unsigned int anInt_ty;
+        NSString *hexCharStr_ty = [str_ty substringWithRange:range_ty];
+        NSScanner *scanner_ty = [[NSScanner alloc]initWithString:hexCharStr_ty];
        
-        [scanner scanHexInt:&anInt];
-        NSData *entity = [[NSData alloc]initWithBytes:&anInt length:1];
-        [hexData appendData:entity];
+        [scanner_ty scanHexInt:&anInt_ty];
+        NSData *entity_ty = [[NSData alloc]initWithBytes:&anInt_ty length:1];
+        [hexData_ty appendData:entity_ty];
        
-        range.location+= range.length;
-        range.length=2;
+        range_ty.location+= range_ty.length;
+        range_ty.length=2;
     }
-    return hexData;
+    return hexData_ty;
 }
 
 - (NSString *)convertDataToHexStr_ty{
     if (!self || [self length] == 0) {
         return @"";
     }
-    NSMutableString *string = [[NSMutableString alloc] initWithCapacity:[self length]];
+    NSMutableString *string_ty = [[NSMutableString alloc] initWithCapacity:[self length]];
     
-    [self enumerateByteRangesUsingBlock:^(const void *bytes, NSRange byteRange, BOOL *stop) {
-        unsigned char *dataBytes = (unsigned char*)bytes;
-        for (NSInteger i = 0; i < byteRange.length; i++) {
-            NSString *hexStr = [NSString stringWithFormat:@"%x", (dataBytes[i]) & 0xff];
-            if ([hexStr length] == 2) {
-                [string appendString:hexStr];
+    [self enumerateByteRangesUsingBlock:^(const void *bytes_ty, NSRange byteRange_ty, BOOL *stop_ty) {
+        unsigned char *dataBytes_ty = (unsigned char*)bytes_ty;
+        for (NSInteger i_ty = 0; i_ty < byteRange_ty.length; i_ty++) {
+            NSString *hexStr_ty = [NSString stringWithFormat:@"%x", (dataBytes_ty[i_ty]) & 0xff];
+            if ([hexStr_ty length] == 2) {
+                [string_ty appendString:hexStr_ty];
             } else {
-                [string appendFormat:@"0%@", hexStr];
+                [string_ty appendFormat:@"0%@", hexStr_ty];
             }
         }
     }];
-    return string;
+    return string_ty;
 }
 
 

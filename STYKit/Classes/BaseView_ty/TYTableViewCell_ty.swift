@@ -9,8 +9,8 @@ import Foundation
 
 public class TYTableViewCell_ty: UITableViewCell {
     
-    public struct Associated {
-        static var lineView = "kLineView"
+    public struct Associated_ty {
+        static var lineView_ty = "kLineView_ty"
     }
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,25 +31,25 @@ public class TYTableViewCell_ty: UITableViewCell {
     public func bindData_ty() {}
     public func updateUI_ty() {}
     
-    public func setLine_ty(left: CGFloat = AdaptSize_ty(15), right: CGFloat = 0, isHide: Bool) {
-        if let lineView = objc_getAssociatedObject(self, &Associated.lineView) as? UIView {
-            lineView.snp.updateConstraints { make in
-                make.left.equalToSuperview().offset(left)
-                make.right.equalToSuperview().offset(right)
+    public func setLine_ty(left_ty: CGFloat = AdaptSize_ty(15), right_ty: CGFloat = 0, isHide_ty: Bool) {
+        if let lineView_ty = objc_getAssociatedObject(self, &Associated_ty.lineView_ty) as? UIView {
+            lineView_ty.snp.updateConstraints { make in
+                make.left.equalToSuperview().offset(left_ty)
+                make.right.equalToSuperview().offset(right_ty)
             }
-            lineView.isHidden = isHide
+            lineView_ty.isHidden = isHide_ty
         } else {
-            let lineView = TYView_ty()
-            lineView.backgroundColor = UIColor.gray
-            contentView.addSubview(lineView)
-            lineView.snp.makeConstraints { make in
-                make.left.equalToSuperview().offset(left)
-                make.right.equalToSuperview().offset(right)
+            let lineView_ty = TYView_ty()
+            lineView_ty.backgroundColor = UIColor.gray
+            contentView.addSubview(lineView_ty)
+            lineView_ty.snp.makeConstraints { make in
+                make.left.equalToSuperview().offset(left_ty)
+                make.right.equalToSuperview().offset(right_ty)
                 make.bottom.equalToSuperview()
                 make.height.equalTo(0.5)
             }
-            lineView.isHidden = isHide
-            objc_setAssociatedObject(self, &Associated.lineView, lineView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            lineView_ty.isHidden = isHide_ty
+            objc_setAssociatedObject(self, &Associated_ty.lineView_ty, lineView_ty, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

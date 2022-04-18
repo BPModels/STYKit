@@ -11,25 +11,25 @@ import Foundation
 public class TYEmptyView_ty: TYView_ty {
     
     private var contentView_ty: TYView_ty = {
-        let view = TYView_ty()
-        view.backgroundColor = UIColor.clear
-        return view
+        let view_ty = TYView_ty()
+        view_ty.backgroundColor = UIColor.clear
+        return view_ty
     }()
     
     private var imageView_ty: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode     = .scaleAspectFill
-        imageView.backgroundColor = .clear
-        return imageView
+        let imageView_ty = UIImageView()
+        imageView_ty.contentMode     = .scaleAspectFill
+        imageView_ty.backgroundColor = .clear
+        return imageView_ty
     }()
     
     private var hintLabel_ty: TYLabel_ty = {
-        let label = TYLabel_ty()
-        label.text          = ""
-        label.textColor     = UIColor.black
-        label.font          = UIFont.semibold_ty(size: AdaptSize_ty(16))
-        label.textAlignment = .center
-        return label
+        let label_ty = TYLabel_ty()
+        label_ty.text          = ""
+        label_ty.textColor     = UIColor.black
+        label_ty.font          = UIFont.semibold_ty(AdaptSize_ty(16))
+        label_ty.textAlignment = .center
+        return label_ty
     }()
     
     override init(frame: CGRect) {
@@ -38,17 +38,17 @@ public class TYEmptyView_ty: TYView_ty {
         self.bindProperty_ty()
     }
     
-    public init(image: UIImage?, hintText: String?) {
+    public init(image: UIImage?, hintText_ty: String?) {
         super.init(frame: .zero)
-        if let _image = image {
+        if let _image_ty = image {
             self.imageView_ty.isHidden = false
-            self.imageView_ty.image    = _image
+            self.imageView_ty.image    = _image_ty
         } else {
             // 默认图
             self.imageView_ty.isHidden = true
         }
-        if let _hintText = hintText {
-            self.hintLabel_ty.text = _hintText
+        if let _hintText_ty = hintText_ty {
+            self.hintLabel_ty.text = _hintText_ty
         } else {
             // 默认文案
             self.hintLabel_ty.text = "暂无数据"

@@ -9,17 +9,17 @@ import Foundation
 
 open class TYViewController_ty: UIViewController, TYNavigationBarDelegate_ty {
     
-    private struct Associatoed {
+    private struct Associatoed_ty {
         static var customNavigationBar_ty = "customNavigationBar_ty"
     }
     
     public var customNavigationBar_ty: TYNavigationBar_ty? {
-        return objc_getAssociatedObject(self, &Associatoed.customNavigationBar_ty) as? TYNavigationBar_ty
+        return objc_getAssociatedObject(self, &Associatoed_ty.customNavigationBar_ty) as? TYNavigationBar_ty
     }
     
     open override var title: String? {
-        willSet {
-            self.customNavigationBar_ty?.title = newValue
+        willSet(newValue_ty) {
+            self.customNavigationBar_ty?.title_ty = newValue_ty
         }
     }
     
@@ -40,14 +40,14 @@ open class TYViewController_ty: UIViewController, TYNavigationBarDelegate_ty {
     }
     
     private func setCustomNavigationBar() {
-        let nBar = TYNavigationBar_ty()
-        objc_setAssociatedObject(self, &Associatoed.customNavigationBar_ty, nBar, .OBJC_ASSOCIATION_RETAIN)
-        self.view.addSubview(nBar)
-        nBar.snp.makeConstraints { make in
+        let nBar_ty = TYNavigationBar_ty()
+        objc_setAssociatedObject(self, &Associatoed_ty.customNavigationBar_ty, nBar_ty, .OBJC_ASSOCIATION_RETAIN)
+        self.view.addSubview(nBar_ty)
+        nBar_ty.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
             make.height.equalTo(kNavigationHeight_ty)
         }
-        self.customNavigationBar_ty?.delegate = self
+        self.customNavigationBar_ty?.delegate_ty = self
     }
     
     open func createSubviews_ty() {}
@@ -65,8 +65,8 @@ open class TYViewController_ty: UIViewController, TYNavigationBarDelegate_ty {
     // MARK: ==== Event ====
     public func leftAction_ty() {
         self.view.endEditing(true)
-        if let nav = self.navigationController {
-            nav.popViewController(animated: true)
+        if let nav_ty = self.navigationController {
+            nav_ty.popViewController(animated: true)
         } else {
             self.dismiss(animated: true)
         }

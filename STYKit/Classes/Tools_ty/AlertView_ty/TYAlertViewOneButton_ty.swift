@@ -10,17 +10,17 @@ import Foundation
 public class KFAlertViewOneButton_ty: TYBaseAlertView_ty {
     
     private var partitionContentLineView_ty: TYView_ty = {
-        let view = TYView_ty()
-        view.backgroundColor = UIColor.gray4_ty
-        return view
+        let view_ty = TYView_ty()
+        view_ty.backgroundColor = UIColor.gray4_ty
+        return view_ty
     }()
 
-    init(title: String?, description: String, buttonName: String, closure: (() -> Void)?) {
+    init(title_ty: String?, description_ty: String, buttonName_ty: String, closure_ty: (() -> Void)?) {
         super.init(frame: .zero)
-        self.titleLabel_ty.text       = title
-        self.descriptionLabel_ty.text = description
-        self.rightActionBlock_ty      = closure
-        self.rightButton_ty.setTitle(buttonName, for: .normal)
+        self.titleLabel_ty.text       = title_ty
+        self.descriptionLabel_ty.text = description_ty
+        self.rightActionBlock_ty      = closure_ty
+        self.rightButton_ty.setTitle(buttonName_ty, for: .normal)
         self.createSubviews_ty()
         self.bindProperty_ty()
     }
@@ -36,7 +36,7 @@ public class KFAlertViewOneButton_ty: TYBaseAlertView_ty {
         mainView_ty.addSubview(rightButton_ty)
         mainView_ty.addSubview(partitionContentLineView_ty)
         // 是否显示标题
-        if let title = titleLabel_ty.text, title.isNotEmpty_ty {
+        if let title_ty = titleLabel_ty.text, title_ty.isNotEmpty_ty {
             titleLabel_ty.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(topPadding_ty)
                 make.left.equalToSuperview().offset(leftPadding_ty)

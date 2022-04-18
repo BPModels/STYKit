@@ -46,18 +46,18 @@ public protocol TYRequest_ty {
 public extension TYRequest_ty {
 
     var header_ty: [String : String] {
-        var _header: [String: String] = [
+        var _header_ty: [String: String] = [
                         "Content-Type"   : "application/json",
                         "Connection"     : "keep-alive",
                         "TY-CHANNEL-ID"  : "AppStore",
                         "TY-TIMESTAMP"   : "\(Date().timeIntervalSince1970)"
         ]
         // 增加自定义Header参数
-        let otherHeader = TYNetworkConfig_ty.share_ty.headerParameters_ty
-        otherHeader.forEach { (key: String, value: String) in
-            _header[key] = value
+        let otherHeader_ty = TYNetworkConfig_ty.share_ty.headerParameters_ty
+        otherHeader_ty.forEach { (key_ty: String, value_ty: String) in
+            _header_ty[key_ty] = value_ty
         }
-        return _header
+        return _header_ty
     }
 
     var parameters_ty: [String : Any?]? {
@@ -69,14 +69,14 @@ public extension TYRequest_ty {
     }
 
     var url_ty: URL? {
-        let urlStr = TYNetworkConfig_ty.share_ty.domainApi_ty + path_ty
-        if urlStr.isEmpty {
+        let urlStr_ty = TYNetworkConfig_ty.share_ty.domainApi_ty + path_ty
+        if urlStr_ty.isEmpty {
             print("请配置域名：TYNetworkConfig_ty.share_ty.domainApi_ty")
         }
-        guard let _urlStr = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let _url = URL(string: _urlStr) else {
+        guard let _urlStr_ty = urlStr_ty.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let _url_ty = URL(string: _urlStr_ty) else {
             return nil
         }
-        return _url
+        return _url_ty
     }
 
     var path_ty: String { return "" }

@@ -10,38 +10,38 @@ import Foundation
 public extension UIFont {
     
     enum FontType_ty: String {
-        case PingFangTCRegular  = "PingFangSC-Regular"
-        case PingFangTCMedium   = "PingFangSC-Medium"
-        case PingFangTCSemibold = "PingFangSC-Semibold"
-        case PingFangTCLight    = "PingFangSC-Light"
-        case DINAlternateBold   = "DINAlternate-Bold"
+        case PingFangTCRegular_ty  = "PingFangSC-Regular"
+        case PingFangTCMedium_ty   = "PingFangSC-Medium"
+        case PingFangTCSemibold_ty = "PingFangSC-Semibold"
+        case PingFangTCLight_ty    = "PingFangSC-Light"
+        case DINAlternateBold_ty   = "DINAlternate-Bold"
     }
     
-    class func regular_ty(size: CGFloat) -> UIFont {
-        return self.custom_ty(.PingFangTCRegular, size: size)
+    class func regular_ty(_ size_ty: CGFloat) -> UIFont {
+        return self.custom_ty(.PingFangTCRegular_ty, size_ty)
     }
     
-    class func medium_ty(size: CGFloat) -> UIFont {
-        return self.custom_ty(.PingFangTCMedium, size: size)
+    class func medium_ty(_ size_ty: CGFloat) -> UIFont {
+        return self.custom_ty(.PingFangTCMedium_ty, size_ty)
     }
     
-    class func semibold_ty(size: CGFloat) -> UIFont {
-        return self.custom_ty(.PingFangTCSemibold, size: size)
+    class func semibold_ty(_ size_ty: CGFloat) -> UIFont {
+        return self.custom_ty(.PingFangTCSemibold_ty, size_ty)
     }
     
-    class func light_ty(size: CGFloat) -> UIFont {
-        return self.custom_ty(.PingFangTCLight, size: size)
+    class func light_ty(_ size_ty: CGFloat) -> UIFont {
+        return self.custom_ty(.PingFangTCLight_ty, size_ty)
     }
     
-    class func DIN_ty(size: CGFloat) -> UIFont {
-        return self.custom_ty(.DINAlternateBold, size: size)
+    class func DIN_ty(_ size_ty: CGFloat) -> UIFont {
+        return self.custom_ty(.DINAlternateBold_ty, size_ty)
     }
     
-    class func custom_ty(_ type: FontType_ty, size: CGFloat) -> UIFont {
-        if let font = UIFont(name: type.rawValue, size: size) {
+    class func custom_ty(_ type: FontType_ty, _ size_ty: CGFloat) -> UIFont {
+        if let font = UIFont(name: type.rawValue, size: size_ty) {
             return font
         } else {
-            return UIFont.systemFont(ofSize:size)
+            return UIFont.systemFont(ofSize: size_ty)
         }
     }
 }

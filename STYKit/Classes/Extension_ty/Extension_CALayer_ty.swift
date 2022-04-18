@@ -18,9 +18,9 @@ public extension CALayer {
         }
 
         set{
-            var frame = self.frame
-            frame.origin.y = newValue
-            self.frame = frame
+            var frame_ty = self.frame
+            frame_ty.origin.y = newValue
+            self.frame = frame_ty
         }
     }
 
@@ -32,10 +32,10 @@ public extension CALayer {
             return self.frame.origin.x
         }
 
-        set{
-            var frame = self.frame
-            frame.origin.x = newValue
-            self.frame = frame
+        set(newValue_ty) {
+            var frame_ty = self.frame
+            frame_ty.origin.x = newValue_ty
+            self.frame = frame_ty
         }
     }
 
@@ -47,10 +47,10 @@ public extension CALayer {
             return self.frame.maxY
         }
 
-        set {
-            var frame = self.frame
-            frame.origin.y = newValue - frame.size.height
-            self.frame = frame
+        set(newValue_ty) {
+            var frame_ty = self.frame
+            frame_ty.origin.y = newValue_ty - self.frame.size.height
+            self.frame = frame_ty
         }
     }
 
@@ -62,9 +62,9 @@ public extension CALayer {
             return self.frame.maxX
         }
 
-        set {
-            var frame = self.frame
-            frame.origin.x = newValue + self.frame.size.width
+        set(newValue_ty) {
+            var frame_ty = self.frame
+            frame_ty.origin.x = newValue_ty + self.frame.size.width
             self.frame = frame
         }
     }
@@ -75,10 +75,10 @@ public extension CALayer {
             return self.frame.size.width
         }
 
-        set {
-            var frame = self.frame
-            frame.size.width = newValue
-            self.frame = frame
+        set(newValue_ty) {
+            var frame_ty = self.frame
+            frame_ty.size.width = newValue_ty
+            self.frame = frame_ty
         }
     }
 
@@ -88,10 +88,10 @@ public extension CALayer {
             return self.frame.size.height
         }
 
-        set {
-            var frame = self.frame
-            frame.size.height = newValue
-            self.frame = frame
+        set(newValue_ty) {
+            var frame_ty = self.frame
+            frame_ty.size.height = newValue_ty
+            self.frame = frame_ty
         }
     }
 
@@ -101,10 +101,10 @@ public extension CALayer {
             return self.frame.origin
         }
 
-        set {
-            var frame = self.frame
-            frame.origin = newValue
-            self.frame = frame
+        set(newValue_ty) {
+            var frame_ty = self.frame
+            frame_ty.origin = newValue_ty
+            self.frame = frame_ty
         }
     }
 
@@ -114,16 +114,16 @@ public extension CALayer {
             return self.frame.size
         }
 
-        set {
-            var frame = self.frame
-            frame.size = newValue
-            self.frame = frame
+        set(newValue_ty) {
+            var frame_ty = self.frame
+            frame_ty.size = newValue_ty
+            self.frame = frame_ty
         }
     }
     
     /// 设置默认阴影效果
-    func setDefaultShadow_ty(alpha: CGFloat = 0.2) {
-        self.shadowColor   = UIColor.black.withAlphaComponent(alpha).cgColor
+    func setDefaultShadow_ty(alpha_ty: CGFloat = 0.2) {
+        self.shadowColor   = UIColor.black.withAlphaComponent(alpha_ty).cgColor
         self.shadowOffset  = CGSize(width: AdaptSize_ty(1), height: AdaptSize_ty(1))
         self.shadowOpacity = 0.8
         self.shadowPath    = nil
@@ -132,12 +132,12 @@ public extension CALayer {
     
     /// 添加弹框动画,frame的比例放大缩小效果,类似果冻(Jelly)晃动
     /// - parameter duration: 动画持续时间
-    func addJellyAnimation_ty(duration: Double = 0.25){
-        let animater            = CAKeyframeAnimation(keyPath: "transform.scale")
-        animater.values         = [0.5, 1.1, 1.0]// 先保持大小比例,再放大,最后恢复默认大小
-        animater.duration       = duration
-        animater.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        self.add(animater, forKey: "jellyAnimation")
+    func addJellyAnimation_ty(duration_ty: Double = 0.25){
+        let animater_ty            = CAKeyframeAnimation(keyPath: "transform.scale")
+        animater_ty.values         = [0.5, 1.1, 1.0]// 先保持大小比例,再放大,最后恢复默认大小
+        animater_ty.duration       = duration_ty
+        animater_ty.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        self.add(animater_ty, forKey: "jellyAnimation_ty")
     }
 
 }

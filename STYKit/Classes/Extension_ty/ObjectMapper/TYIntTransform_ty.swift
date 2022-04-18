@@ -16,25 +16,25 @@ public class TYIntTransform_ty: TransformType {
     public init() {}
         
     public func transformFromJSON(_ value: Any?) -> Int? {
-        var result: Int?
-        guard let json = value else {
-            return result
+        var result_ty: Int?
+        guard let json_ty = value else {
+            return result_ty
         }
-        if json is NSNumber, let numberValue = json as? NSNumber {
-            result = numberValue.intValue
-        } else if json is Int, let intValue = json as? Int {
-            result = intValue
-        } else if json is String,let stringValue = json as? String {
-            result = Int(stringValue)
+        if json_ty is NSNumber, let numberValue_ty = json_ty as? NSNumber {
+            result_ty = numberValue_ty.intValue
+        } else if json_ty is Int, let intValue_ty = json_ty as? Int {
+            result_ty = intValue_ty
+        } else if json_ty is String,let stringValue_ty = json_ty as? String {
+            result_ty = Int(stringValue_ty)
         }
-        return result
+        return result_ty
     }
     
     public func transformToJSON(_ value: Int?) -> Any?? {
-        guard let _value = value else {
+        guard let _value_ty = value else {
             return nil
         }
-        return "\(_value)"
+        return "\(_value_ty)"
     }
 }
 

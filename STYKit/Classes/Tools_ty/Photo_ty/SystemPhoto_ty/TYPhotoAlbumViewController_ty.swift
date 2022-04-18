@@ -22,10 +22,10 @@ public class TYPhotoAlbumViewController_ty:
     var isSelect_ty: Bool = false {
         willSet {
             if newValue {
-                self.customNavigationBar_ty?.setRightTitle_ty(text: "取消")
+                self.customNavigationBar_ty?.setRightTitle_ty(text_ty: "取消")
                 self.showToolsView()
             } else {
-                self.customNavigationBar_ty?.setRightTitle_ty(text: "选择")
+                self.customNavigationBar_ty?.setRightTitle_ty(text_ty: "选择")
                 self.hideToolsView()
             }
             self.selectedList_ty.removeAll()
@@ -33,22 +33,22 @@ public class TYPhotoAlbumViewController_ty:
         }
     }
 
-    let kTYPhotoAlbumCellID_ty = "kTYPhotoAlbumCell"
+    let kTYPhotoAlbumCellID_ty = "kTYPhotoAlbumCell_ty"
     /// 总资源
     public var modelList_ty: [TYMediaModel_ty] = []
     /// 已选资源
     var selectedList_ty: [TYMediaModel_ty] = []
 
     private var collectionView_ty: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let width  = kScreenWidth_ty / 4
-        layout.itemSize = CGSize(width: width, height: width)
-        layout.minimumLineSpacing      = .zero
-        layout.minimumInteritemSpacing = .zero
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator   = false
-        return collectionView
+        let layout_ty = UICollectionViewFlowLayout()
+        let width_ty  = kScreenWidth_ty / 4
+        layout_ty.itemSize = CGSize(width: width_ty, height: width_ty)
+        layout_ty.minimumLineSpacing      = .zero
+        layout_ty.minimumInteritemSpacing = .zero
+        let collectionView_ty = UICollectionView(frame: .zero, collectionViewLayout: layout_ty)
+        collectionView_ty.showsHorizontalScrollIndicator = false
+        collectionView_ty.showsVerticalScrollIndicator   = false
+        return collectionView_ty
     }()
 
     private var toolsView_ty = TYPhotoAlbumToolsView_ty()
@@ -77,8 +77,8 @@ public class TYPhotoAlbumViewController_ty:
 
     public override func bindProperty_ty() {
         super.bindProperty_ty()
-        self.customNavigationBar_ty?.title = "图片和视频"
-        self.customNavigationBar_ty?.setRightTitle_ty(text: "选择")
+        self.customNavigationBar_ty?.title_ty = "图片和视频"
+        self.customNavigationBar_ty?.setRightTitle_ty(text_ty: "选择")
         self.toolsView_ty.delegate_ty     = self
         self.collectionView_ty.delegate   = self
         self.collectionView_ty.dataSource = self
@@ -121,33 +121,33 @@ public class TYPhotoAlbumViewController_ty:
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kTYPhotoAlbumCellID_ty, for: indexPath) as? TYMediaCell_ty else {
+        guard let cell_ty = collectionView.dequeueReusableCell(withReuseIdentifier: kTYPhotoAlbumCellID_ty, for: indexPath) as? TYMediaCell_ty else {
             return TYCollectionViewCell_ty()
         }
-        let model     = self.modelList_ty[indexPath.row]
-        let selected  = self.selectedList_ty.contains(model)
-        cell.delegate_ty = self
-        cell.setData_ty(model: model, hideSelect: !self.isSelect_ty, isSelected: selected)
-        return cell
+        let model_ty     = self.modelList_ty[indexPath.row]
+        let selected_ty  = self.selectedList_ty.contains(model_ty)
+        cell_ty.delegate_ty = self
+        cell_ty.setData_ty(model_ty: model_ty, hideSelect_ty: !self.isSelect_ty, isSelected_ty: selected_ty)
+        return cell_ty
     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? TYMediaCell_ty else {
+        guard let cell_ty = collectionView.cellForItem(at: indexPath) as? TYMediaCell_ty else {
             return
         }
-        TYBrowserView_ty(type: .custom_ty(modelList: modelList_ty), current: indexPath.row).show_ty(animationView: cell.imageView_ty)
+        TYBrowserView_ty(type_ty: .custom_ty(modelList_ty: modelList_ty), current_ty: indexPath.row).show_ty(animationView_ty: cell_ty.imageView_ty)
     }
 
     // MARK: ==== TYPhotoAlbumCellDelegate_ty ====
-    public func selectedImage_ty(model: Any) {
-        guard let _model = model as? TYMediaModel_ty, !self.selectedList_ty.contains(_model) else { return }
-        self.selectedList_ty.append(_model)
+    public func selectedImage_ty(model_ty: Any) {
+        guard let _model_ty = model_ty as? TYMediaModel_ty, !self.selectedList_ty.contains(_model_ty) else { return }
+        self.selectedList_ty.append(_model_ty)
         self.collectionView_ty.reloadData()
     }
 
-    public func unselectImage_ty(model: Any) {
-        guard let _model = model as? TYMediaModel_ty, let index = self.selectedList_ty.firstIndex(of: _model) else { return }
-        self.selectedList_ty.remove(at: index)
+    public func unselectImage_ty(model_ty: Any) {
+        guard let _model_ty = model_ty as? TYMediaModel_ty, let index_ty = self.selectedList_ty.firstIndex(of: _model_ty) else { return }
+        self.selectedList_ty.remove(at: index_ty)
         self.collectionView_ty.reloadData()
     }
     

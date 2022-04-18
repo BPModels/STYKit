@@ -13,16 +13,16 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
 
     /// 当前相册对象
     private var albumModel_ty: TYPhotoAlbumModel_ty? {
-        willSet {
-            self.contentView_ty.reload(album: newValue)
+        willSet(newValue_ty) {
+            self.contentView_ty.reload_ty(album_ty: newValue_ty)
         }
     }
     private var titleBackgroundView_ty: TYView_ty = {
-        let view = TYView_ty()
-        view.backgroundColor          = UIColor.gray0_ty
-        view.layer.masksToBounds      = true
-        view.isUserInteractionEnabled = false
-        return view
+        let view_ty = TYView_ty()
+        view_ty.backgroundColor          = UIColor.gray0_ty
+        view_ty.layer.masksToBounds      = true
+        view_ty.isUserInteractionEnabled = false
+        return view_ty
     }()
     /// 所有相册列表
     private var collectionList_ty: [TYPhotoAlbumModel_ty] = []
@@ -56,11 +56,11 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
             make.left.right.bottom.equalToSuperview()
             make.top.equalToSuperview().offset(kNavigationHeight_ty)
         }
-        if let bar = self.customNavigationBar_ty {
-            bar.addSubview(titleBackgroundView_ty)
-            bar.sendSubviewToBack(titleBackgroundView_ty)
-            bar.titleLabel_ty.font      = UIFont.regular_ty(size: AdaptSize_ty(15))
-            bar.titleLabel_ty.textColor = UIColor.black
+        if let bar_ty = self.customNavigationBar_ty {
+            bar_ty.addSubview(titleBackgroundView_ty)
+            bar_ty.sendSubviewToBack(titleBackgroundView_ty)
+            bar_ty.titleLabel_ty.font      = UIFont.regular_ty(AdaptSize_ty(15))
+            bar_ty.titleLabel_ty.textColor = UIColor.black
             titleBackgroundView_ty.snp.makeConstraints { make in
                 make.size.equalTo(CGSize.zero)
                 make.center.equalTo(self.customNavigationBar_ty!.titleLabel_ty)
@@ -75,36 +75,36 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
         self.albumListView_ty.isHidden          = true
         self.contentView_ty.maxSelectCount_ty   = maxSelectCount_ty
         
-        if let bar = self.customNavigationBar_ty {
+        if let bar_ty = self.customNavigationBar_ty {
             // 标题 - 点击相册名可更换其他相册
-            let tapAction = UITapGestureRecognizer(target: self, action: #selector(self.switchAlbumList))
-            bar.titleLabel_ty.isUserInteractionEnabled = true
-            bar.titleLabel_ty.addGestureRecognizer(tapAction)
+            let tapAction_ty = UITapGestureRecognizer(target: self, action: #selector(self.switchAlbumList_ty))
+            bar_ty.titleLabel_ty.isUserInteractionEnabled = true
+            bar_ty.titleLabel_ty.addGestureRecognizer(tapAction_ty)
             // 右边按钮 - 确定选择
-            bar.rightButton_ty.setTitleColor(UIColor.white, for: .normal)
-            bar.rightButton_ty.layer.masksToBounds = true
-            bar.rightButton_ty.layer.cornerRadius  = AdaptSize_ty(5)
-            bar.rightButton_ty.backgroundColor     = UIColor.theme_ty
+            bar_ty.rightButton_ty.setTitleColor(UIColor.white, for: .normal)
+            bar_ty.rightButton_ty.layer.masksToBounds = true
+            bar_ty.rightButton_ty.layer.cornerRadius  = AdaptSize_ty(5)
+            bar_ty.rightButton_ty.backgroundColor     = UIColor.theme_ty
             // 左边按钮 - 返回
-            bar.setLeftTitle_ty(text: "")
-            bar.leftButton_ty.setImage(UIImage(name_ty: "close_ty"), for: .normal)
-            bar.leftButton_ty.imageEdgeInsets = UIEdgeInsets(top: AdaptSize_ty(4), left: AdaptSize_ty(10), bottom: AdaptSize_ty(4), right: AdaptSize_ty(10))
-            self.updateRightButtonStatus()
+            bar_ty.setLeftTitle_ty(text_ty: "")
+            bar_ty.leftButton_ty.setImage(UIImage(name_ty: "close_ty"), for: .normal)
+            bar_ty.leftButton_ty.imageEdgeInsets = UIEdgeInsets(top: AdaptSize_ty(4), left: AdaptSize_ty(10), bottom: AdaptSize_ty(4), right: AdaptSize_ty(10))
+            self.updateRightButtonStatus_ty()
         }
     }
 
     public override func bindData_ty() {
         super.bindData_ty()
         // 获取相册列表
-        self.setAssetCollection { [weak self] in
+        self.setAssetCollection_ty { [weak self] in
             guard let self = self, !self.collectionList_ty.isEmpty else {
                 return
             }
             // 设置默认显示的相册
             self.albumModel_ty = self.collectionList_ty.first
-            self.albumListView_ty.setData_ty(albumList: self.collectionList_ty, current: self.albumModel_ty)
+            self.albumListView_ty.setData_ty(albumList_ty: self.collectionList_ty, current_ty: self.albumModel_ty)
             self.albumListView_ty.tableView_ty.reloadData()
-            self.updateTitleView()
+            self.updateTitleView_ty()
         }
     }
     
@@ -114,40 +114,40 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
 
     public override func rightAction_ty() {
         super.rightAction_ty()
-        let group = DispatchGroup()
-        var mediaModelList = [TYMediaModel_ty]()
-        let assetModelList = self.contentView_ty.selectedPhotoList()
+        let group_ty = DispatchGroup()
+        var mediaModelList_ty = [TYMediaModel_ty]()
+        let assetModelList_ty = self.contentView_ty.selectedPhotoList()
         
         self.view.showLoading_ty()
-        assetModelList.forEach { (asset) in
-            group.enter()
-            self.assetTransforMediaModel(asset: asset) { model in
-                guard let _model = model else {
-                    group.leave()
+        assetModelList_ty.forEach { (asset_ty) in
+            group_ty.enter()
+            self.assetTransforMediaModel_ty(asset_ty: asset_ty) { model_ty in
+                guard let _model_ty = model_ty else {
+                    group_ty.leave()
                     return
                 }
-                mediaModelList.append(_model)
-                group.leave()
+                mediaModelList_ty.append(_model_ty)
+                group_ty.leave()
             }
         }
-        group.notify(queue: .main) { [weak self] in
+        group_ty.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
             var result = true
-            mediaModelList.forEach { model in
-                if let imageModel = model as? TYMediaImageModel_ty, let _image = imageModel.image_ty {
-                    if (imageModel.data_ty?.sizeMB_ty ?? 0 > 30) {
+            mediaModelList_ty.forEach { model_ty in
+                if let imageModel_ty = model_ty as? TYMediaImageModel_ty, let _image_ty = imageModel_ty.image_ty {
+                    if (imageModel_ty.data_ty?.sizeMB_ty ?? 0 > 30) {
                         kWindow_ty.toast_ty("部分图片太大，请重新选择")
                         result = false
-                    } else if (imageModel.data_ty?.sizeKB_ty ?? 0 > 500) {
-                        if let finalImageData = _image.compress_ty(size: CGSize(width: 800.0, height: 800.0), compressionQuality: 0.5) {
-                            imageModel.image_ty = UIImage(data: finalImageData)
+                    } else if (imageModel_ty.data_ty?.sizeKB_ty ?? 0 > 500) {
+                        if let finalImageData_ty = _image_ty.compress_ty(size_ty: CGSize(width: 800.0, height: 800.0), compressionQuality_ty: 0.5) {
+                            imageModel_ty.image_ty = UIImage(data: finalImageData_ty)
                         }
                     }
                 }
             }
             self.view.hideLoading_ty()
             if result {
-                self.selectedBlock_ty?(mediaModelList)
+                self.selectedBlock_ty?(mediaModelList_ty)
                 if (self.autoPop_ty) {
                     self.leftAction_ty()
                 }
@@ -157,44 +157,44 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
 
     // MARK: ==== Event ====
     /// 设置相册列表
-    private func setAssetCollection(complete block: DefaultBlock_ty?) {
-        TYAuthorizationManager_ty.share_ty.photo_ty { [weak self] (result) in
-            guard let self = self, result else { return }
+    private func setAssetCollection_ty(complete_ty block_ty: DefaultBlock_ty?) {
+        TYAuthorizationManager_ty.share_ty.photo_ty { [weak self] (result_ty) in
+            guard let self = self, result_ty else { return }
             DispatchQueue.global().async { [weak self] in
                 guard let self = self else { return }
                 // 收藏相册
-                let favoritesCollections = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
+                let favoritesCollections_ty = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
                 // 相机照片
-                let assetCollections     = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .smartAlbumUserLibrary, options: nil)
+                let assetCollections_ty     = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .smartAlbumUserLibrary, options: nil)
                 // 全部照片
-                let cameraRolls          = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-                var id: Int = 0
-                cameraRolls.enumerateObjects { [weak self] (collection: PHAssetCollection, index: Int, pointer: UnsafeMutablePointer<ObjCBool>) in
-                    id += 1
-                    let model = TYPhotoAlbumModel_ty(collection: collection)
-                    model.id_ty = id
-                    self?.collectionList_ty.append(model)
+                let cameraRolls_ty          = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
+                var id_ty: Int = 0
+                cameraRolls_ty.enumerateObjects { [weak self] (collection_ty: PHAssetCollection, index_ty: Int, pointer_ty: UnsafeMutablePointer<ObjCBool>) in
+                    id_ty += 1
+                    let model_ty = TYPhotoAlbumModel_ty(collection_ty: collection_ty)
+                    model_ty.id_ty = id_ty
+                    self?.collectionList_ty.append(model_ty)
                 }
-                favoritesCollections.enumerateObjects { [weak self] (collection: PHAssetCollection, index: Int, pointer: UnsafeMutablePointer<ObjCBool>) in
-                    id += 1
-                    let model = TYPhotoAlbumModel_ty(collection: collection)
-                    model.id_ty = id
-                    self?.collectionList_ty.append(model)
+                favoritesCollections_ty.enumerateObjects { [weak self] (collection_ty: PHAssetCollection, index_ty: Int, pointer_ty: UnsafeMutablePointer<ObjCBool>) in
+                    id_ty += 1
+                    let model_ty = TYPhotoAlbumModel_ty(collection_ty: collection_ty)
+                    model_ty.id_ty = id_ty
+                    self?.collectionList_ty.append(model_ty)
                 }
-                assetCollections.enumerateObjects { [weak self] (collection: PHAssetCollection, index: Int, pointer: UnsafeMutablePointer<ObjCBool>) in
-                    id += 1
-                    let model = TYPhotoAlbumModel_ty(collection: collection)
-                    model.id_ty = id
-                    self?.collectionList_ty.append(model)
+                assetCollections_ty.enumerateObjects { [weak self] (collection_ty: PHAssetCollection, index_ty: Int, pointer_ty: UnsafeMutablePointer<ObjCBool>) in
+                    id_ty += 1
+                    let model_ty = TYPhotoAlbumModel_ty(collection_ty: collection_ty)
+                    model_ty.id_ty = id_ty
+                    self?.collectionList_ty.append(model_ty)
                 }
                 DispatchQueue.main.async {
-                    block?()
+                    block_ty?()
                 }
             }
         }
     }
     
-    @objc private func switchAlbumList() {
+    @objc private func switchAlbumList_ty() {
         if self.albumListView_ty.isHidden {
             self.albumListView_ty.showView_ty()
         } else {
@@ -203,61 +203,61 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
     }
     
     /// 更新右上角确定按钮的状态
-    private func updateRightButtonStatus() {
-        let list  = self.contentView_ty.selectedPhotoList()
-        var title = "完成"
-        if list.isEmpty {
-            self.customNavigationBar_ty?.rightButton_ty.status = .disable
+    private func updateRightButtonStatus_ty() {
+        let list_ty  = self.contentView_ty.selectedPhotoList()
+        var title_ty = "完成"
+        if list_ty.isEmpty {
+            self.customNavigationBar_ty?.rightButton_ty.status_ty = .disable_ty
         } else {
-            title += "(\(list.count)/\(self.maxSelectCount_ty))"
-            self.customNavigationBar_ty?.rightButton_ty.status = .normal
+            title_ty += "(\(list_ty.count)/\(self.maxSelectCount_ty))"
+            self.customNavigationBar_ty?.rightButton_ty.status_ty = .normal_ty
         }
-        if let bar = self.customNavigationBar_ty {
-            bar.setRightTitle_ty(text: title)
+        if let bar_ty = self.customNavigationBar_ty {
+            bar_ty.setRightTitle_ty(text_ty: title)
         }
     }
     
     /// 更新标题
-    private func updateTitleView() {
+    private func updateTitleView_ty() {
         if self.albumListView_ty.isHidden {
-            self.customNavigationBar_ty?.title = (self.albumModel_ty?.assetCollection_ty?.localizedTitle ?? "")
+            self.customNavigationBar_ty?.title_ty = (self.albumModel_ty?.assetCollection_ty?.localizedTitle ?? "")
         } else {
-            self.customNavigationBar_ty?.title = (self.albumModel_ty?.assetCollection_ty?.localizedTitle ?? "")
+            self.customNavigationBar_ty?.title_ty = (self.albumModel_ty?.assetCollection_ty?.localizedTitle ?? "")
         }
-        if let _titleLabel = self.customNavigationBar_ty?.titleLabel_ty, let _title = _titleLabel.text {
-            let _width = _title.textWidth_ty(font: _titleLabel.font, height: _titleLabel.font.lineHeight)
-            let _size = CGSize(width: _width + AdaptSize_ty(20), height: _titleLabel.font.lineHeight + AdaptSize_ty(10))
+        if let _titleLabel_ty = self.customNavigationBar_ty?.titleLabel_ty, let _title_ty = _titleLabel_ty.text {
+            let _width_ty = _title_ty.textWidth_ty(font_ty: _titleLabel_ty.font, height_ty: _titleLabel_ty.font.lineHeight)
+            let _size_ty = CGSize(width: _width_ty + AdaptSize_ty(20), height: _titleLabel_ty.font.lineHeight + AdaptSize_ty(10))
             self.titleBackgroundView_ty.snp.updateConstraints { make in
-                make.size.equalTo(_size)
+                make.size.equalTo(_size_ty)
             }
-            self.titleBackgroundView_ty.layer.cornerRadius = _size.height/2
+            self.titleBackgroundView_ty.layer.cornerRadius = _size_ty.height/2
         }
     }
 
     // MARK: ==== Tools ====
     /// 转换得到资源对象
-    private func assetTransforMediaModel(asset: PHAsset, complete block: ((TYMediaModel_ty?)->Void)?) {
-        switch asset.mediaType {
+    private func assetTransforMediaModel_ty(asset_ty: PHAsset, complete_ty block_ty: ((TYMediaModel_ty?)->Void)?) {
+        switch asset_ty.mediaType {
         case .image:
-            self.getImage(asset: asset, complete: block)
+            self.getImage_ty(asset_ty: asset_ty, complete_ty: block_ty)
         case .video:
-            self.getVideo(asset: asset, complete: block)
+            self.getVideo_ty(asset_ty: asset_ty, complete_ty: block_ty)
         default:
-            block?(nil)
+            block_ty?(nil)
             break
         }
     }
     
     /// 获取图片
-    private func getImage(asset: PHAsset, complete block: ((TYMediaImageModel_ty?)->Void)?) {
-        var model: TYMediaImageModel_ty?
-        let options = PHImageRequestOptions()
-        options.deliveryMode           = .highQualityFormat
-        options.isSynchronous          = true
-        options.resizeMode             = .exact
-        options.isNetworkAccessAllowed = true
-        options.progressHandler = { (progress, error, stop, userInfo:[AnyHashable : Any]?) in
-            print("Progress: \(progress)")
+    private func getImage_ty(asset_ty: PHAsset, complete_ty block_ty: ((TYMediaImageModel_ty?)->Void)?) {
+        var model_ty: TYMediaImageModel_ty?
+        let options_ty = PHImageRequestOptions()
+        options_ty.deliveryMode           = .highQualityFormat
+        options_ty.isSynchronous          = true
+        options_ty.resizeMode             = .exact
+        options_ty.isNetworkAccessAllowed = true
+        options_ty.progressHandler = { (progress_ty, error_ty, stop_ty, userInfo_ty:[AnyHashable : Any]?) in
+            print("Progress: \(progress_ty)")
         }
 //        PHCachingImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { (image: UIImage?, info:[AnyHashable : Any]?) in
 //            guard let result = info as? [String: Any], (result[PHImageCancelledKey] == nil), (result[PHImageErrorKey] == nil) else {
@@ -271,72 +271,72 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
 //            model = mediaModel
 //            block?(model)
 //        }
-        PHImageManager.default().requestImageData(for: asset, options: options) { data, str, ori, info in
-            print(data?.sizeMB_ty ?? 0)
-            guard let data = data else {
-                block?(nil)
+        PHImageManager.default().requestImageData(for: asset_ty, options: options_ty) { data_ty, str_ty, ori_ty, info_ty in
+            print(data_ty?.sizeMB_ty ?? 0)
+            guard let data_ty = data_ty else {
+                block_ty?(nil)
                 return
             }
-            let mediaModel = TYMediaImageModel_ty()
-            mediaModel.image_ty = UIImage(data: data)
-            mediaModel.name_ty  = asset.value(forKey: "filename") as? String ?? ""
-            mediaModel.type_ty  = .image_ty(type: .originImage_ty)
-            mediaModel.data_ty  = data
-            model = mediaModel
-            block?(model)
+            let mediaModel_ty = TYMediaImageModel_ty()
+            mediaModel_ty.image_ty = UIImage(data: data_ty)
+            mediaModel_ty.name_ty  = asset_ty.value(forKey: "filename") as? String ?? ""
+            mediaModel_ty.type_ty  = .image_ty(type_ty: .originImage_ty)
+            mediaModel_ty.data_ty  = data_ty
+            model_ty = mediaModel_ty
+            block_ty?(model_ty)
         }
     }
     
     /// 获取视频
-    private func getVideo(asset: PHAsset, complete block: ((TYMediaModel_ty?)->Void)?) {
-        guard let resource = PHAssetResource.assetResources(for: asset).first else {
-            block?(nil)
+    private func getVideo_ty(asset_ty: PHAsset, complete_ty block_ty: ((TYMediaModel_ty?)->Void)?) {
+        guard let resource_ty = PHAssetResource.assetResources(for: asset_ty).first else {
+            block_ty?(nil)
             return
         }
-        var videoData: Data?
-        let option = PHAssetResourceRequestOptions()
-        option.isNetworkAccessAllowed = true
+        var videoData_ty: Data?
+        let option_ty = PHAssetResourceRequestOptions()
+        option_ty.isNetworkAccessAllowed = true
         
-        PHAssetResourceManager.default().requestData(for: resource, options: option) { data in
-            videoData = data
-        } completionHandler: { error in
-            guard error == nil, let _data = videoData else {
-                block?(nil)
+        PHAssetResourceManager.default().requestData(for: resource_ty, options: option_ty) { data_ty in
+            videoData_ty = data_ty
+        } completionHandler: { error_ty in
+            guard error_ty == nil, let _data_ty = videoData_ty else {
+                block_ty?(nil)
                 return
             }
-            let model = TYMediaVideoModel_ty()
-            model.data_ty = _data
-            model.name_ty = resource.originalFilename
-            model.type_ty = .video_ty
-            block?(model)
+            let model_ty = TYMediaVideoModel_ty()
+            model_ty.data_ty = _data_ty
+            model_ty.name_ty = resource_ty.originalFilename
+            model_ty.type_ty = .video_ty
+            block_ty?(model_ty)
         }
     }
     
     // MARK: ==== TYSystemPhotoViewDelegate_ty ====
-    public func clickImage_ty(indexPath: IndexPath, from imageView: UIImageView?) {
-        guard let model = self.albumModel_ty else { return }
-        TYBrowserView_ty(type: .system_ty(result: model.assets_ty), current: indexPath.row).show_ty(animationView: imageView)
+    public func clickImage_ty(indexPath_ty: IndexPath, from_ty imageView_ty: UIImageView?) {
+        guard let model_ty = self.albumModel_ty else { return }
+        TYBrowserView_ty(type_ty: .system_ty(result_ty: model_ty.assets_ty), current_ty: indexPath_ty.row).show_ty(animationView_ty: imageView_ty)
     }
     
     public func selectedImage_ty() {
-        self.updateRightButtonStatus()
+        self.updateRightButtonStatus_ty()
     }
     public func unselectImage_ty() {
-        self.updateRightButtonStatus()
+        self.updateRightButtonStatus_ty()
     }
 
     // MARK: ==== TYSystemAlbumListViewDelegate_ty ====
-    public func selectedAlbum_ty(model: TYPhotoAlbumModel_ty?) {
-        self.albumModel_ty = model
-        self.updateTitleView()
+    public func selectedAlbum_ty(model_ty: TYPhotoAlbumModel_ty?) {
+        self.albumModel_ty = model_ty
+        self.updateTitleView_ty()
     }
     
     public func showAlbumAction_ty() {
-        self.updateTitleView()
+        self.updateTitleView_ty()
     }
     
     public func hideAlbumAction_ty() {
-        self.updateTitleView()
+        self.updateTitleView_ty()
     }
 
 }

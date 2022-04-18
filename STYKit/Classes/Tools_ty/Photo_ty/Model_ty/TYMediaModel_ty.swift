@@ -19,7 +19,7 @@ public class TYMediaModel_ty: Mappable, Equatable {
     /// 聊天室ID（仅用于IM）
     public var sessionId_ty: String?
     /// 资源类型
-    public var type_ty: TYMediaType = .image_ty(type: .image_ty)
+    public var type_ty: TYMediaType_ty = .image_ty(type_ty: .image_ty)
     /// 图片MD5
     public var md5_ty: String?
     /// 文件大小
@@ -38,9 +38,9 @@ public class TYMediaModel_ty: Mappable, Equatable {
     }
 }
 
-public enum TYMediaType {
+public enum TYMediaType_ty {
     /// 图片
-    case image_ty(type: TYMediaImageType)
+    case image_ty(type_ty: TYMediaImageType_ty)
     /// 视频
     case video_ty
     /// 音频
@@ -50,7 +50,7 @@ public enum TYMediaType {
 }
 
 
-public enum TYMediaImageType {
+public enum TYMediaImageType_ty {
     /// 头像
     case icon_ty
     /// 地图消息
@@ -66,15 +66,15 @@ public enum TYMediaImageType {
         get {
             switch self {
             case .icon_ty:
-                return "_pic_icon"
+                return "_pic_icon_ty"
             case .mapMessage_ty:
-                return "_pic_map"
+                return "_pic_map_ty"
             case .thumbImage_ty:
-                return "_pic_thum"
+                return "_pic_thum_ty"
             case .image_ty:
                 return "_pic"
             case .originImage_ty:
-                return "_pic_hd"
+                return "_pic_hd_ty"
             }
         }
     }

@@ -9,24 +9,24 @@ import Foundation
 
 /// 优先级由高到低
 public enum TYAlertPriorityEnum_ty: Int {
-    case A = 0
-    case B = 1
-    case C = 2
-    case D = 3
-    case E = 4
-    case F = 5
-    case normal = 100
+    case A_ty = 0
+    case B_ty = 1
+    case C_ty = 2
+    case D_ty = 3
+    case E_ty = 4
+    case F_ty = 5
+    case normal_ty = 100
 }
 
 /// AlertView的基类,默认只显示标题或者标题+描述信息
 open class TYBaseAlertView_ty: TYTopWindowView_ty {
     
     /// 弹框优先级
-    public var priority_ty: TYAlertPriorityEnum_ty = .normal
+    public var priority_ty: TYAlertPriorityEnum_ty = .normal_ty
     /// 是否已展示过
-    public var isShowed_ty = false
+    public var isShowed_ty         = false
     /// 默认事件触发后自动关闭页面
-    public var autoClose_ty: Bool = true
+    public var autoClose_ty: Bool  = true
     /// 确定按钮是否标红（破坏性操作警告）
     public var isDestruct_ty: Bool = false
     
@@ -51,13 +51,13 @@ open class TYBaseAlertView_ty: TYTopWindowView_ty {
     // 标题的高度
     public var titleHeight_ty: CGFloat {
         get {
-            return self.titleLabel_ty.textHeight_ty(width: mainViewWidth_ty - leftPadding_ty - rightPadding_ty)
+            return self.titleLabel_ty.textHeight_ty(width_ty: mainViewWidth_ty - leftPadding_ty - rightPadding_ty)
         }
     }
     // 描述的高度
     public var descriptionHeight_ty: CGFloat {
         get {
-            return self.descriptionLabel_ty.textHeight_ty(width: mainViewWidth_ty - leftPadding_ty - rightPadding_ty)
+            return self.descriptionLabel_ty.textHeight_ty(width_ty: mainViewWidth_ty - leftPadding_ty - rightPadding_ty)
         }
     }
     
@@ -70,28 +70,28 @@ open class TYBaseAlertView_ty: TYTopWindowView_ty {
     
     // 弹框的背景
     open var mainView_ty: UIView = {
-        let view = UIView()
-        view.backgroundColor     = UIColor.white
-        view.layer.cornerRadius  = AdaptSize_ty(15)
-        view.layer.masksToBounds = true
-        return view
+        let view_ty = UIView()
+        view_ty.backgroundColor     = UIColor.white
+        view_ty.layer.cornerRadius  = AdaptSize_ty(15)
+        view_ty.layer.masksToBounds = true
+        return view_ty
     }()
 
     // 弹窗标题
     open var titleLabel_ty: UILabel = {
-        let label           = UILabel()
-        label.numberOfLines = 1
-        label.textColor     = UIColor.black
-        label.font          = UIFont.semibold_ty(size: AdaptSize_ty(20))
-        label.textAlignment = .center
-        return label
+        let label_ty           = UILabel()
+        label_ty.numberOfLines = 1
+        label_ty.textColor     = UIColor.black
+        label_ty.font          = UIFont.semibold_ty(AdaptSize_ty(20))
+        label_ty.textAlignment = .center
+        return label_ty
     }()
     
     open var contentScrollView_ty: UIScrollView = {
-       let scrollView = UIScrollView()
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator   = false
-        return scrollView
+       let scrollView_ty = UIScrollView()
+        scrollView_ty.showsHorizontalScrollIndicator = false
+        scrollView_ty.showsVerticalScrollIndicator   = false
+        return scrollView_ty
     }()
     
     /// 自定义富文本视图
@@ -99,40 +99,40 @@ open class TYBaseAlertView_ty: TYTopWindowView_ty {
 
     // 弹窗描述
     open var descriptionLabel_ty: UILabel = {
-        let label = UILabel()
-        label.textColor     = UIColor.black
-        label.font          = UIFont.regular_ty(size: AdaptSize_ty(15))
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
+        let label_ty = UILabel()
+        label_ty.textColor     = UIColor.black
+        label_ty.font          = UIFont.regular_ty(AdaptSize_ty(15))
+        label_ty.numberOfLines = 0
+        label_ty.textAlignment = .center
+        return label_ty
     }()
     
     /// 背景图
     internal var backgroundImage_ty: TYImageView_ty = {
-        let imageView = TYImageView_ty()
-        imageView.contentMode = .scaleToFill
-        return imageView
+        let imageView_ty = TYImageView_ty()
+        imageView_ty.contentMode = .scaleToFill
+        return imageView_ty
     }()
     
     /// 左边按钮
     open var leftButton_ty: TYButton_ty = {
-        let button = TYButton_ty()
-        button.size_ty = CGSize(width: AdaptSize_ty(100), height: AdaptSize_ty(35))
-        button.backgroundColor = UIColor.gray0_ty
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font    = UIFont.semibold_ty(size: AdaptSize_ty(14))
-        button.layer.cornerRadius  = AdaptSize_ty(17.5)
-        button.layer.masksToBounds = true
-        return button
+        let button_ty = TYButton_ty()
+        button_ty.size_ty = CGSize(width: AdaptSize_ty(100), height: AdaptSize_ty(35))
+        button_ty.backgroundColor = UIColor.gray0_ty
+        button_ty.setTitleColor(UIColor.black, for: .normal)
+        button_ty.titleLabel?.font    = UIFont.semibold_ty(AdaptSize_ty(14))
+        button_ty.layer.cornerRadius  = AdaptSize_ty(17.5)
+        button_ty.layer.masksToBounds = true
+        return button_ty
     }()
 
     /// 右边按钮
     open var rightButton_ty: TYButton_ty = {
-        let button = TYButton_ty(.theme, animation: false)
-        button.size_ty = CGSize(width: AdaptSize_ty(100), height: AdaptSize_ty(35))
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font    = UIFont.semibold_ty(size: AdaptSize_ty(14))
-        return button
+        let button_ty = TYButton_ty(.theme_ty, animation_ty: false)
+        button_ty.size_ty = CGSize(width: AdaptSize_ty(100), height: AdaptSize_ty(35))
+        button_ty.setTitleColor(UIColor.white, for: .normal)
+        button_ty.titleLabel?.font = UIFont.semibold_ty(AdaptSize_ty(14))
+        return button_ty
     }()
     
     open override func createSubviews_ty() {
@@ -151,8 +151,8 @@ open class TYBaseAlertView_ty: TYTopWindowView_ty {
     }
     
     // MARK: ==== Event ====
-    open override func show_ty(view: UIView = kWindow_ty) {
-        super.show_ty(view: view)
+    open override func show_ty(view_ty: UIView = kWindow_ty) {
+        super.show_ty(view_ty: view_ty)
         currentVC_ty?.view.endEditing(true)
         // 果冻动画
         self.mainView_ty.layer.addJellyAnimation_ty()

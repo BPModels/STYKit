@@ -12,15 +12,15 @@ public extension DispatchQueue {
     
     private static var _onceTracker_ty = [String]()
 
-    class func once_ty(token: String, block:()->Void) {
+    class func once_ty(token_ty: String, block_ty:()->Void) {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
         
-        if _onceTracker_ty.contains(token) {
+        if _onceTracker_ty.contains(token_ty) {
             return
         }
         
-        _onceTracker_ty.append(token)
-        block()
+        _onceTracker_ty.append(token_ty)
+        block_ty()
     }
 }

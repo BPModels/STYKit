@@ -10,66 +10,66 @@
 
 @implementation TYKeyChainManager_ty
 
-+ (NSMutableDictionary *)getKeychainQuery:(NSString *)service {
++ (NSMutableDictionary *)getKeychainQuery_ty:(NSString *)service_ty {
     
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
             
             (__bridge id)kSecClassGenericPassword,(__bridge id)kSecClass,
             
-            service, (__bridge id)kSecAttrService,
+            service_ty, (__bridge id)kSecAttrService,
             
-            service, (__bridge id)kSecAttrAccount,
+            service_ty, (__bridge id)kSecAttrAccount,
             
             (__bridge id)kSecAttrAccessibleAfterFirstUnlock,(__bridge id)kSecAttrAccessible,
             
             nil];
 }
 
-+ (void)save:(NSString *)service data:(id)data {
++ (void)save_ty:(NSString *)service_ty data_ty:(id)data_ty {
     
     //Get search dictionary
     
-    NSMutableDictionary *keychainQuery = [self getKeychainQuery:service];
+    NSMutableDictionary *keychainQuery_ty = [self getKeychainQuery_ty:service_ty];
     
     //Delete old item before add new item
     
-    SecItemDelete((__bridge CFDictionaryRef)keychainQuery);
+    SecItemDelete((__bridge CFDictionaryRef)keychainQuery_ty);
     
     //Add new object to search dictionary(Attention:the data format)
     
-    [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:data] forKey:(__bridge id)kSecValueData];
+    [keychainQuery_ty setObject:[NSKeyedArchiver archivedDataWithRootObject:data_ty] forKey:(__bridge id)kSecValueData];
     
     //Add item to keychain with the search dictionary
     
-    SecItemAdd((CFDictionaryRef)CFBridgingRetain(keychainQuery), NULL);
+    SecItemAdd((CFDictionaryRef)CFBridgingRetain(keychainQuery_ty), NULL);
     
 }
 
-+ (id)load:(NSString *)service {
++ (id)load_ty:(NSString *)service_ty {
     
-    id ret = nil;
+    id ret_ty = nil;
     
-    NSMutableDictionary *keychainQuery = [self getKeychainQuery:service];
+    NSMutableDictionary *keychainQuery_ty = [self getKeychainQuery_ty:service_ty];
     
     //Configure the search setting
     
     //Since in our simple case we are expecting only a single attribute to be returned (the password) we can set the attribute kSecReturnData to kCFBooleanTrue
     
-    [keychainQuery setObject:(id)kCFBooleanTrue forKey:(__bridge id)kSecReturnData];
+    [keychainQuery_ty setObject:(id)kCFBooleanTrue forKey:(__bridge id)kSecReturnData];
     
-    [keychainQuery setObject:(__bridge id)kSecMatchLimitOne forKey:(__bridge id)kSecMatchLimit];
+    [keychainQuery_ty setObject:(__bridge id)kSecMatchLimitOne forKey:(__bridge id)kSecMatchLimit];
     
-    CFDataRef keyData = NULL;
+    CFDataRef keyData_ty = NULL;
     
-    if (SecItemCopyMatching((__bridge CFDictionaryRef)keychainQuery, (CFTypeRef *)&keyData) == noErr) {
+    if (SecItemCopyMatching((__bridge CFDictionaryRef)keychainQuery_ty, (CFTypeRef *)&keyData_ty) == noErr) {
         
         @try {
             
-            ret = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)keyData];
+            ret_ty = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)keyData_ty];
             
-        } @catch (NSException *e) {
+        } @catch (NSException *e_ty) {
             
-            NSLog(@"Unarchive of %@ failed: %@", service, e);
+            NSLog(@"Unarchive of %@ failed: %@", service_ty, e_ty);
             
         } @finally {
             
@@ -77,19 +77,19 @@
         
     }
     
-    if (keyData)
+    if (keyData_ty)
         
-        CFRelease(keyData);
+        CFRelease(keyData_ty);
     
-    return ret;
+    return ret_ty;
     
 }
 
-+ (void)delete:(NSString *)service {
++ (void)delete_ty:(NSString *)service_ty {
     
-    NSMutableDictionary *keychainQuery = [self getKeychainQuery:service];
+    NSMutableDictionary *keychainQuery_ty = [self getKeychainQuery_ty:service_ty];
     
-    SecItemDelete((__bridge CFDictionaryRef)keychainQuery);
+    SecItemDelete((__bridge CFDictionaryRef)keychainQuery_ty);
     
 }
 

@@ -22,55 +22,55 @@
 }
 
 
-+(NSData *) AES128EncryptWithKey_ty:(NSData*)key data:(NSData*)data
++(NSData *) AES128EncryptWithKey_ty:(NSData*)key_ty data_ty:(NSData*)data_ty
 {
-    return [self doCipher_ty:data iv_ty:nil key_ty:key context_ty:kCCEncrypt error_ty:nil];
+    return [self doCipher_ty:data_ty iv_ty:nil key_ty:key_ty context_ty:kCCEncrypt error_ty:nil];
 }
 
 
-+(NSData *) AES128DecryptWithKey_ty:(NSData*)key data:(NSData*)data
++(NSData *) AES128DecryptWithKey_ty:(NSData*)key_ty data_ty:(NSData*)data_ty
 {
-    return [self doCipher_ty:data iv_ty:nil key_ty:key context_ty:kCCDecrypt error_ty:nil];
+    return [self doCipher_ty:data_ty iv_ty:nil key_ty:key_ty context_ty:kCCDecrypt error_ty:nil];
 }
 
 // http://stackoverflow.com/questions/13490716/ios-aes-wrong-implemetation/13490717#13490717
 // http://stackoverflow.com/questions/23637597/ios-aes-encryption-fail-to-encrypt/23641521#23641521
  
-+ (NSData *)doCipher_ty:(NSData *)dataIn
-                  iv_ty:(NSData *)iv
-                 key_ty:(NSData *)symmetricKey
-             context_ty:(CCOperation)encryptOrDecrypt
-               error_ty:(NSError **)error
++ (NSData *)doCipher_ty:(NSData *)dataIn_ty
+                  iv_ty:(NSData *)iv_ty
+                 key_ty:(NSData *)symmetricKey_ty
+             context_ty:(CCOperation)encryptOrDecrypt_ty
+               error_ty:(NSError **)error_ty
 {
-    CCCryptorStatus ccStatus   = kCCSuccess;
-    size_t          cryptBytes = 0;
-    NSMutableData  *dataOut    = [NSMutableData dataWithLength:dataIn.length + kCCBlockSizeAES128];
+    CCCryptorStatus ccStatus_ty   = kCCSuccess;
+    size_t          cryptBytes_ty = 0;
+    NSMutableData  *dataOut_ty    = [NSMutableData dataWithLength:dataIn_ty.length + kCCBlockSizeAES128];
     
-    ccStatus = CCCrypt( encryptOrDecrypt,
+    ccStatus_ty = CCCrypt( encryptOrDecrypt_ty,
                        kCCAlgorithmAES,
                        kCCOptionECBMode | kCCOptionPKCS7Padding,
-                       symmetricKey.bytes,
-                       symmetricKey.length,
-                       iv.bytes,
-                       dataIn.bytes,
-                       dataIn.length,
-                       dataOut.mutableBytes,
-                       dataOut.length,
-                       &cryptBytes);
+                       symmetricKey_ty.bytes,
+                       symmetricKey_ty.length,
+                       iv_ty.bytes,
+                       dataIn_ty.bytes,
+                       dataIn_ty.length,
+                       dataOut_ty.mutableBytes,
+                       dataOut_ty.length,
+                       &cryptBytes_ty);
     
-    if (ccStatus == kCCSuccess) {
-        dataOut.length = cryptBytes;
+    if (ccStatus_ty == kCCSuccess) {
+        dataOut_ty.length = cryptBytes_ty;
     }
     else {
-        if (error) {
-            *error = [NSError errorWithDomain:@"kEncryptionError"
-                                         code:ccStatus
+        if (error_ty) {
+            *error_ty = [NSError errorWithDomain:@"kEncryptionError"
+                                         code:ccStatus_ty
                                      userInfo:nil];
         }
-        dataOut = nil;
+        dataOut_ty = nil;
     }
     
-    return dataOut;
+    return dataOut_ty;
 }
 
 

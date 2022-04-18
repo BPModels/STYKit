@@ -9,8 +9,8 @@ import Photos
 import UIKit
 
 public protocol TYPhotoAlbumCellDelegate_ty: NSObjectProtocol {
-    func selectedImage_ty(model: Any)
-    func unselectImage_ty(model: Any)
+    func selectedImage_ty(model_ty: Any)
+    func unselectImage_ty(model_ty: Any)
     /// 超额选择
     func selectedExcess_ty()
 }
@@ -24,56 +24,56 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
     weak var delegate_ty: TYPhotoAlbumCellDelegate_ty?
 
     private var disableShadowView_ty: TYView_ty = {
-        let view = TYView_ty()
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
-        view.isHidden        = true
-        return view
+        let view_ty = TYView_ty()
+        view_ty.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        view_ty.isHidden        = true
+        return view_ty
     }()
     var imageView_ty: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.masksToBounds = true
-        return imageView
+        let imageView_ty = UIImageView()
+        imageView_ty.contentMode = .scaleAspectFill
+        imageView_ty.layer.masksToBounds = true
+        return imageView_ty
     }()
 
     private var selectedBgView_ty: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-        view.isHidden = true
-        return view
+        let view_ty = UIView()
+        view_ty.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        view_ty.isHidden = true
+        return view_ty
     }()
 
     private var iconLabel_ty: UILabel = {
-        let label = UILabel()
-        label.text          = "图标"
-        label.textColor     = UIColor.white
-        label.font          = UIFont.regular_ty(size: AdaptSize_ty(18))
-        label.textAlignment = .center
-        label.isHidden      = true
-        return label
+        let label_ty = UILabel()
+        label_ty.text          = "图标"
+        label_ty.textColor     = UIColor.white
+        label_ty.font          = UIFont.regular_ty(AdaptSize_ty(18))
+        label_ty.textAlignment = .center
+        label_ty.isHidden      = true
+        return label_ty
     }()
     private var iconImageView_ty: TYImageView_ty = {
-        let imageView = TYImageView_ty()
-        imageView.contentMode = .scaleAspectFill
-        return imageView
+        let imageView_ty = TYImageView_ty()
+        imageView_ty.contentMode = .scaleAspectFill
+        return imageView_ty
     }()
 
     private var timeLabel_ty: UILabel = {
-        let label = UILabel()
-        label.text          = ""
-        label.textColor     = UIColor.white
-        label.font          = UIFont.regular_ty(size: AdaptSize_ty(10))
-        label.textAlignment = .left
-        label.isHidden      = true
-        return label
+        let label_ty = UILabel()
+        label_ty.text          = ""
+        label_ty.textColor     = UIColor.white
+        label_ty.font          = UIFont.regular_ty(AdaptSize_ty(10))
+        label_ty.textAlignment = .left
+        label_ty.isHidden      = true
+        return label_ty
     }()
 
     private var selectButton_ty: TYButton_ty = {
-        let button = TYButton_ty()
-        button.setImage(UIImage(name_ty: "unselect_ty"), for: .normal)
-        button.setImage(UIImage(name_ty: "selected_ty"), for: .selected)
-        button.imageEdgeInsets = UIEdgeInsets(top: AdaptSize_ty(5), left: AdaptSize_ty(5), bottom: AdaptSize_ty(5), right: AdaptSize_ty(5))
-        return button
+        let button_ty = TYButton_ty()
+        button_ty.setImage(UIImage(name_ty: "unselect_ty"), for: .normal)
+        button_ty.setImage(UIImage(name_ty: "selected_ty"), for: .selected)
+        button_ty.imageEdgeInsets = UIEdgeInsets(top: AdaptSize_ty(5), left: AdaptSize_ty(5), bottom: AdaptSize_ty(5), right: AdaptSize_ty(5))
+        return button_ty
     }()
 
     override init(frame: CGRect) {
@@ -125,9 +125,9 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
     public override func bindProperty_ty() {
         super.bindProperty_ty()
         self.imageView_ty.layer.masksToBounds = true
-        self.selectButton_ty.addTarget(self, action: #selector(selectedImage(sender:)), for: .touchUpInside)
-        let tapDisableGes = UITapGestureRecognizer(target: self, action: #selector(boredAction_ty))
-        self.disableShadowView_ty.addGestureRecognizer(tapDisableGes)
+        self.selectButton_ty.addTarget(self, action: #selector(selectedImage_ty(sender_ty:)), for: .touchUpInside)
+        let tapDisableGes_ty = UITapGestureRecognizer(target: self, action: #selector(boredAction_ty))
+        self.disableShadowView_ty.addGestureRecognizer(tapDisableGes_ty)
     }
 
     // MARK: ==== Event ====
@@ -137,13 +137,13 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
     }
     
     /// 显示历史照片浏览
-    func setData_ty(model: TYMediaModel_ty, hideSelect: Bool, isSelected: Bool) {
-        self.model_ty                   = model
-        self.isSelected                 = isSelected
-        self.selectButton_ty.isHidden   = hideSelect
-        self.selectedBgView_ty.isHidden = hideSelect
+    func setData_ty(model_ty: TYMediaModel_ty, hideSelect_ty: Bool, isSelected_ty: Bool) {
+        self.model_ty                   = model_ty
+        self.isSelected                 = isSelected_ty
+        self.selectButton_ty.isHidden   = hideSelect_ty
+        self.selectedBgView_ty.isHidden = hideSelect_ty
         
-        switch model.type_ty {
+        switch model_ty.type_ty {
         case .video_ty:
             self.iconLabel_ty.isHidden = false
             self.timeLabel_ty.isHidden = false
@@ -155,15 +155,15 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
 //                }
 //            }
         case .audio_ty:
-            self.iconLabel_ty.isHidden = false
-            self.timeLabel_ty.isHidden = false
-            self.iconLabel_ty.text = "音频"
-            self.timeLabel_ty.text = ""
+            self.iconLabel_ty.isHidden  = false
+            self.timeLabel_ty.isHidden  = false
+            self.iconLabel_ty.text      = "音频"
+            self.timeLabel_ty.text      = ""
         case .image_ty:
-            self.iconLabel_ty.isHidden = true
-            self.timeLabel_ty.isHidden = true
-            self.iconLabel_ty.text = ""
-            self.timeLabel_ty.text = ""
+            self.iconLabel_ty.isHidden  = true
+            self.timeLabel_ty.isHidden  = true
+            self.iconLabel_ty.text      = ""
+            self.timeLabel_ty.text      = ""
 //            if let imageModel = model as? TYMediaImageModel_ty {
 //                imageModel.getImage(progress: nil) {[weak self] (image: UIImage?) in
 //                    self?.imageView.image = image
@@ -175,19 +175,19 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
     }
 
     /// 显示系统相册中的照片
-    func setData_ty(asset: PHAsset, isSelected: Bool, selectedMax: Bool) {
-        self.assetMode_ty               = asset
-        self.selectButton_ty.isSelected = isSelected
-        self.selectedBgView_ty.isHidden = !isSelected
+    func setData_ty(asset_ty: PHAsset, isSelected_ty: Bool, selectedMax_ty: Bool) {
+        self.assetMode_ty               = asset_ty
+        self.selectButton_ty.isSelected = isSelected_ty
+        self.selectedBgView_ty.isHidden = !isSelected_ty
         self.imageView_ty.image         = nil
-        self.timeLabel_ty.text          = asset.duration.minuteSecondStr_ty()
-        if selectedMax && !isSelected {
+        self.timeLabel_ty.text          = asset_ty.duration.minuteSecondStr_ty()
+        if selectedMax_ty && !isSelected_ty {
             self.disableShadowView_ty.isHidden = false
         } else {
             self.disableShadowView_ty.isHidden = true
         }
         
-        if asset.mediaType == .video || asset.mediaType == .audio {
+        if asset_ty.mediaType == .video || asset_ty.mediaType == .audio {
             self.iconLabel_ty.isHidden = false
             self.timeLabel_ty.isHidden = false
         } else {
@@ -196,43 +196,43 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
         }
         
         self.iconLabel_ty.text = {
-            if asset.mediaType == .video {
+            if asset_ty.mediaType == .video {
                 return "视频"
-            } else if asset.mediaType == .audio {
+            } else if asset_ty.mediaType == .audio {
                 return "音频"
             } else {
                 return ""
             }
         }()
         self.timeLabel_ty.text = {
-            if Int(asset.duration) >= 3600 {
-                return asset.duration.hourMinuteSecondStr_ty()
+            if Int(asset_ty.duration) >= 3600 {
+                return asset_ty.duration.hourMinuteSecondStr_ty()
             } else {
-                return asset.duration.minuteSecondStr_ty()
+                return asset_ty.duration.minuteSecondStr_ty()
             }
         }()
-        let imageSize = (kScreenWidth_ty - 20) / 5.5 * UIScreen.main.scale
-        let options   = PHImageRequestOptions()
-        options.isSynchronous = false
-        PHCachingImageManager.default().requestImage(for: asset, targetSize: CGSize(width: imageSize, height: imageSize), contentMode: .default, options: options) { [weak self] (image: UIImage?, info:[AnyHashable : Any]?) in
-            self?.imageView_ty.image = image
+        let imageSize_ty = (kScreenWidth_ty - 20) / 5.5 * UIScreen.main.scale
+        let options_ty   = PHImageRequestOptions()
+        options_ty.isSynchronous = false
+        PHCachingImageManager.default().requestImage(for: asset_ty, targetSize: CGSize(width: imageSize_ty, height: imageSize_ty), contentMode: .default, options: options_ty) { [weak self] (image_ty: UIImage?, info_ty:[AnyHashable : Any]?) in
+            self?.imageView_ty.image = image_ty
         }
     }
 
-    @objc private func selectedImage(sender: TYButton_ty) {
-        let _isSelected = !sender.isSelected
-        var imageModel: Any
-        if let _model = self.model_ty {
-            imageModel = _model
-        } else if let _model = self.assetMode_ty {
-            imageModel = _model
+    @objc private func selectedImage_ty(sender_ty: TYButton_ty) {
+        let _isSelected_ty = !sender_ty.isSelected
+        var imageModel_ty: Any
+        if let _model_ty = self.model_ty {
+            imageModel_ty = _model_ty
+        } else if let _model_ty = self.assetMode_ty {
+            imageModel_ty = _model_ty
         } else {
             return
         }
-        if _isSelected {
-            self.delegate_ty?.selectedImage_ty(model: imageModel)
+        if _isSelected_ty {
+            self.delegate_ty?.selectedImage_ty(model_ty: imageModel_ty)
         } else {
-            self.delegate_ty?.unselectImage_ty(model: imageModel)
+            self.delegate_ty?.unselectImage_ty(model_ty: imageModel_ty)
         }
     }
 

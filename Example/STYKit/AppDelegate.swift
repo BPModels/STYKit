@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         extDic["phoneFirm"]      = "apple"
         extDic["phoneModel"]     = TYDeviceManager_ty.share_ty.model_ty().rawValue
         extDic["phoneSystem"]    = UIDevice.current.systemVersion
-        extDic["phoneUuid"]      = TYDeviceManager_ty.share_ty.UUID()
+        extDic["phoneUuid"]      = TYDeviceManager_ty.share_ty.UUID_ty()
         extDic["source"]         = "IOS"
         return extDic.toJson_ty()
     }

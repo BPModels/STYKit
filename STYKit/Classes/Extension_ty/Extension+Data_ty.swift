@@ -21,12 +21,12 @@ public extension Data {
     }
     
     /// 转换成对应类型的数据
-    func toJson<T>(type: T.Type) -> T? {
+    func toJson_ty<T>(type_ty: T.Type) -> T? {
         do {
-            let value = try JSONSerialization.jsonObject(with: self, options: JSONSerialization.ReadingOptions.mutableContainers) as? T
-            return value
-        } catch let error {
-            print("Dict to json error: \(error)")
+            let value_ty = try JSONSerialization.jsonObject(with: self, options: JSONSerialization.ReadingOptions.mutableContainers) as? T
+            return value_ty
+        } catch let error_ty {
+            print("Dict to json error: \(error_ty)")
             return nil
         }
     }

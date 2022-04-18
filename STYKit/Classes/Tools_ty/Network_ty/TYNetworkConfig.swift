@@ -23,14 +23,14 @@ public struct TYNetworkConfig_ty {
     
     /// 更新Header，如果没有则会添加到header
     /// - Parameter parameters: header参数
-    public mutating func updateHeader_ty(parameters: [String: String]) {
-        self.headerParameters_ty = parameters
+    public mutating func updateHeader_ty(parameters_ty: [String: String]) {
+        self.headerParameters_ty = parameters_ty
     }
     
     /// 开启网络状态监听
-    public func startNetworkListener_ty(update: ((NetworkReachabilityManager.NetworkReachabilityStatus) ->Void)?) {
-        NetworkReachabilityManager.default?.startListening(onUpdatePerforming: { (status: NetworkReachabilityManager.NetworkReachabilityStatus) in
-            update?(status)
+    public func startNetworkListener_ty(update_ty: ((NetworkReachabilityManager.NetworkReachabilityStatus) ->Void)?) {
+        NetworkReachabilityManager.default?.startListening(onUpdatePerforming: { (status_ty: NetworkReachabilityManager.NetworkReachabilityStatus) in
+            update_ty?(status_ty)
         })
     }
     

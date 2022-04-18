@@ -18,15 +18,15 @@ public class TYTableView_ty: UITableView {
     }
     
     private func configEmpTYView_ty() {
-        var rows     = 0
-        let sections = numberOfSections
-        for section in 0..<sections {
-            rows += numberOfRows(inSection: section)
+        var rows_ty     = 0
+        let sections_ty = numberOfSections
+        for section_ty in 0..<sections_ty {
+            rows_ty += numberOfRows(inSection: section_ty)
         }
-        if (rows == 0 && sections == 0) || (rows == 0 && sections == 1 && headerView(forSection: 0) == nil && footerView(forSection: 0) == nil) {
+        if (rows_ty == 0 && sections_ty == 0) || (rows_ty == 0 && sections_ty == 1 && headerView(forSection: 0) == nil && footerView(forSection: 0) == nil) {
             // 显示默认页面
-            if let emptyView = emptyView_ty {
-                self.backgroundView = emptyView
+            if let emptyView_ty = emptyView_ty {
+                self.backgroundView = emptyView_ty
             }
         } else {
             // 隐藏默认页面

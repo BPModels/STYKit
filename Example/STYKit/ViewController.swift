@@ -9,7 +9,7 @@
 import UIKit
 import STYKit
 
-class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataSource, BPRefreshProtocol {
+class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataSource, BPRefreshProtocol_ty {
     
     var count = 2
 
@@ -39,23 +39,23 @@ class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataS
         super.bindProperty_ty()
         self.tableView.delegate   = self
         self.tableView.dataSource = self
-        self.tableView.refreshDelegate = self
+        self.tableView.refreshDelegate_ty = self
         
-        tableView.setRefreshHeaderEnable { finishedBlock in
+        tableView.setRefreshHeaderEnable_ty { finishedBlock in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.count = 10
                 self.tableView.reloadData()
                 finishedBlock?()
-                print(self.tableView.page)
+                print(self.tableView.page_ty)
             }
         }
         
-        tableView.setRefreshFooterEnable { finishedBlock in
+        tableView.setRefreshFooterEnable_ty { finishedBlock in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.count += 1
                 self.tableView.reloadData()
                 finishedBlock?()
-                print(self.tableView.page)
+                print(self.tableView.page_ty)
             }
         }
     }
@@ -72,10 +72,10 @@ class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataS
         super.bindData_ty()
         var request = TYLoginRequest_ty.sendSMS(code: "1", mobile: "17521192823")
         request     = TYLoginRequest_ty.appInit
-        TYNetworkManager_ty.share_ty.request_ty(TYResponse_ty<TYHomeModel>.self, request: request) { response in
+        TYNetworkManager_ty.share_ty.request_ty(TYResponse_ty<TYHomeModel>.self, request_ty: request) { response in
             print("Success:\(response?.data_ty)")
             
-        } fail: { responseError in
+        } fail_ty: { responseError in
             print("Fail:\n\(responseError)")
         }
     }
