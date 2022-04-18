@@ -61,9 +61,9 @@ public class TYPhotoAlbumToolsView_ty: TYView_ty {
         stackView_ty.distribution = .equalSpacing
         stackView_ty.spacing      = AdaptSize_ty(50)
         self.addSubview(stackView_ty)
-        stackView_ty.snp.makeConstraints { (make) in
-            make.top.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-kSafeBottomMargin_ty)
+        stackView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.top.centerX.equalToSuperview()
+            make_ty.bottom.equalToSuperview().offset(-kSafeBottomMargin_ty)
         }
     }
 

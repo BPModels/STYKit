@@ -175,9 +175,9 @@ public extension UIView {
                 view_ty.size_ty = CGSize(width: AdaptSize_ty(140), height: AdaptSize_ty(140))
                 view_ty.hidesWhenStopped = true
                 self.addSubview(view_ty)
-                view_ty.snp.makeConstraints { make in
-                    make.size.equalTo(view_ty.size_ty)
-                    make.center.equalToSuperview()
+                view_ty.snp.makeConstraints { make_ty in
+                    make_ty.size.equalTo(view_ty.size_ty)
+                    make_ty.center.equalToSuperview()
                 }
                 self.loadingView_ty = view_ty
                 return view_ty

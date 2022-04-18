@@ -25,7 +25,7 @@
             nil];
 }
 
-+ (void)save_ty:(NSString *)service_ty data_ty:(id)data_ty {
++ (void)saved_ty:(NSString *)service_ty data_ty:(id)data_ty {
     
     //Get search dictionary
     

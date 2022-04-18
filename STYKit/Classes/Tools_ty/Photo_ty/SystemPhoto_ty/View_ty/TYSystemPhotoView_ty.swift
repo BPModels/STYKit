@@ -53,8 +53,8 @@ public class TYSystemPhotoView_ty: TYView_ty, UICollectionViewDelegate, UICollec
     public override func createSubviews_ty() {
         super.createSubviews_ty()
         self.addSubview(collectionView_ty)
-        collectionView_ty.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        collectionView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.edges.equalToSuperview()
         }
     }
     

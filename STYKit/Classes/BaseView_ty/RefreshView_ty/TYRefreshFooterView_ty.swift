@@ -39,15 +39,15 @@ public class TYRefreshFooterView_ty: TYView_ty {
         super.createSubviews_ty()
         self.addSubview(iconView_ty)
         self.addSubview(titleLabel_ty)
-        iconView_ty.snp.makeConstraints { (make) in
-            make.width.equalTo(AdaptSize_ty(35))
-            make.height.equalTo(AdaptSize_ty(35))
-            make.right.equalTo(titleLabel_ty.snp.left).offset(AdaptSize_ty(-5))
-            make.centerY.equalTo(titleLabel_ty)
+        iconView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.width.equalTo(AdaptSize_ty(35))
+            make_ty.height.equalTo(AdaptSize_ty(35))
+            make_ty.right.equalTo(titleLabel_ty.snp.left).offset(AdaptSize_ty(-5))
+            make_ty.centerY.equalTo(titleLabel_ty)
         }
-        titleLabel_ty.snp.makeConstraints { make in
-            make.centerX.equalToSuperview().offset(AdaptSize_ty(20))
-            make.bottom.equalToSuperview().offset(AdaptSize_ty(-8))
+        titleLabel_ty.snp.makeConstraints { make_ty in
+            make_ty.centerX.equalToSuperview().offset(AdaptSize_ty(20))
+            make_ty.bottom.equalToSuperview().offset(AdaptSize_ty(-8))
         }
     }
     
@@ -62,20 +62,20 @@ public class TYRefreshFooterView_ty: TYView_ty {
         case .footerPulling_ty:
             self.titleLabel_ty.text = "上拉加载更多"
             self.iconView_ty.stopAnimating()
-            self.titleLabel_ty.snp.updateConstraints { make in
-                make.centerX.equalToSuperview()
+            self.titleLabel_ty.snp.updateConstraints { make_ty in
+                make_ty.centerX.equalToSuperview()
             }
         case .footerPullMax_ty:
             self.titleLabel_ty.text = "松手开始加载"
             self.iconView_ty.stopAnimating()
-            self.titleLabel_ty.snp.updateConstraints { make in
-                make.centerX.equalToSuperview()
+            self.titleLabel_ty.snp.updateConstraints { make_ty in
+                make_ty.centerX.equalToSuperview()
             }
         case .footerLoading_ty:
             self.titleLabel_ty.text = "加载中～"
             self.iconView_ty.startAnimating()
-            self.titleLabel_ty.snp.updateConstraints { make in
-                make.centerX.equalToSuperview().offset(AdaptSize_ty(20))
+            self.titleLabel_ty.snp.updateConstraints { make_ty in
+                make_ty.centerX.equalToSuperview().offset(AdaptSize_ty(20))
             }
         default:
             self.titleLabel_ty.text = ""

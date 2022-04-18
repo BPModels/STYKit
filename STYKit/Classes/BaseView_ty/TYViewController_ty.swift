@@ -43,9 +43,9 @@ open class TYViewController_ty: UIViewController, TYNavigationBarDelegate_ty {
         let nBar_ty = TYNavigationBar_ty()
         objc_setAssociatedObject(self, &Associatoed_ty.customNavigationBar_ty, nBar_ty, .OBJC_ASSOCIATION_RETAIN)
         self.view.addSubview(nBar_ty)
-        nBar_ty.snp.makeConstraints { make in
-            make.left.right.top.equalToSuperview()
-            make.height.equalTo(kNavigationHeight_ty)
+        nBar_ty.snp.makeConstraints { make_ty in
+            make_ty.left.right.top.equalToSuperview()
+            make_ty.height.equalTo(kNavigationHeight_ty)
         }
         self.customNavigationBar_ty?.delegate_ty = self
     }

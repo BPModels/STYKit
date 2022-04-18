@@ -38,15 +38,15 @@ class TYSystemAlbumCell_ty: UITableViewCell {
         self.addSubview(nameLabel_ty)
         self.addSubview(selectedImageView_ty)
 
-        nameLabel_ty.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(AdaptSize_ty(15))
-            make.right.equalTo(selectedImageView_ty.snp.left).offset(AdaptSize_ty(-5))
-            make.centerY.height.equalToSuperview()
+        nameLabel_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.equalToSuperview().offset(AdaptSize_ty(15))
+            make_ty.right.equalTo(selectedImageView_ty.snp.left).offset(AdaptSize_ty(-5))
+            make_ty.centerY.height.equalToSuperview()
         }
-        selectedImageView_ty.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.size.equalTo(CGSize(width: AdaptSize_ty(16), height: AdaptSize_ty(16)))
-            make.right.equalToSuperview().offset(AdaptSize_ty(-15))
+        selectedImageView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.centerY.equalToSuperview()
+            make_ty.size.equalTo(CGSize(width: AdaptSize_ty(16), height: AdaptSize_ty(16)))
+            make_ty.right.equalToSuperview().offset(AdaptSize_ty(-15))
         }
     }
 

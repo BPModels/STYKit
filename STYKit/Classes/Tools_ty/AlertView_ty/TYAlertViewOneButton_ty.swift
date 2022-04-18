@@ -37,42 +37,42 @@ public class KFAlertViewOneButton_ty: TYBaseAlertView_ty {
         mainView_ty.addSubview(partitionContentLineView_ty)
         // 是否显示标题
         if let title_ty = titleLabel_ty.text, title_ty.isNotEmpty_ty {
-            titleLabel_ty.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(topPadding_ty)
-                make.left.equalToSuperview().offset(leftPadding_ty)
-                make.right.equalToSuperview().offset(-rightPadding_ty)
-                make.height.equalTo(titleHeight_ty)
+            titleLabel_ty.snp.makeConstraints { (make_ty) in
+                make_ty.top.equalToSuperview().offset(topPadding_ty)
+                make_ty.left.equalToSuperview().offset(leftPadding_ty)
+                make_ty.right.equalToSuperview().offset(-rightPadding_ty)
+                make_ty.height.equalTo(titleHeight_ty)
             }
-            descriptionLabel_ty.snp.makeConstraints { (make) in
-                make.top.equalTo(titleLabel_ty.snp.bottom).offset(defaultSpace_ty)
-                make.left.right.equalTo(titleLabel_ty)
-                make.height.equalTo(descriptionHeight_ty)
+            descriptionLabel_ty.snp.makeConstraints { (make_ty) in
+                make_ty.top.equalTo(titleLabel_ty.snp.bottom).offset(defaultSpace_ty)
+                make_ty.left.right.equalTo(titleLabel_ty)
+                make_ty.height.equalTo(descriptionHeight_ty)
             }
             mainViewHeight_ty += topPadding_ty + titleHeight_ty + defaultSpace_ty + descriptionHeight_ty
         } else {
-            descriptionLabel_ty.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(topPadding_ty)
-                make.left.equalToSuperview().offset(leftPadding_ty)
-                make.right.equalTo(-rightPadding_ty)
-                make.height.equalTo(descriptionHeight_ty)
+            descriptionLabel_ty.snp.makeConstraints { (make_ty) in
+                make_ty.top.equalToSuperview().offset(topPadding_ty)
+                make_ty.left.equalToSuperview().offset(leftPadding_ty)
+                make_ty.right.equalTo(-rightPadding_ty)
+                make_ty.height.equalTo(descriptionHeight_ty)
             }
             mainViewHeight_ty += topPadding_ty + descriptionHeight_ty
         }
-        partitionContentLineView_ty.snp.makeConstraints { (make) in
-            make.left.right.top.equalTo(rightButton_ty)
-            make.height.equalTo(AdaptSize_ty(0.6))
+        partitionContentLineView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.right.top.equalTo(rightButton_ty)
+            make_ty.height.equalTo(AdaptSize_ty(0.6))
         }
-        rightButton_ty.snp.makeConstraints { (make) in
-            make.top.equalTo(descriptionLabel_ty.snp.bottom).offset(defaultSpace_ty)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(closeBtnSize_ty.height)
+        rightButton_ty.snp.makeConstraints { (make_ty) in
+            make_ty.top.equalTo(descriptionLabel_ty.snp.bottom).offset(defaultSpace_ty)
+            make_ty.left.right.equalToSuperview()
+            make_ty.height.equalTo(closeBtnSize_ty.height)
         }
         mainViewHeight_ty += defaultSpace_ty + closeBtnSize_ty.height
 
-        mainView_ty.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.width.equalTo(mainViewWidth_ty)
-            make.height.equalTo(mainViewHeight_ty)
+        mainView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.center.equalToSuperview()
+            make_ty.width.equalTo(mainViewWidth_ty)
+            make_ty.height.equalTo(mainViewHeight_ty)
         }
     }
     

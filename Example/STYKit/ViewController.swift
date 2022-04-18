@@ -61,9 +61,9 @@ class ViewController: TYViewController_ty, UITableViewDelegate, UITableViewDataS
     }
     
     override func updateViewConstraints() {
-        self.tableView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().offset(kNavigationHeight_ty)
+        self.tableView.snp.makeConstraints { make_ty in
+            make_ty.left.right.bottom.equalToSuperview()
+            make_ty.top.equalToSuperview().offset(kNavigationHeight_ty)
         }
         super.updateViewConstraints()
     }

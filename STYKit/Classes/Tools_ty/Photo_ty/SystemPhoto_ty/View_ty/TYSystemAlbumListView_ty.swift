@@ -58,8 +58,8 @@ public class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableVi
         super.createSubviews_ty()
         self.addSubview(backgroundView_ty)
         self.addSubview(tableView_ty)
-        backgroundView_ty.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        backgroundView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.edges.equalToSuperview()
         }
     }
 
@@ -80,10 +80,10 @@ public class TYSystemAlbumListView_ty: TYView_ty, UITableViewDelegate, UITableVi
         self.currentModel_ty = model_ty
         tableViewHeight_ty   = CGFloat(albumList_ty.count) * cellHeight_ty
         tableViewHeight_ty   = tableViewHeight_ty > tableViewMaxH_ty ? tableViewMaxH_ty : tableViewHeight_ty
-        tableView_ty.snp.remakeConstraints { (make) in
-            make.center.width.equalToSuperview()
-            make.bottom.equalTo(backgroundView_ty.snp.top)
-            make.height.equalTo(tableViewHeight_ty)
+        tableView_ty.snp.remakeConstraints { (make_ty) in
+            make_ty.center.width.equalToSuperview()
+            make_ty.bottom.equalTo(backgroundView_ty.snp.top)
+            make_ty.height.equalTo(tableViewHeight_ty)
         }
     }
 

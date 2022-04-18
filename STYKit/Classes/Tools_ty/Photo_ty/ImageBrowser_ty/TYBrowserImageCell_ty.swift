@@ -74,9 +74,9 @@ class TYBrowserImageCell_ty: TYCollectionViewCell_ty, UIScrollViewDelegate, UIGe
         scrollView_ty.frame = CGRect(origin: .zero, size: kWindow_ty.size_ty)
         imageView_ty.frame  = CGRect(origin: .zero, size: kWindow_ty.size_ty)
         scrollView_ty.contentSize = kWindow_ty.size_ty
-        progressView_ty.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.size.equalTo(progressView_ty.size_ty)
+        progressView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.center.equalToSuperview()
+            make_ty.size.equalTo(progressView_ty.size_ty)
         }
     }
 

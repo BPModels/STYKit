@@ -61,24 +61,24 @@ public class TYNavigationBar_ty: TYView_ty {
         self.addSubview(leftButton_ty)
         self.addSubview(titleLabel_ty)
         self.addSubview(rightButton_ty)
-        leftButton_ty.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(leftOffsetX).priority(.low)
-            make.centerY.equalTo(titleLabel_ty)
-            make.width.equalTo(buttonSize_ty.width)
-            make.height.equalTo(buttonSize_ty.height)
+        leftButton_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.equalToSuperview().offset(leftOffsetX).priority(.low)
+            make_ty.centerY.equalTo(titleLabel_ty)
+            make_ty.width.equalTo(buttonSize_ty.width)
+            make_ty.height.equalTo(buttonSize_ty.height)
         }
-        titleLabel_ty.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(AdaptSize_ty(-10))
-            make.centerX.equalToSuperview()
-            make.left.greaterThanOrEqualTo(leftButton_ty.snp.right).offset(AdaptSize_ty(5))
-            make.right.lessThanOrEqualTo(rightButton_ty.snp.left).offset(-AdaptSize_ty(5))
-            make.height.equalTo(titleLabel_ty.font.lineHeight)
+        titleLabel_ty.snp.makeConstraints { (make_ty) in
+            make_ty.bottom.equalToSuperview().offset(AdaptSize_ty(-10))
+            make_ty.centerX.equalToSuperview()
+            make_ty.left.greaterThanOrEqualTo(leftButton_ty.snp.right).offset(AdaptSize_ty(5))
+            make_ty.right.lessThanOrEqualTo(rightButton_ty.snp.left).offset(-AdaptSize_ty(5))
+            make_ty.height.equalTo(titleLabel_ty.font.lineHeight)
         }
-        rightButton_ty.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(rightOffsetX).priority(.low)
-            make.centerY.equalTo(titleLabel_ty)
-            make.width.equalTo(buttonSize_ty.width)
-            make.height.equalTo(buttonSize_ty.height)
+        rightButton_ty.snp.makeConstraints { (make_ty) in
+            make_ty.right.equalToSuperview().offset(rightOffsetX).priority(.low)
+            make_ty.centerY.equalTo(titleLabel_ty)
+            make_ty.width.equalTo(buttonSize_ty.width)
+            make_ty.height.equalTo(buttonSize_ty.height)
         }
     }
     
@@ -97,8 +97,8 @@ public class TYNavigationBar_ty: TYView_ty {
     public func setLeftTitle_ty(text_ty: String?) {
         self.leftButton_ty.setTitle(text_ty, for: .normal)
         let _newWidth_ty = self.leftButton_ty.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize_ty.height)).width
-        self.leftButton_ty.snp.updateConstraints { make in
-            make.width.equalTo(_newWidth_ty + AdaptSize_ty(10))
+        self.leftButton_ty.snp.updateConstraints { make_ty in
+            make_ty.width.equalTo(_newWidth_ty + AdaptSize_ty(10))
         }
     }
     
@@ -115,8 +115,8 @@ public class TYNavigationBar_ty: TYView_ty {
         self.rightButton_ty.setTitle(text_ty, for: .normal)
         self.rightButton_ty.isHidden = false
         let _newWidth_ty = self.rightButton_ty.sizeThatFits(CGSize(width: kScreenWidth_ty, height: self.buttonSize_ty.height)).width
-        self.rightButton_ty.snp.updateConstraints { make in
-            make.width.equalTo(_newWidth_ty + AdaptSize_ty(10))
+        self.rightButton_ty.snp.updateConstraints { make_ty in
+            make_ty.width.equalTo(_newWidth_ty + AdaptSize_ty(10))
         }
     }
     

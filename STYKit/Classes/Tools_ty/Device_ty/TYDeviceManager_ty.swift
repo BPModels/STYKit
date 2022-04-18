@@ -22,7 +22,7 @@ public struct TYDeviceManager_ty {
         } else {
             // 如果不存在
             uuid_ty = UIDevice.current.identifierForVendor?.uuidString ?? ""
-            TYKeyChainManager_ty.save(kDataUUID_ty, data_ty: [kTextUUID_ty:uuid_ty])
+            TYKeyChainManager_ty.saved_ty(kDataUUID_ty, data_ty: [kTextUUID_ty:uuid_ty])
         }
         
         return uuid_ty

@@ -45,9 +45,9 @@ public class TYToastView_ty: TYView_ty {
         }
         var _size = self.descriptionLabel_ty.sizeThatFits(CGSize(width: _width, height: CGFloat(Int.max)))
         _size = CGSize(width: _size.width + AdaptSize_ty(10), height: _size.height + AdaptSize_ty(10))
-        descriptionLabel_ty.snp.makeConstraints { make in
-            make.size.equalTo(_size)
-            make.center.equalToSuperview()
+        descriptionLabel_ty.snp.makeConstraints { make_ty in
+            make_ty.size.equalTo(_size)
+            make_ty.center.equalToSuperview()
         }
         super.updateConstraints()
     }

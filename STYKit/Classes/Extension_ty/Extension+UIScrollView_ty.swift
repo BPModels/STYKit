@@ -429,28 +429,28 @@ public extension UIScrollView {
     private func createHeaderView_ty() {
         self.headerView_ty = TYRefreshHeaderView_ty()
         self.addSubview(headerView_ty!)
-        headerView_ty?.snp.makeConstraints({ (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.snp.top)
-            make.height.equalTo(AdaptSize_ty(50))
-            make.width.equalToSuperview()
+        headerView_ty?.snp.makeConstraints({ (make_ty) in
+            make_ty.centerX.equalToSuperview()
+            make_ty.bottom.equalTo(self.snp.top)
+            make_ty.height.equalTo(AdaptSize_ty(50))
+            make_ty.width.equalToSuperview()
         })
     }
     
     private func createFooterView_ty() {
         self.footerView_ty = TYRefreshFooterView_ty()
         self.addSubview(footerView_ty!)
-        footerView_ty?.snp.makeConstraints({ (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(self.contentSize.height)
-            make.height.equalTo(AdaptSize_ty(50))
-            make.width.equalToSuperview()
+        footerView_ty?.snp.makeConstraints({ (make_ty) in
+            make_ty.centerX.equalToSuperview()
+            make_ty.top.equalToSuperview().offset(self.contentSize.height)
+            make_ty.height.equalTo(AdaptSize_ty(50))
+            make_ty.width.equalToSuperview()
         })
     }
     
     private func updateFooterView_ty() {
-        footerView_ty?.snp.updateConstraints({ (make) in
-            make.top.equalToSuperview().offset(self.contentSize.height)
+        footerView_ty?.snp.updateConstraints({ (make_ty) in
+            make_ty.top.equalToSuperview().offset(self.contentSize.height)
         })
     }
     

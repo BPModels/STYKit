@@ -52,10 +52,10 @@ public class TYStackView_ty: TYView_ty {
             offsetX_ty = 0
             for subview_ty in subviewList_ty {
                 self.addSubview(subview_ty)
-                subview_ty.snp.remakeConstraints { (make) in
-                    make.left.equalToSuperview().offset(offsetX_ty)
-                    make.centerY.equalToSuperview()
-                    make.size.equalTo(subview_ty.size_ty)
+                subview_ty.snp.remakeConstraints { (make_ty) in
+                    make_ty.left.equalToSuperview().offset(offsetX_ty)
+                    make_ty.centerY.equalToSuperview()
+                    make_ty.size.equalTo(subview_ty.size_ty)
                 }
                 offsetX_ty += (subview_ty.width_ty + spacing_ty)
             }
@@ -75,10 +75,10 @@ public class TYStackView_ty: TYView_ty {
             }
             for subview_ty in subviewList_ty {
                 self.addSubview(subview_ty)
-                subview_ty.snp.remakeConstraints { (make) in
-                    make.left.equalToSuperview().offset(offsetX_ty)
-                    make.centerY.equalToSuperview()
-                    make.size.equalTo(subview_ty.size_ty)
+                subview_ty.snp.remakeConstraints { (make_ty) in
+                    make_ty.left.equalToSuperview().offset(offsetX_ty)
+                    make_ty.centerY.equalToSuperview()
+                    make_ty.size.equalTo(subview_ty.size_ty)
                 }
                 offsetX_ty += (subview_ty.width_ty + spacing_ty)
             }
@@ -87,10 +87,10 @@ public class TYStackView_ty: TYView_ty {
             let _subviewList_ty = subviewList_ty.reversed()
             for subview_ty in _subviewList_ty {
                 self.addSubview(subview_ty)
-                subview_ty.snp.remakeConstraints { (make) in
-                    make.right.equalToSuperview().offset(offsetX_ty)
-                    make.centerY.equalToSuperview()
-                    make.size.equalTo(subview_ty.size_ty)
+                subview_ty.snp.remakeConstraints { (make_ty) in
+                    make_ty.right.equalToSuperview().offset(offsetX_ty)
+                    make_ty.centerY.equalToSuperview()
+                    make_ty.size.equalTo(subview_ty.size_ty)
                 }
                 offsetX_ty -= (subview_ty.width_ty + spacing_ty)
             }
@@ -98,10 +98,10 @@ public class TYStackView_ty: TYView_ty {
             offsetY_ty = 0
             for subview_ty in subviewList_ty {
                 self.addSubview(subview_ty)
-                subview_ty.snp.remakeConstraints { (make) in
-                    make.top.equalToSuperview().offset(offsetY_ty)
-                    make.centerX.equalToSuperview()
-                    make.size.equalTo(subview_ty.size_ty)
+                subview_ty.snp.remakeConstraints { (make_ty) in
+                    make_ty.top.equalToSuperview().offset(offsetY_ty)
+                    make_ty.centerX.equalToSuperview()
+                    make_ty.size.equalTo(subview_ty.size_ty)
                 }
                 offsetY_ty += (subview_ty.height_ty + spacing_ty)
             }

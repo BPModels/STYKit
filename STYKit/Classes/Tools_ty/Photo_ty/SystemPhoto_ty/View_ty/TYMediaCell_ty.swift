@@ -94,31 +94,31 @@ public class TYMediaCell_ty: TYCollectionViewCell_ty {
         self.addSubview(iconLabel_ty)
         self.addSubview(timeLabel_ty)
         self.addSubview(disableShadowView_ty)
-        imageView_ty.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().offset(0.9)
-            make.right.bottom.equalToSuperview().offset(-0.9)
+        imageView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.top.equalToSuperview().offset(0.9)
+            make_ty.right.bottom.equalToSuperview().offset(-0.9)
         }
-        selectedBgView_ty.snp.makeConstraints { (make) in
-            make.edges.equalTo(imageView_ty)
+        selectedBgView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.edges.equalTo(imageView_ty)
         }
-        selectButton_ty.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.right.equalToSuperview()
-            make.width.height.equalTo(AdaptSize_ty(35))
+        selectButton_ty.snp.makeConstraints { (make_ty) in
+            make_ty.top.equalToSuperview()
+            make_ty.right.equalToSuperview()
+            make_ty.width.height.equalTo(AdaptSize_ty(35))
         }
-        iconLabel_ty.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(AdaptSize_ty(5))
-            make.bottom.equalToSuperview().offset(AdaptSize_ty(-5))
-            make.size.equalTo(CGSize(width: AdaptSize_ty(20), height: AdaptSize_ty(18)))
+        iconLabel_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.equalToSuperview().offset(AdaptSize_ty(5))
+            make_ty.bottom.equalToSuperview().offset(AdaptSize_ty(-5))
+            make_ty.size.equalTo(CGSize(width: AdaptSize_ty(20), height: AdaptSize_ty(18)))
         }
-        timeLabel_ty.snp.makeConstraints { (make) in
-            make.left.equalTo(iconLabel_ty.snp.right).offset(AdaptSize_ty(5))
-            make.centerY.equalTo(iconLabel_ty)
-            make.right.equalToSuperview().offset(AdaptSize_ty(-10))
-            make.height.equalTo(AdaptSize_ty(10))
+        timeLabel_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.equalTo(iconLabel_ty.snp.right).offset(AdaptSize_ty(5))
+            make_ty.centerY.equalTo(iconLabel_ty)
+            make_ty.right.equalToSuperview().offset(AdaptSize_ty(-10))
+            make_ty.height.equalTo(AdaptSize_ty(10))
         }
-        disableShadowView_ty.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        disableShadowView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.edges.equalToSuperview()
         }
     }
 

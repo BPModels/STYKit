@@ -47,27 +47,27 @@ public class TYAlertViewTwoButton_ty: TYBaseAlertView_ty {
         mainView_ty.addSubview(leftButton_ty)
         mainView_ty.addSubview(rightButton_ty)
         
-        titleLabel_ty.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(topPadding_ty)
-            make.left.equalToSuperview().offset(leftPadding_ty)
-            make.right.equalToSuperview().offset(-rightPadding_ty)
-            make.height.equalTo(titleHeight_ty)
+        titleLabel_ty.snp.makeConstraints { (make_ty) in
+            make_ty.top.equalToSuperview().offset(topPadding_ty)
+            make_ty.left.equalToSuperview().offset(leftPadding_ty)
+            make_ty.right.equalToSuperview().offset(-rightPadding_ty)
+            make_ty.height.equalTo(titleHeight_ty)
         }
         mainViewHeight_ty += topPadding_ty + titleHeight_ty
         let descriptionLabelW_ty = mainViewWidth_ty - leftPadding_ty - rightPadding_ty
         let descriptionLabelH_ty = descriptionLabel_ty.text?.textHeight_ty(font_ty: descriptionLabel_ty.font, width_ty: descriptionLabelW_ty) ?? 0
-        descriptionLabel_ty.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: descriptionLabelW_ty, height: descriptionLabelH_ty))
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(leftPadding_ty)
-            make.right.equalToSuperview().offset(-rightPadding_ty)
+        descriptionLabel_ty.snp.makeConstraints { (make_ty) in
+            make_ty.size.equalTo(CGSize(width: descriptionLabelW_ty, height: descriptionLabelH_ty))
+            make_ty.top.equalToSuperview()
+            make_ty.bottom.equalToSuperview()
+            make_ty.left.equalToSuperview().offset(leftPadding_ty)
+            make_ty.right.equalToSuperview().offset(-rightPadding_ty)
         }
         contentScrollView_ty.contentSize = CGSize(width: descriptionLabelW_ty, height: descriptionLabelH_ty)
-        contentScrollView_ty.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel_ty.snp.bottom).offset(defaultSpace_ty)
-            make.left.right.equalToSuperview()
-            make.bottom.equalTo(rightButton_ty.snp.top).offset(-defaultSpace_ty)
+        contentScrollView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.top.equalTo(titleLabel_ty.snp.bottom).offset(defaultSpace_ty)
+            make_ty.left.right.equalToSuperview()
+            make_ty.bottom.equalTo(rightButton_ty.snp.top).offset(-defaultSpace_ty)
         }
         if descriptionLabelH_ty > maxContentHeight_ty {
             mainViewHeight_ty += defaultSpace_ty + maxContentHeight_ty
@@ -75,21 +75,21 @@ public class TYAlertViewTwoButton_ty: TYBaseAlertView_ty {
             mainViewHeight_ty += defaultSpace_ty + descriptionLabelH_ty
         }
         
-        rightButton_ty.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(AdaptSize_ty(-30))
-            make.size.equalTo(rightButton_ty.size_ty)
-            make.bottom.equalToSuperview().offset(-bottomPadding_ty)
+        rightButton_ty.snp.makeConstraints { (make_ty) in
+            make_ty.right.equalToSuperview().offset(AdaptSize_ty(-30))
+            make_ty.size.equalTo(rightButton_ty.size_ty)
+            make_ty.bottom.equalToSuperview().offset(-bottomPadding_ty)
         }
-        leftButton_ty.snp.makeConstraints { (make) in
-            make.bottom.size.equalTo(rightButton_ty)
-            make.left.equalToSuperview().offset(AdaptSize_ty(30))
+        leftButton_ty.snp.makeConstraints { (make_ty) in
+            make_ty.bottom.size.equalTo(rightButton_ty)
+            make_ty.left.equalToSuperview().offset(AdaptSize_ty(30))
         }
         mainViewHeight_ty += defaultSpace_ty + rightButton_ty.height_ty + bottomPadding_ty
         
-        mainView_ty.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.width.equalTo(mainViewWidth_ty)
-            make.height.equalTo(mainViewHeight_ty)
+        mainView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.center.equalToSuperview()
+            make_ty.width.equalTo(mainViewWidth_ty)
+            make_ty.height.equalTo(mainViewHeight_ty)
         }
     }
     

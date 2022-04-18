@@ -96,37 +96,37 @@ class TYBrowserVideoCell_ty:
         self.customContentView_ty.addSubview(rightTimeLabel_ty)
         self.customContentView_ty.addSubview(closedButton_ty)
         
-        customContentView_ty.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        customContentView_ty.snp.makeConstraints { make_ty in
+            make_ty.edges.equalToSuperview()
         }
-        closedButton_ty.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(AdaptSize_ty(15))
-            make.bottom.equalToSuperview().offset(AdaptSize_ty(-15) - kSafeBottomMargin_ty)
-            make.size.equalTo(CGSize(width: AdaptSize_ty(30), height: AdaptSize_ty(30)))
+        closedButton_ty.snp.makeConstraints { make_ty in
+            make_ty.left.equalToSuperview().offset(AdaptSize_ty(15))
+            make_ty.bottom.equalToSuperview().offset(AdaptSize_ty(-15) - kSafeBottomMargin_ty)
+            make_ty.size.equalTo(CGSize(width: AdaptSize_ty(30), height: AdaptSize_ty(30)))
         }
-        playButton_ty.snp.makeConstraints { make in
-            make.size.equalTo(CGSize(width: AdaptSize_ty(40), height: AdaptSize_ty(40)))
-            make.left.equalToSuperview()
-            make.bottom.equalTo(closedButton_ty.snp.top).offset(AdaptSize_ty(-20))
+        playButton_ty.snp.makeConstraints { make_ty in
+            make_ty.size.equalTo(CGSize(width: AdaptSize_ty(40), height: AdaptSize_ty(40)))
+            make_ty.left.equalToSuperview()
+            make_ty.bottom.equalTo(closedButton_ty.snp.top).offset(AdaptSize_ty(-20))
         }
         leftTimeLabel_ty.sizeToFit()
-        leftTimeLabel_ty.snp.makeConstraints { make in
-            make.left.equalTo(playButton_ty.snp.right)
-            make.centerY.equalTo(playButton_ty)
-            make.width.equalTo(leftTimeLabel_ty.width_ty)
-            make.height.equalTo(leftTimeLabel_ty.font.lineHeight)
+        leftTimeLabel_ty.snp.makeConstraints { make_ty in
+            make_ty.left.equalTo(playButton_ty.snp.right)
+            make_ty.centerY.equalTo(playButton_ty)
+            make_ty.width.equalTo(leftTimeLabel_ty.width_ty)
+            make_ty.height.equalTo(leftTimeLabel_ty.font.lineHeight)
         }
-        progressView_ty.snp.makeConstraints { make in
-            make.left.equalTo(leftTimeLabel_ty.snp.right).offset(AdaptSize_ty(5))
-            make.centerY.equalTo(playButton_ty)
-            make.size.equalTo(progressView_ty.size_ty)
+        progressView_ty.snp.makeConstraints { make_ty in
+            make_ty.left.equalTo(leftTimeLabel_ty.snp.right).offset(AdaptSize_ty(5))
+            make_ty.centerY.equalTo(playButton_ty)
+            make_ty.size.equalTo(progressView_ty.size_ty)
         }
         rightTimeLabel_ty.sizeToFit()
-        rightTimeLabel_ty.snp.makeConstraints { make in
-            make.left.equalTo(progressView_ty.snp.right).offset(AdaptSize_ty(5))
-            make.centerY.equalTo(playButton_ty)
-            make.height.equalTo(rightTimeLabel_ty.font.lineHeight)
-            make.width.equalTo(rightTimeLabel_ty.width_ty)
+        rightTimeLabel_ty.snp.makeConstraints { make_ty in
+            make_ty.left.equalTo(progressView_ty.snp.right).offset(AdaptSize_ty(5))
+            make_ty.centerY.equalTo(playButton_ty)
+            make_ty.height.equalTo(rightTimeLabel_ty.font.lineHeight)
+            make_ty.width.equalTo(rightTimeLabel_ty.width_ty)
         }
     }
     

@@ -139,8 +139,8 @@ open class TYBaseAlertView_ty: TYTopWindowView_ty {
         super.createSubviews_ty()
         self.addSubview(mainView_ty)
         self.mainView_ty.addSubview(backgroundImage_ty)
-        backgroundImage_ty.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        backgroundImage_ty.snp.makeConstraints { make_ty in
+            make_ty.edges.equalToSuperview()
         }
     }
     

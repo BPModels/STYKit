@@ -48,22 +48,22 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
         super.createSubviews_ty()
         self.view.addSubview(contentView_ty)
         self.view.addSubview(albumListView_ty)
-        contentView_ty.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().offset(kNavigationHeight_ty)
+        contentView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.right.bottom.equalToSuperview()
+            make_ty.top.equalToSuperview().offset(kNavigationHeight_ty)
         }
-        albumListView_ty.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().offset(kNavigationHeight_ty)
+        albumListView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.right.bottom.equalToSuperview()
+            make_ty.top.equalToSuperview().offset(kNavigationHeight_ty)
         }
         if let bar_ty = self.customNavigationBar_ty {
             bar_ty.addSubview(titleBackgroundView_ty)
             bar_ty.sendSubviewToBack(titleBackgroundView_ty)
             bar_ty.titleLabel_ty.font      = UIFont.regular_ty(AdaptSize_ty(15))
             bar_ty.titleLabel_ty.textColor = UIColor.black
-            titleBackgroundView_ty.snp.makeConstraints { make in
-                make.size.equalTo(CGSize.zero)
-                make.center.equalTo(self.customNavigationBar_ty!.titleLabel_ty)
+            titleBackgroundView_ty.snp.makeConstraints { make_ty in
+                make_ty.size.equalTo(CGSize.zero)
+                make_ty.center.equalTo(self.customNavigationBar_ty!.titleLabel_ty)
             }
         }
     }
@@ -227,8 +227,8 @@ public class TYSystemPhotoViewController_ty: TYViewController_ty, TYSystemAlbumL
         if let _titleLabel_ty = self.customNavigationBar_ty?.titleLabel_ty, let _title_ty = _titleLabel_ty.text {
             let _width_ty = _title_ty.textWidth_ty(font_ty: _titleLabel_ty.font, height_ty: _titleLabel_ty.font.lineHeight)
             let _size_ty = CGSize(width: _width_ty + AdaptSize_ty(20), height: _titleLabel_ty.font.lineHeight + AdaptSize_ty(10))
-            self.titleBackgroundView_ty.snp.updateConstraints { make in
-                make.size.equalTo(_size_ty)
+            self.titleBackgroundView_ty.snp.updateConstraints { make_ty in
+                make_ty.size.equalTo(_size_ty)
             }
             self.titleBackgroundView_ty.layer.cornerRadius = _size_ty.height/2
         }

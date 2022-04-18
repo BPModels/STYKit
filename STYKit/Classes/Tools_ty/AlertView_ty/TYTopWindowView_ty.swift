@@ -30,8 +30,8 @@ open class TYTopWindowView_ty: TYView_ty {
     open override func createSubviews_ty() {
         super.createSubviews_ty()
         self.addSubview(backgroundView_ty)
-        backgroundView_ty.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        backgroundView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.edges.equalToSuperview()
         }
     }
 
@@ -49,8 +49,8 @@ open class TYTopWindowView_ty: TYView_ty {
     /// 显示弹框
     open func show_ty(view_ty: UIView = kWindow_ty) {
         view_ty.addSubview(self)
-        self.snp.remakeConstraints { (make) in
-            make.edges.equalToSuperview()
+        self.snp.remakeConstraints { (make_ty) in
+            make_ty.edges.equalToSuperview()
         }
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.backgroundView_ty.layer.opacity = 1.0

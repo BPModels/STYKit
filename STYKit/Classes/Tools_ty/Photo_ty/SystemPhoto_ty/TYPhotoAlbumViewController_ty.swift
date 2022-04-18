@@ -64,14 +64,14 @@ public class TYPhotoAlbumViewController_ty:
         super.createSubviews_ty()
         self.view.addSubview(collectionView_ty)
         self.view.addSubview(toolsView_ty)
-        collectionView_ty.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().offset(kNavigationHeight_ty)
+        collectionView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.right.bottom.equalToSuperview()
+            make_ty.top.equalToSuperview().offset(kNavigationHeight_ty)
         }
-        toolsView_ty.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(kScreenHeight_ty)
-            make.height.equalTo(AdaptSize_ty(50) + kSafeBottomMargin_ty)
+        toolsView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.right.equalToSuperview()
+            make_ty.top.equalToSuperview().offset(kScreenHeight_ty)
+            make_ty.height.equalTo(AdaptSize_ty(50) + kSafeBottomMargin_ty)
         }
     }
 

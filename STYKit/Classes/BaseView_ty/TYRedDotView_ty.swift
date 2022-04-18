@@ -73,8 +73,8 @@ public class TYRedDotView_ty: TYView_ty {
         super.createSubviews_ty()
         if showNumber_ty {
             self.addSubview(self.numLabel_ty)
-            self.numLabel_ty.snp.makeConstraints { (make) in
-                make.edges.equalToSuperview()
+            self.numLabel_ty.snp.makeConstraints { (make_ty) in
+                make_ty.edges.equalToSuperview()
             }
         }
     }
@@ -106,8 +106,8 @@ public class TYRedDotView_ty: TYView_ty {
             if (num_ty > 9 || num_ty < 0) {
                 w_ty = value_ty.textWidth_ty(font_ty: numLabel_ty.font, height_ty: defaultH_ty) + AdaptSize_ty(10)
             }
-            self.snp.updateConstraints { (make) in
-                make.size.equalTo(CGSize(width: w_ty, height: defaultH_ty))
+            self.snp.updateConstraints { (make_ty) in
+                make_ty.size.equalTo(CGSize(width: w_ty, height: defaultH_ty))
             }
         }
     }

@@ -91,17 +91,17 @@ public class TYBrowserView_ty:
         self.addSubview(collectionView_ty)
         
         self.addSubview(albumButton_ty)
-        backgroundView_ty.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        backgroundView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.edges.equalToSuperview()
         }
-        collectionView_ty.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        collectionView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.edges.equalToSuperview()
         }
         
-        albumButton_ty.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(AdaptSize_ty(40))
-            make.right.equalToSuperview().offset(-AdaptSize_ty(20))
-            make.size.equalTo(CGSize(width: AdaptSize_ty(40), height: AdaptSize_ty(25)))
+        albumButton_ty.snp.makeConstraints { (make_ty) in
+            make_ty.top.equalToSuperview().offset(AdaptSize_ty(40))
+            make_ty.right.equalToSuperview().offset(-AdaptSize_ty(20))
+            make_ty.size.equalTo(CGSize(width: AdaptSize_ty(40), height: AdaptSize_ty(25)))
         }
     }
     
@@ -178,8 +178,8 @@ public class TYBrowserView_ty:
     /// - Parameter animationView: 动画参考对象
     public func show_ty(animationView_ty: UIImageView?) {
         kWindow_ty.addSubview(self)
-        self.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        self.snp.makeConstraints { (make_ty) in
+            make_ty.edges.equalToSuperview()
         }
         guard let imageView_ty = animationView_ty else {
             return

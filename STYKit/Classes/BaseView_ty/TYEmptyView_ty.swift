@@ -66,20 +66,20 @@ public class TYEmptyView_ty: TYView_ty {
         self.addSubview(contentView_ty)
         contentView_ty.addSubview(imageView_ty)
         contentView_ty.addSubview(hintLabel_ty)
-        contentView_ty.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+        contentView_ty.snp.makeConstraints { make_ty in
+            make_ty.center.equalToSuperview()
         }
-        imageView_ty.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview()
-            make.size.equalTo(CGSize(width: AdaptSize_ty(84), height: AdaptSize_ty(84)))
+        imageView_ty.snp.makeConstraints { make_ty in
+            make_ty.centerX.equalToSuperview()
+            make_ty.top.equalToSuperview()
+            make_ty.size.equalTo(CGSize(width: AdaptSize_ty(84), height: AdaptSize_ty(84)))
         }
-        hintLabel_ty.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(AdaptSize_ty(15))
-            make.right.equalToSuperview().offset(AdaptSize_ty(-15))
-            make.top.equalTo(imageView_ty.snp.bottom).offset(AdaptSize_ty(10))
-            make.height.equalTo(hintLabel_ty.font.lineHeight)
-            make.bottom.equalToSuperview()
+        hintLabel_ty.snp.makeConstraints { make_ty in
+            make_ty.left.equalToSuperview().offset(AdaptSize_ty(15))
+            make_ty.right.equalToSuperview().offset(AdaptSize_ty(-15))
+            make_ty.top.equalTo(imageView_ty.snp.bottom).offset(AdaptSize_ty(10))
+            make_ty.height.equalTo(hintLabel_ty.font.lineHeight)
+            make_ty.bottom.equalToSuperview()
         }
     }
     

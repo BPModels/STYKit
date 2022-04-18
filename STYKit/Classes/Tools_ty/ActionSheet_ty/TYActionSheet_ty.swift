@@ -71,10 +71,10 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
         button_ty.titleLabel?.font = UIFont.semibold_ty(AdaptSize_ty(15))
         button_ty.addTarget(self, action: #selector(clickAction_ty(sender_ty:)), for: .touchUpInside)
         mainView_ty.addSubview(button_ty)
-        button_ty.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(maxH_ty)
-            make.height.equalTo(cellHeight_ty)
+        button_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.right.equalToSuperview()
+            make_ty.top.equalToSuperview().offset(maxH_ty)
+            make_ty.height.equalTo(cellHeight_ty)
         }
         maxH_ty += cellHeight_ty
         self.buttonList_ty.append(button_ty)
@@ -93,10 +93,10 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
         label_ty.font          = UIFont.medium_ty(AdaptSize_ty(14))
         label_ty.textAlignment = .center
         mainView_ty.addSubview(label_ty)
-        label_ty.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(maxH_ty)
-            make.height.equalTo(cellHeight_ty)
+        label_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.right.equalToSuperview()
+            make_ty.top.equalToSuperview().offset(maxH_ty)
+            make_ty.height.equalTo(cellHeight_ty)
         }
         maxH_ty += cellHeight_ty
     }
@@ -106,10 +106,10 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
         let spaceView_ty = UIView()
         spaceView_ty.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         mainView_ty.addSubview(spaceView_ty)
-        spaceView_ty.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(maxH_ty)
-            make.height.equalTo(spaceHeight_ty)
+        spaceView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.right.equalToSuperview()
+            make_ty.top.equalToSuperview().offset(maxH_ty)
+            make_ty.height.equalTo(spaceHeight_ty)
         }
         maxH_ty += spaceHeight_ty
 
@@ -119,10 +119,10 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
         cancelButton_ty.setTitleColor(UIColor.black0_ty, for: .normal)
         cancelButton_ty.addTarget(self, action: #selector(self.hide_ty), for: .touchUpInside)
         mainView_ty.addSubview(cancelButton_ty)
-        cancelButton_ty.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalTo(spaceView_ty.snp.bottom)
-            make.height.equalTo(cellHeight_ty)
+        cancelButton_ty.snp.makeConstraints { (make_ty) in
+            make_ty.left.right.equalToSuperview()
+            make_ty.top.equalTo(spaceView_ty.snp.bottom)
+            make_ty.height.equalTo(cellHeight_ty)
         }
         maxH_ty += cellHeight_ty + kSafeBottomMargin_ty
         self.buttonList_ty.append(cancelButton_ty)
@@ -131,13 +131,13 @@ public class TYActionSheet_ty: TYTopWindowView_ty {
     private func adjustMainView_ty() {
         mainView_ty.size_ty = CGSize(width: kScreenWidth_ty, height: maxH_ty)
         mainView_ty.clipRectCorner_ty(directionList_ty: [.topLeft, .topRight], cornerRadius_ty: AdaptSize_ty(15))
-        mainView_ty.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        mainView_ty.snp.makeConstraints { (make_ty) in
+            make_ty.edges.equalToSuperview()
         }
-        contentView_ty.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.height.equalTo(maxH_ty)
-            make.top.equalTo(self.snp.bottom)
+        contentView_ty.snp.makeConstraints { make_ty in
+            make_ty.left.right.equalToSuperview()
+            make_ty.height.equalTo(maxH_ty)
+            make_ty.top.equalTo(self.snp.bottom)
         }
     }
     
