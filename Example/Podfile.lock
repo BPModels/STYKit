@@ -8,10 +8,10 @@ PODS:
     - SDWebImage/Core (= 5.12.1)
   - SDWebImage/Core (5.12.1)
   - SnapKit (5.0.1)
-  - STYKit (0.1.1):
-    - Alamofire
-    - AlamofireObjectMapper
-    - ObjectMapper
+  - STYKit (0.1.2):
+    - Alamofire (= 5.0.0-rc.2)
+    - AlamofireObjectMapper (= 6.2.0)
+    - ObjectMapper (= 3.5.3)
     - SDWebImage (= 5.12.1)
     - SnapKit (= 5.0.1)
 
@@ -36,7 +36,7 @@ SPEC CHECKSUMS:
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  STYKit: 8d205501fd7ee78fbec95f4e8be34e96352c7ba7
+  STYKit: 158dab2f0e16abe84dbd837d386aebe017982f43
 
 PODFILE CHECKSUM: 93b5b509503d008be318a408232df5bc65994844
 
