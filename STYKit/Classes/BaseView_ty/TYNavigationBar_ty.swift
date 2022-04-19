@@ -18,7 +18,7 @@ public class TYNavigationBar_ty: TYView_ty {
     public var rightViewList_ty = [UIView]()
     public var delegate_ty: TYNavigationBarDelegate_ty?
     
-    private let buttonSize_ty   = CGSize(width: AdaptSize_ty(53), height: AdaptSize_ty(27))
+    private let buttonSize_ty = CGSize(width: AdaptSize_ty(53), height: AdaptSize_ty(27))
     private let leftOffsetX  = AdaptSize_ty(12)
     private let rightOffsetX = AdaptSize_ty(-12)
     
@@ -32,9 +32,11 @@ public class TYNavigationBar_ty: TYView_ty {
     
     public let leftButton_ty: TYButton_ty = {
         let button_ty = TYButton_ty()
-        button_ty.setImage(UIImage(name_ty: "back_ty", type_ty: .pdf_ty), for: .normal)
+        button_ty.setImage(UIImage(name_ty: "back_ty", type_ty: .png_ty), for: .normal)
         button_ty.titleLabel?.font = UIFont.regular_ty(AdaptSize_ty(16))
         button_ty.contentHorizontalAlignment = .left
+        button_ty.imageEdgeInsets = UIEdgeInsets(top: 0, left: AdaptSize_ty(5), bottom: 0, right: AdaptSize_ty(30))
+        button_ty.imageView?.contentMode = .scaleAspectFit
         return button_ty
     }()
     

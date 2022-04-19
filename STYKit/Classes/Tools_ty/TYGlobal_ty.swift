@@ -29,6 +29,11 @@ public let kWindow_ty: UIWindow = {
     }
 }()
 
+/// 屏幕比例,返回
+/// 1: 代表320 x 480 的分辨率(就是iphone4之前的设备，非Retain屏幕);
+/// 2: 代表640 x 960 的分辨率(Retain屏幕);
+/// 3: 代表1242 x 2208 的分辨率;
+public let kScreenScale_ty  = UIScreen.main.scale
 /// 屏幕宽
 public let kScreenWidth_ty  = UIScreen.main.bounds.size.width
 /// 屏幕高

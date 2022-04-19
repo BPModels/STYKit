@@ -189,7 +189,7 @@ public struct TYFileManager_ty {
     ///   - name: 文件名
     ///   - type: 类型
     /// - Returns: 对象
-    func getJsonModel_ty(file_ty name_ty: String, type_ty: Mappable.Type) -> Mappable? {
+    public func getJsonModel_ty(file_ty name_ty: String, type_ty: Mappable.Type) -> Mappable? {
         guard let path_ty = Bundle.main.path(forResource: name_ty, ofType: "json") else {
             return nil
         }
@@ -213,7 +213,7 @@ public struct TYFileManager_ty {
     ///   - name: 文件名
     ///   - type: 类型
     /// - Returns: 对象列表
-    func getJsonModelList_ty(file_ty name_ty: String, type_ty: Mappable.Type) -> [Mappable] {
+    public func getJsonModelList_ty(file_ty name_ty: String, type_ty: Mappable.Type) -> [Mappable] {
         guard let path_ty = Bundle.main.path(forResource: name_ty, ofType: "json") else {
             return []
         }

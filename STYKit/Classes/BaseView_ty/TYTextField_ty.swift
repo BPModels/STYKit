@@ -64,7 +64,7 @@ public class TYTextField_ty: UITextField, UITextFieldDelegate {
         }
     }
     
-    public init(type_ty: TYTextFieldType_ty) {
+    public init(type_ty: TYTextFieldType_ty = .normal_ty) {
         self.type_ty          = type_ty
         self.showLeftView_ty  = true
         self.showRightView_ty = true

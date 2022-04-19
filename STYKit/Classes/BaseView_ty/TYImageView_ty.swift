@@ -16,10 +16,10 @@ open class TYImageView_ty: UIImageView {
     ///   - placeholdImage: 默认图片
     ///   - downloadProgress: 下载进度
     ///   - complete: 完成回调
-    open func setImage_ty(imageStr_ty: String, placeholdImage_ty: UIImage? = nil, downloadProgress_ty: SDImageLoaderProgressBlock?,  complete_ty: SDExternalCompletionBlock?) {
+    open func setImage_ty(imageStr_ty: String?, placeholdImage_ty: UIImage? = nil, downloadProgress_ty: SDImageLoaderProgressBlock? = nil,  complete_ty: SDExternalCompletionBlock? = nil) {
         var _imageStr_ty: String? = imageStr_ty
-        if imageStr_ty.hasChinese_ty() {
-            _imageStr_ty = imageStr_ty.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        if imageStr_ty?.hasChinese_ty() ?? false {
+            _imageStr_ty = imageStr_ty?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         }
         guard let imageStr_ty = _imageStr_ty else {
             complete_ty?(nil, nil, .none, nil)

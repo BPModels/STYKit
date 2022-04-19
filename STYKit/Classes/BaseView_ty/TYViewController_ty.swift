@@ -63,7 +63,7 @@ open class TYViewController_ty: UIViewController, TYNavigationBarDelegate_ty {
 
     
     // MARK: ==== Event ====
-    public func leftAction_ty() {
+    open func leftAction_ty() {
         self.view.endEditing(true)
         if let nav_ty = self.navigationController {
             nav_ty.popViewController(animated: true)
@@ -72,5 +72,5 @@ open class TYViewController_ty: UIViewController, TYNavigationBarDelegate_ty {
         }
     }
     
-    public func rightAction_ty() {}
+    open func rightAction_ty() {}
 }

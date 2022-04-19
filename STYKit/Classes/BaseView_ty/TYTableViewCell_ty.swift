@@ -9,6 +9,8 @@ import Foundation
 
 open class TYTableViewCell_ty: UITableViewCell {
     
+    open var indexPath: IndexPath?
+    
     public struct Associated_ty {
         static var lineView_ty = "kLineView_ty"
     }
@@ -30,8 +32,9 @@ open class TYTableViewCell_ty: UITableViewCell {
     }
     open func bindData_ty() {}
     open func updateUI_ty() {}
+    open func registerNotification_ty() {}
     
-    open func setLine_ty(left_ty: CGFloat = AdaptSize_ty(15), right_ty: CGFloat = 0, isHide_ty: Bool) {
+    open func setLine_ty(left_ty: CGFloat = AdaptSize_ty(15), right_ty: CGFloat = 0, isHide_ty: Bool = false) {
         if let lineView_ty = objc_getAssociatedObject(self, &Associated_ty.lineView_ty) as? UIView {
             lineView_ty.snp.updateConstraints { make_ty in
                 make_ty.left.equalToSuperview().offset(left_ty)

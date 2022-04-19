@@ -139,5 +139,81 @@ public extension CALayer {
         animater_ty.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         self.add(animater_ty, forKey: "jellyAnimation_ty")
     }
+}
 
+/// 渐变色的方向枚举
+public enum TYGradientDirectionType_ty: Int {
+    /// 水平(左->右)
+    case horizontal_ty = 0
+    /// 垂直(上->下)
+    case vertical_ty   = 1
+    /// 斜角(左上->右下)
+    case leftTop_ty    = 2
+    /// 斜角(左下->右上)
+    case leftBottom_ty = 3
+}
+
+// MARK: - 渐变色
+public extension CALayer {
+    /// 根据方向,设置渐变色
+    /// - parameter colors: 渐变的颜色数组
+    /// - parameter direction: 渐变方向的枚举对象
+    /// - note: 设置前,一定要确定当前View的高宽!!!否则无法准确的绘制
+    func setGradient_ty(colors_ty: [UIColor], direction_ty: TYGradientDirectionType_ty) {
+        switch direction_ty {
+        case .horizontal_ty:
+            setGradient_ty(colors_ty: colors_ty, startPoint_ty: CGPoint(x: 0, y: 0.5), endPoint_ty: CGPoint(x: 1, y: 0.5))
+        case .vertical_ty:
+            setGradient_ty(colors_ty: colors_ty, startPoint_ty: CGPoint(x: 0.5, y: 0), endPoint_ty: CGPoint(x: 0.5, y: 1))
+        case .leftTop_ty:
+            setGradient_ty(colors_ty: colors_ty, startPoint_ty: CGPoint(x: 0, y: 0), endPoint_ty: CGPoint(x: 1, y: 1))
+        case .leftBottom_ty:
+            setGradient_ty(colors_ty: colors_ty, startPoint_ty: CGPoint(x: 0, y: 1), endPoint_ty: CGPoint(x: 1, y: 0))
+        }
+    }
+
+    /// 设置渐变色
+    /// - parameter colors: 渐变颜色数组
+    /// - parameter locations: 逐个对应渐变色的数组,设置颜色的渐变占比,nil则默认平均分配
+    /// - parameter startPoint: 开始渐变的坐标(控制渐变的方向),取值(0 ~ 1)
+    /// - parameter endPoint: 结束渐变的坐标(控制渐变的方向),取值(0 ~ 1)
+    @discardableResult
+    func setGradient_ty(colors_ty: [UIColor], locations_ty: [NSNumber]? = nil, startPoint_ty: CGPoint, endPoint_ty: CGPoint) -> CAGradientLayer {
+        /// 设置渐变色
+        func _setGradient(_ layer_ty: CAGradientLayer) {
+            // self.layoutIfNeeded()
+            var colorArr_ty = [CGColor]()
+            for color_ty in colors_ty {
+                colorArr_ty.append(color_ty.cgColor)
+            }
+
+            /** 将UI操作的事务,先打包提交,防止出现视觉上的延迟展示,
+             * 但如果在提交的线程中还有其他UI操作,则这些UI操作会被隐式的包在CATransaction事务中
+             * 则当前显式创建的CATransaction则还是会等到这个UI操作的事务结束后,才会展示,毕竟嵌套了嘛
+             * 如果一定要立马展示,可以结束之前的UI操作,强制展示:CATransaction.flush(),缺点就是会造成其他UI操作的异常
+             */
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            layer_ty.frame = self.bounds
+            CATransaction.commit()
+
+            layer_ty.colors     = colorArr_ty
+            layer_ty.locations  = locations_ty
+            layer_ty.startPoint = startPoint_ty
+            layer_ty.endPoint   = endPoint_ty
+        }
+
+        //查找是否有已经存在的渐变色Layer
+        var kCAGradientLayerType_ty = CAGradientLayerType.axial
+        if let gradientLayer_ty = objc_getAssociatedObject(self, &kCAGradientLayerType_ty) as? CAGradientLayer {
+            // 清除渐变颜色
+            gradientLayer_ty.removeFromSuperlayer()
+        }
+        let gradientLayer_ty = CAGradientLayer()
+        self.insertSublayer(gradientLayer_ty , at: 0)
+        _setGradient(gradientLayer_ty)
+        // 添加渐变色属性到当前Layer
+        objc_setAssociatedObject(self, &kCAGradientLayerType_ty, gradientLayer_ty, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        return gradientLayer_ty
+    }
 }
